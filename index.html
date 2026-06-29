@@ -52,6 +52,16 @@
     --hpattern:repeating-linear-gradient(0deg,transparent,transparent 26px,rgba(35,74,107,.05) 26px,rgba(35,74,107,.05) 27px);
     --bgtint1:rgba(35,74,107,.05);--bgtint2:rgba(192,57,43,.04);
   }
+  /* ===== PLANNER · neutral slate ===== */
+  body[data-city="planner"]{
+    --paper:#f3f4f6;--paper-2:#e6e8ec;--card:#ffffff;--line:#cfd4dc;
+    --accent:#3b5168;--accent-2:#222a35;--pop:#c0653a;
+    --gold:#9a7b3f;--green:#3f6b4a;--muted:#646b76;
+    --ink-blue:#3b5168;--stamp:#c0653a;
+    --font-head:var(--serif);--font-body:var(--sans);
+    --hpattern:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(59,81,104,.05) 20px,rgba(59,81,104,.05) 22px);
+    --bgtint1:rgba(59,81,104,.05);--bgtint2:rgba(192,101,58,.04);
+  }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
@@ -315,6 +325,81 @@
 
   footer{border-top:3px solid var(--accent);padding:22px;text-align:center;font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.05em;transition:border-color .4s}
   .perf{font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+  /* ===== PLANNER ===== */
+  .planner-intro{font-size:14px;color:#3a352c;margin:0 0 16px;max-width:70ch}
+  .planner-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .seg{display:flex;gap:3px;background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:3px}
+  .seg button{border:0;background:transparent;cursor:pointer;border-radius:6px;padding:6px 11px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--muted);transition:.15s}
+  .seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+  .pl-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .pl-btn{border:1.5px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;border-radius:8px;padding:8px 13px;font-family:var(--mono);font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  .pl-btn:hover{background:var(--accent-2)}
+  .pl-btn.ghost{background:transparent;color:var(--accent)}
+  .pl-btn.ghost:hover{background:color-mix(in srgb,var(--accent) 8%,var(--card))}
+  .pl-btn.warn{border-color:var(--pop);background:transparent;color:var(--pop)}
+  .pl-btn.warn:hover{background:color-mix(in srgb,var(--pop) 9%,var(--card))}
+
+  .planner-layout{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:18px;align-items:start}
+  @media(max-width:860px){.planner-layout{grid-template-columns:1fr}}
+
+  .palette{position:sticky;top:64px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);max-height:calc(100vh - 80px);overflow:auto}
+  @media(max-width:860px){.palette{position:static;max-height:none}}
+  .palette h3{margin:0 0 4px;font-size:16px;font-family:var(--font-head);color:var(--accent-2)}
+  .palette .sub{font-size:11.5px;color:var(--muted);font-family:var(--mono);margin-bottom:10px}
+  .pcard{
+    border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:8px;background:var(--paper);
+    cursor:grab;transition:.12s;position:relative
+  }
+  .pcard:active{cursor:grabbing}
+  .pcard.picked{opacity:.4;filter:grayscale(.4)}
+  .pcard .pc-top{display:flex;align-items:center;gap:8px}
+  .pcard .pc-name{font-size:13.5px;font-weight:700;color:var(--accent-2);flex:1;line-height:1.2}
+  .pcard .pc-cat{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:5px;color:#fff;flex:none}
+  .cat-sight{background:#3b6e8f}.cat-food{background:#c0653a}.cat-nature{background:#3f7d56}.cat-culture{background:#8a5a9e}.cat-relax{background:#2c8c8c}
+  .pcard .pc-meta{font-size:11px;color:var(--muted);margin-top:3px}
+  .pcard .pc-add{position:absolute;top:8px;right:9px;border:0;background:var(--accent);color:#fff;border-radius:6px;width:22px;height:22px;font-size:14px;cursor:pointer;line-height:1;display:none}
+  @media(max-width:860px){.pcard .pc-add{display:block}.pcard{padding-right:38px}}
+
+  .board{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .dayblock{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .dayblock-head{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .dayblock-head .dh-date{font-family:var(--font-head);font-weight:700;color:var(--accent-2);font-size:15px}
+  .dayblock-head .dh-city{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:2px 7px;border:1px solid var(--line);border-radius:20px}
+  .dayblock-head .dh-opt{margin-left:auto;border:1.5px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;border-radius:7px;padding:4px 9px;font-family:var(--mono);font-size:10px;font-weight:700;display:inline-flex;align-items:center;gap:4px}
+  .dayblock-head .dh-opt:hover{background:var(--accent);color:#fff}
+  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  @media(max-width:680px){.slots{grid-template-columns:1fr 1fr}}
+  .slot{border-right:1px dashed var(--line);border-bottom:1px dashed var(--line);min-height:96px;padding:8px;display:flex;flex-direction:column}
+  .slot:nth-child(4n){border-right:0}
+  .slot .slot-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:5px}
+  .slot .slot-lbl .ic{font-size:11px}
+  .slot.dragover{background:color-mix(in srgb,var(--accent) 10%,var(--card));outline:2px dashed var(--accent);outline-offset:-4px}
+  .slot.empty-hint::after{content:"drop here";font-family:var(--mono);font-size:10px;color:var(--line);margin:auto;padding-bottom:12px}
+  .chip{
+    background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;
+    padding:6px 8px;margin-bottom:6px;cursor:grab;position:relative;font-size:12px
+  }
+  .chip.cat-food{border-left-color:#c0653a}.chip.cat-sight{border-left-color:#3b6e8f}.chip.cat-nature{border-left-color:#3f7d56}.chip.cat-culture{border-left-color:#8a5a9e}.chip.cat-relax{border-left-color:#2c8c8c}
+  .chip .ch-name{font-weight:700;color:var(--accent-2);line-height:1.2;padding-right:16px}
+  .chip .ch-x{position:absolute;top:4px;right:5px;border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;padding:0}
+  .chip .ch-x:hover{color:var(--pop)}
+  .chip .ch-travel{font-family:var(--mono);font-size:9.5px;color:var(--muted);margin-top:4px;display:flex;align-items:center;gap:5px}
+  .chip .ch-go{border:0;background:transparent;color:var(--accent);cursor:pointer;font-family:var(--mono);font-size:9.5px;font-weight:700;padding:0;text-decoration:underline}
+  .pl-empty{padding:20px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:12px}
+
+  @media print{
+    header,nav,footer,.palette,.planner-controls,.planner-intro,.secthead .hint,.modal-overlay{display:none !important}
+    .panel{display:none !important}
+    .panel#planner{display:block !important}
+    .planner-layout{grid-template-columns:1fr !important}
+    .board{gap:10px}
+    .dayblock{break-inside:avoid;box-shadow:none;border:1px solid #999}
+    .dh-opt,.ch-x,.ch-go{display:none !important}
+    .slot{min-height:auto}
+    body{background:#fff}
+    .day-empty-print{display:none}
+  }
   a.tab:focus-visible,.tab:focus-visible{outline:3px solid var(--pop);outline-offset:-3px}
 </style>
 </head>
@@ -343,6 +428,9 @@
     <button class="tab" role="tab" aria-selected="false" aria-controls="osaka" id="tab-osaka">
       <span class="city">Osaka</span><span class="meta">Oct 10–17 · 7 nts</span>
     </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="planner" id="tab-planner">
+      <span class="city">Planner ✦</span><span class="meta">Build your days</span>
+    </button>
   </div>
 </nav>
 
@@ -360,16 +448,16 @@
   <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2></div>
   <div class="grid cols-2">
     <div class="card hotel" style="border-left-color:var(--stamp)">
-      <h3>Hongdae Airbnb</h3>
-      <div class="tagrow"><span class="pill your">Your booking · Airbnb</span><span class="pill">Hongdae</span><span class="pill">Up to 3 guests</span></div>
-      <p>Apartment by Hongdae Street — the university nightlife, indie cafés and live-music quarter, with Hongik Univ Station (line 2 + AREX) for a direct airport train. A lively, local-feel base; most of the eats and sights below are a short metro hop on line 2.</p>
+      <h3>Berry House · Hongik Univ Station</h3>
+      <div class="tagrow"><span class="pill your">Your booking · Airbnb</span><span class="pill">Hongdae</span><span class="pill rate">★ 4.97</span><span class="pill">4 guests · 2BR</span></div>
+      <p>Hosted by Min (Superhost). Entire ground-floor flat, completely flat access, 1-min walk from Hongik Univ Station Exit 3 — direct AREX airport train (ICN ~50 min), and line 2 for the city. Two bedrooms, full kitchen, washer + dryer. Quiet residential street but steps from cafés, Olive Young and CGV. A genuinely easy, local base.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Sun Sep 21 <small>· host's time</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Sep 26 <small>· host's time</small></div></div>
-        <div class="cell"><div class="lbl">Nights</div><div class="val">5</div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Sun Sep 21 <small>· from 14:00</small></div></div>
+        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Sep 26 <small>· by 11:00</small></div></div>
+        <div class="cell"><div class="lbl">Total</div><div class="val">$1,167 <small>CAD · 5 nts</small></div></div>
       </div>
+      <div class="addr">Hongik Univ Station Exit 3, Mapo-gu · self check-in (keypad) · contactless</div>
       <a class="link" href="https://www.airbnb.com/rooms/1593062002890366271?adults=3&check_in=2026-09-21&check_out=2026-09-26" target="_blank" rel="noopener">View Airbnb listing →</a>
-      <p class="confirm" style="margin-top:8px">Confirm exact address, check-in time &amp; self check-in details with the host.</p>
     </div>
     <div class="card">
       <h3>Getting in from ICN</h3>
@@ -814,54 +902,58 @@
     <span class="nights">Base: <b>Namba</b> · 7 nights</span>
   </div>
 
-  <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2><span class="hint">two options</span></div>
+  <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2><span class="hint">airport hotel night 1, then Airbnb</span></div>
+  <div class="note"><b>Late arrival plan:</b> because you land at KIX very late on Oct 10, you'll sleep at the <b>Hotel Nikko Kansai Airport</b> right at the terminal that first night — no late-night train needed. Next morning, take the Nankai train into the city and check into the <b>Kuromon Airbnb</b> for the remaining 6 nights.</div>
   <div class="grid cols-2">
-    <div class="card hotel" style="border-left-color:var(--pop)">
-      <h3>Osaka Airbnb · Option 1</h3>
-      <div class="tagrow"><span class="pill your">Option 1 · Airbnb</span><span class="pill">Up to 3 guests</span><span class="pill">7 nights</span></div>
-      <p>Self-catering apartment for the Osaka leg — more space than a hotel room and good for end-of-trip laundry. Routing below assumes a central Namba-area location; adjust if your unit is elsewhere.</p>
+    <div class="card hotel">
+      <h3>Hotel Nikko Kansai Airport</h3>
+      <div class="tagrow"><span class="pill your">Night 1 · hotel</span><span class="pill">At KIX terminal</span><span class="pill rate">★ 4.4</span><span class="pill">Late arrival</span></div>
+      <p>Directly connected to Kansai Airport — a short covered walk from arrivals, ideal after a very late landing. Clean, simple, and zero stress: drop your bags and sleep, then ride into Osaka refreshed in the morning.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Fri Oct 10 <small>· host's time</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Oct 17 <small>· host's time</small></div></div>
-        <div class="cell"><div class="lbl">Nights</div><div class="val">7</div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Fri Oct 10 <small>· late night</small></div></div>
+        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Oct 11 <small>· morning</small></div></div>
+        <div class="cell"><div class="lbl">Nights</div><div class="val">1</div></div>
       </div>
-      <a class="link" href="https://www.airbnb.com/rooms/1522969530165577846?adults=3&check_in=2026-10-10&check_out=2026-10-17" target="_blank" rel="noopener">View Airbnb listing →</a>
-      <p class="confirm" style="margin-top:8px">Confirm exact address, check-in time &amp; self check-in with the host.</p>
+      <div class="addr">1 Senshūkūkōkita, Izumisano · walk from KIX Terminal 1 · +81 72-455-1111</div>
     </div>
     <div class="card hotel" style="border-left-color:var(--pop)">
-      <h3>Osaka Airbnb · Option 2</h3>
-      <div class="tagrow"><span class="pill your">Option 2 · Airbnb</span><span class="pill">Up to 3 guests</span><span class="pill">7 nights</span></div>
-      <p>A second apartment option for the same dates. Compare the two on price, exact location and reviews, then lock in whichever suits — tell me which and I'll set the transit routing to its neighborhood.</p>
+      <h3>Kuromon Airbnb · by Yuko</h3>
+      <div class="tagrow"><span class="pill your">Nights 2–7 · Airbnb</span><span class="pill">Nihonbashi</span><span class="pill rate">★ 4.86</span><span class="pill">5 guests · 2BR</span></div>
+      <p>Superhost flat by Kuromon Market — Nihonbashi Station 2-min walk, with Namba (~12 min), Dotonbori (~15 min) and Shinsaibashi all in walking distance. Two bedrooms, full kitchen, washer, elevator (easy with luggage), small balcony. Spacious and quiet, right in the food heart of Osaka.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Fri Oct 10 <small>· host's time</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Oct 17 <small>· host's time</small></div></div>
-        <div class="cell"><div class="lbl">Nights</div><div class="val">7</div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Sat Oct 11 <small>· from 16:00</small></div></div>
+        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Oct 17 <small>· by 11:00</small></div></div>
+        <div class="cell"><div class="lbl">Total</div><div class="val">$960 <small>CAD · 6 nts</small></div></div>
       </div>
-      <a class="link" href="https://www.airbnb.com/rooms/1649808125544974606?adults=3&check_in=2026-10-10&check_out=2026-10-17" target="_blank" rel="noopener">View Airbnb listing →</a>
-      <p class="confirm" style="margin-top:8px">Confirm exact address, check-in time &amp; self check-in with the host.</p>
+      <div class="addr">Nihonbashi, Chuo-ku (by Kuromon Market) · self check-in (lockbox)</div>
+      <a class="link" href="https://www.airbnb.com/rooms/1522969530165577846?adults=3&check_in=2026-10-11&check_out=2026-10-17" target="_blank" rel="noopener">View Airbnb listing →</a>
     </div>
   </div>
-  <div class="note"><b>Routing note:</b> transit below (airport + venues) is keyed to <b>Namba Station</b> as a central anchor, since both options are for the same dates. Once you pick one, send me the neighborhood and I'll repoint everything to its exact location.</div>
+  <div class="note"><b>Note on the Airbnb check-in:</b> the listing's standard check-in is 4:00 PM. If you arrive in the city earlier on Oct 11, message Yuko about luggage drop — she's a responsive Superhost and the flat has elevator access.</div>
 
   <div class="grid cols-2" style="margin-top:16px">
     <div class="card">
       <h3>Getting in from KIX</h3>
-      <div class="tagrow"><span class="pill">Nankai Rapi:t</span><span class="pill">~40 min</span></div>
-      <p>The Nankai Rapi:t express runs straight from Kansai Airport to Namba Station — fastest way into the central Namba area. Pick up an ICOCA card for trains and konbini, then walk or short-ride to your Airbnb.</p>
-      <button class="dirbtn" data-from="Kansai International Airport, Japan" data-to="Namba Station, Osaka" data-title="KIX → Namba" data-sub="Arrival · Nankai Rapi:t / transit">
+      <div class="tagrow"><span class="pill">Night 1: walk</span><span class="pill">Day 2: Nankai train</span></div>
+      <p><b>Oct 10 (late):</b> walk straight from arrivals to the Hotel Nikko at the terminal — a few minutes, no train. <b>Oct 11 (morning):</b> Nankai train from KIX to Nihonbashi/Namba (~45 min), then the 2-min walk to the Airbnb. Grab an ICOCA card for the week.</p>
+      <button class="dirbtn" data-from="Kansai International Airport, Japan" data-to="Hotel Nikko Kansai Airport, Izumisano, Japan" data-mode="walk" data-title="KIX arrivals → Hotel Nikko" data-sub="Night 1 · short covered walk">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
-        Transit: KIX → Namba
+        Walk: KIX → Hotel Nikko
+      </button>
+      <button class="dirbtn ghost" data-from="Kansai International Airport, Japan" data-to="Kuromon Market, Nihonbashi, Osaka" data-mode="transit" data-title="KIX → Kuromon (Airbnb)" data-sub="Day 2 · Nankai train">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
+        Train: KIX → Kuromon
       </button>
       <div class="depart">
         <h3>Departure day → KIX · Fri Oct 17</h3>
         <ol>
-          <li><b>Check out of the Airbnb</b> per the host's time, and follow their key-return / self check-out steps.</li>
-          <li><b>To the airport:</b> Nankai Rapi:t or airport-express from Nankai Namba Station straight to KIX — about 40–50 min. A taxi is far pricier (¥18,000+) and not faster.</li>
-          <li><b>Flight home:</b> AC 24 KIX → YVR, Vancouver. Allow time for international check-in and the airport's pre-security.</li>
+          <li><b>Check out of the Kuromon Airbnb by 11:00</b> (lockbox return per Yuko's instructions).</li>
+          <li><b>To the airport:</b> Nankai train from Nihonbashi/Namba straight to KIX — about 45 min. A taxi is far pricier (¥18,000+) and not faster.</li>
+          <li><b>Flight home:</b> AC 24 KIX → YVR, Vancouver. Allow time for international check-in and pre-security.</li>
         </ol>
-        <button class="dirbtn" data-from="Namba Station, Osaka" data-to="Kansai International Airport, Japan" data-title="Namba → KIX" data-sub="Departure day · transit">
+        <button class="dirbtn" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Kansai International Airport, Japan" data-mode="transit" data-title="Kuromon → KIX" data-sub="Departure day · Nankai train">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
-          Transit: Namba → KIX
+          Train: Kuromon → KIX
         </button>
         <div class="leaveby">Leave ≈3.5 hrs before departure. Confirm AC 24's exact departure time on your ticket.</div>
       </div>
@@ -876,7 +968,7 @@
       <p>Crisp beef cutlet you finish grilling on your own hot stone to taste — fun, fast and unmissable. Expect a line; go just before opening or off-peak. In Namba Stagata B1F.</p>
       <div class="addr">3-3-1 Namba, Chuo-ku · 11:00–22:00</div>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Gyukatsu Motomura Namba, Osaka" data-title="To Gyukatsu Motomura — Namba" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Gyukatsu Motomura Namba, Osaka" data-title="To Gyukatsu Motomura — Namba" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Kyoto Wamen Yukichi Honpo</h3>
@@ -884,7 +976,7 @@
       <p>A tiny, cosy room near Dotonbori serving some of the best ramen in the city paired with torched A5 wagyu, run by a warm older couple. A genuine highlight.</p>
       <div class="addr">1-9-6 Sennichimae, Chuo-ku · 12:00–23:00</div>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Kyoto Wamen Yukichi Honpo, Osaka" data-title="To Kyoto Wamen Yukichi Honpo" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Kyoto Wamen Yukichi Honpo, Osaka" data-title="To Kyoto Wamen Yukichi Honpo" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Tsukishima Monja Kuuya</h3>
@@ -892,7 +984,7 @@
       <p>Cook-at-table okonomiyaki and Tokyo-style monjayaki with staff who help you make it — a hands-on Osaka food night. Under-seat storage keeps your bag smoke-free.</p>
       <div class="addr">2-8-17 Sennichimae, Chuo-ku · 11:00–23:00</div>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Tsukishima Monja Kuuya, Osaka" data-title="To Tsukishima Monja Kuuya" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Tsukishima Monja Kuuya, Osaka" data-title="To Tsukishima Monja Kuuya" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Onigiri Gorichan</h3>
@@ -900,7 +992,7 @@
       <p>Hand-formed rice balls — salmon butter, spicy cod roe — eaten half plain, half dunked in dashi. It's <i>inside</i> the Nankai Namba ticket gates; ask staff for a pass to enter.</p>
       <div class="addr">Nankai Namba Stn 3F · 10:00–21:30</div>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Onigiri Gorichan, Osaka" data-title="To Onigiri Gorichan" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Onigiri Gorichan, Osaka" data-title="To Onigiri Gorichan" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
   </div>
   <div class="note"><b>Halal options:</b> If useful, <b>Gyumon</b> (★4.9, halal wagyu & vegan ramen) and the Michelin-supervised <b>King Wagyu Ramen</b> (★4.9) are both right on Dotonbori with prayer facilities.</div>
@@ -912,35 +1004,35 @@
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Neon · canal</span></div>
       <p>The neon heart of Osaka and the Glico sign — a few minutes' walk from your hotel. Best after dark; eat on the side streets, not the canal front.</p>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Dotonbori, Osaka" data-title="To Dotonbori" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Dotonbori, Osaka" data-title="To Dotonbori" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Osaka Castle & Park</h3>
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">History</span></div>
       <p>Iconic keep set in a huge moated park. Book tickets online to skip the line; the grounds alone are worth the walk. 9–6.</p>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Osaka Castle & Park, Osaka" data-title="To Osaka Castle & Park" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Osaka Castle & Park, Osaka" data-title="To Osaka Castle & Park" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Umeda Sky Building</h3>
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Sunset deck</span></div>
       <p>Floating Garden Observatory with a 360° open-air deck — go for sunset into night. Glass-tunnel escalators up are part of the fun.</p>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Umeda Sky Building, Osaka" data-title="To Umeda Sky Building" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Umeda Sky Building, Osaka" data-title="To Umeda Sky Building" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Tsutenkaku & Shinsekai</h3>
       <div class="tagrow"><span class="pill rate">★ 4.1</span><span class="pill">Retro · kushikatsu</span></div>
       <p>Old-school Osaka tower with a slide and walk decks, ringed by neon kushikatsu joints. Great for an atmospheric evening.</p>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Tsutenkaku & Shinsekai, Osaka" data-title="To Tsutenkaku & Shinsekai" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Tsutenkaku & Shinsekai, Osaka" data-title="To Tsutenkaku & Shinsekai" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Tempozan Ferris Wheel</h3>
       <div class="tagrow"><span class="pill rate">★ 4.5</span><span class="pill">Bay views</span></div>
       <p>Big wheel over Osaka Bay (~¥1000, 15 min), next to the aquarium. Sunset or night for the best ride; clear-floor cabins available.</p>
 
-      <button class="dirmini" data-from="Namba Station, Osaka" data-to="Tempozan Ferris Wheel, Osaka" data-title="To Tempozan Ferris Wheel" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Tempozan Ferris Wheel, Osaka" data-title="To Tempozan Ferris Wheel" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Day trips: Kyoto / Nara</h3>
@@ -955,23 +1047,24 @@
     <div class="day arrive">
       <div class="daynum"><span class="d">OCT</span><span class="n">10</span><span class="dow">FRI</span></div>
       <div class="dbody">
-        <div class="dtitle">Arrive Osaka · settle in Namba</div>
-        <p>Nankai train from KIX into Namba, check into the Airbnb. Easy evening — a short flat walk to a casual first dinner at <b>Gyukatsu Motomura</b>, or grab onigiri. Early night.</p>
+        <div class="dtitle">Late arrival · sleep at the airport hotel</div>
+        <p>Land KIX very late. Walk straight from arrivals to the <b>Hotel Nikko Kansai Airport</b> at the terminal — no train tonight. Drop your bags and rest. A grab-and-go konbini dinner is all you'll need.</p>
         <div class="stops">
-          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">KIX → Namba Station (Nankai)</span><span class="est">~45 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Namba Station, Osaka" data-mode="transit" data-title="KIX → Namba" data-sub="Nankai train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">KIX arrivals → Hotel Nikko Kansai Airport</span><span class="est">~5 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Hotel Nikko Kansai Airport, Izumisano, Japan" data-mode="walk" data-title="KIX → Hotel Nikko" data-sub="Covered walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
-        <div class="dmeta"><span class="tag">Arrival</span><span class="tag eat">Gyukatsu Motomura</span></div>
+        <div class="dmeta"><span class="tag">Arrival · night 1</span><span class="tag rest">Airport hotel</span></div>
       </div>
     </div>
     <div class="day">
       <div class="daynum"><span class="d">OCT</span><span class="n">11</span><span class="dow">SAT</span></div>
       <div class="dbody">
-        <div class="dtitle">Dotonbori &amp; Namba at an easy stroll</div>
-        <p>Settle in gently — the <b>Dotonbori</b> canal, the Glico sign, and covered (weatherproof, flat) shopping arcades are right around you. Relaxed ramen lunch at <b>Yukichi</b>. Rest in the afternoon; Dotonbori is even better lit up after dark, a short walk from base.</p>
+        <div class="dtitle">Into the city · Kuromon Airbnb &amp; Dotonbori</div>
+        <p>After breakfast, Nankai train from KIX to <b>Nihonbashi</b> and check into the Kuromon Airbnb (bag drop if early). Step out to <b>Kuromon Market</b> next door for lunch, then an easy stroll to <b>Dotonbori</b> and the Glico sign. Relaxed ramen at <b>Yukichi</b>; Dotonbori is even better lit after dark.</p>
         <div class="stops">
-          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Namba → Dotonbori</span><span class="est">~8 min</span><button class="go" data-from="Namba Station, Osaka" data-to="Dotonbori, Osaka" data-mode="walk" data-title="Namba → Dotonbori" data-sub="Short flat walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">KIX → Nihonbashi (Kuromon Airbnb)</span><span class="est">~45 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Kuromon Market, Nihonbashi, Osaka" data-mode="transit" data-title="KIX → Kuromon" data-sub="Nankai train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Kuromon → Dotonbori</span><span class="est">~12 min</span><button class="go" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Dotonbori, Osaka" data-mode="walk" data-title="Kuromon → Dotonbori" data-sub="Short flat walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
-        <div class="dmeta"><span class="tag">Flat · covered arcades</span><span class="tag eat">Yukichi ramen + wagyu</span></div>
+        <div class="dmeta"><span class="tag">Check-in · flat walks</span><span class="tag eat">Kuromon Market + Yukichi</span></div>
       </div>
     </div>
     <div class="day">
@@ -1045,6 +1138,43 @@
   </div>
 </section>
 
+<!-- ============ PLANNER ============ -->
+<section class="panel" id="planner" role="tabpanel" aria-labelledby="tab-planner">
+  <div class="secthead"><span class="num">✦</span><h2>Trip Planner</h2><span class="hint">drag · drop · optimize</span></div>
+  <p class="planner-intro">Browse every venue by city and category, then drag the ones you want into a day's time slots — or tap <b>+</b> on mobile. Leave any slot, day, or whole stretch blank. Hit <b>Optimize day</b> to auto-arrange a day's picks into a sensible order (sights in the morning, meals at meal times, nightlife in the evening). Your plan saves automatically on this device, and you can print or export it.</p>
+
+  <div class="planner-controls">
+    <div class="seg" id="pl-city" role="group" aria-label="Filter by city">
+      <button data-city="all" aria-pressed="true">All cities</button>
+      <button data-city="seoul" aria-pressed="false">Seoul</button>
+      <button data-city="penang" aria-pressed="false">Penang</button>
+      <button data-city="osaka" aria-pressed="false">Osaka</button>
+    </div>
+    <div class="seg" id="pl-cat" role="group" aria-label="Filter by category">
+      <button data-cat="all" aria-pressed="true">All</button>
+      <button data-cat="sight" aria-pressed="false">Sights</button>
+      <button data-cat="food" aria-pressed="false">Food</button>
+      <button data-cat="nature" aria-pressed="false">Nature</button>
+      <button data-cat="culture" aria-pressed="false">Culture</button>
+      <button data-cat="relax" aria-pressed="false">Relax</button>
+    </div>
+    <div class="pl-actions">
+      <button class="pl-btn ghost" id="pl-print">🖨 Print / PDF</button>
+      <button class="pl-btn ghost" id="pl-export">⤓ Export</button>
+      <button class="pl-btn warn" id="pl-reset">Reset plan</button>
+    </div>
+  </div>
+
+  <div class="planner-layout">
+    <aside class="palette">
+      <h3>Things to do</h3>
+      <div class="sub" id="pl-count">—</div>
+      <div id="pl-palette"></div>
+    </aside>
+    <div class="board" id="pl-board"></div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -1079,7 +1209,7 @@
   /* ---------- tabs ---------- */
   const tabs = Array.from(document.querySelectorAll('.tab'));
   const panels = Array.from(document.querySelectorAll('.panel'));
-  const cityIds = ['seoul','penang','osaka'];
+  const cityIds = ['seoul','penang','osaka','planner'];
   const cityMeta = {
     seoul:  {motif:'한국 · KOREA', big:'한국 KOREA', sml:'SEP 21–26'},
     penang: {motif:'PULAU PINANG · MALAYSIA', big:'PENANG · MY', sml:'SEP 26–OCT 10'},
@@ -1163,6 +1293,261 @@
   document.getElementById('mapClose').addEventListener('click',closeDirections);
   overlay.addEventListener('click',e=>{ if(e.target===overlay) closeDirections(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape' && overlay.classList.contains('open')) closeDirections(); });
+
+  /* ===================== PLANNER ENGINE ===================== */
+  // Venue dataset. slot = preferred time-of-day for optimize: am | lunch | pm | eve
+  // mode = how you'd travel there in that city: drive (Kakao/Grab) or transit (train)
+  const VENUES = [
+    // --- SEOUL (mode: drive = Kakao T) ---
+    {id:'se-gbg', city:'seoul', cat:'sight',   name:'Gyeongbokgung Palace',     slot:'am',    mode:'drive', loc:'Gyeongbokgung Palace, Seoul'},
+    {id:'se-buk', city:'seoul', cat:'sight',   name:'Bukchon Hanok Village',    slot:'am',    mode:'drive', loc:'Bukchon Hanok Village, Seoul'},
+    {id:'se-nam', city:'seoul', cat:'culture', name:'Namsangol Hanok Village',  slot:'am',    mode:'drive', loc:'Namsangol Hanok Village, Seoul'},
+    {id:'se-che', city:'seoul', cat:'nature',  name:'Cheonggyecheon Stream',    slot:'pm',    mode:'drive', loc:'Cheonggyecheon, Seoul'},
+    {id:'se-nst', city:'seoul', cat:'sight',   name:'N Seoul Tower',            slot:'eve',   mode:'drive', loc:'N Seoul Tower, Seoul'},
+    {id:'se-mys', city:'seoul', cat:'culture', name:'Myeongdong Shopping St',   slot:'pm',    mode:'drive', loc:'Myeongdong Shopping Street, Seoul'},
+    {id:'se-cat', city:'seoul', cat:'culture', name:'Myeongdong Cathedral',     slot:'pm',    mode:'drive', loc:'Myeongdong Cathedral, Seoul'},
+    {id:'se-ins', city:'seoul', cat:'culture', name:'Insadong tea house',       slot:'pm',    mode:'drive', loc:'Namusae Tea House, Insadong, Seoul'},
+    {id:'se-kyo', city:'seoul', cat:'food',    name:'Myeongdong Kyoja',         slot:'lunch', mode:'drive', loc:'Myeongdong Kyoja, Seoul'},
+    {id:'se-oda', city:'seoul', cat:'food',    name:'Odarijip Ganjang Gejang',  slot:'eve',   mode:'drive', loc:'Odarijip Ganjang Gejang, Seoul'},
+    {id:'se-mon', city:'seoul', cat:'food',    name:'KBBQ Mongvely',            slot:'eve',   mode:'drive', loc:'Myeongdong Korean BBQ Mongvely, Seoul'},
+    {id:'se-dao', city:'seoul', cat:'food',    name:'Daol Charcoal KBBQ',       slot:'eve',   mode:'drive', loc:'Daol Charcoal Grilling, Myeongdong, Seoul'},
+    // --- PENANG (mode: drive = Grab) ---
+    {id:'pe-per', city:'penang', cat:'culture', name:'Pinang Peranakan Mansion', slot:'am',    mode:'drive', loc:'Pinang Peranakan Mansion, George Town, Penang'},
+    {id:'pe-khoo',city:'penang', cat:'culture', name:'Khoo Kongsi clan temple',  slot:'am',    mode:'drive', loc:'Leong San Tong Khoo Kongsi, George Town, Penang'},
+    {id:'pe-jet', city:'penang', cat:'sight',   name:'Chew Jetty',               slot:'eve',   mode:'drive', loc:'Chew Jetty, George Town, Penang'},
+    {id:'pe-top', city:'penang', cat:'sight',   name:'The TOP Penang skywalk',   slot:'pm',    mode:'drive', loc:'The TOP Penang, Komtar, George Town, Penang'},
+    {id:'pe-hill',city:'penang', cat:'nature',  name:'Penang Hill funicular',    slot:'am',    mode:'drive', loc:'Penang Hill Funicular Lower Station, Air Itam, Penang'},
+    {id:'pe-kek', city:'penang', cat:'culture', name:'Kek Lok Si Temple',        slot:'am',    mode:'drive', loc:'Kek Lok Si Temple, Air Itam, Penang'},
+    {id:'pe-spg', city:'penang', cat:'nature',  name:'Tropical Spice Garden',    slot:'am',    mode:'drive', loc:'Tropical Spice Garden, Teluk Bahang, Penang'},
+    {id:'pe-ent', city:'penang', cat:'nature',  name:'Entopia Butterfly Farm',   slot:'am',    mode:'drive', loc:'Entopia by Penang Butterfly Farm, Teluk Bahang, Penang'},
+    {id:'pe-beach',city:'penang',cat:'relax',   name:'Batu Ferringhi beach',     slot:'pm',    mode:'drive', loc:'Batu Ferringhi Beach, Penang'},
+    {id:'pe-fire',city:'penang', cat:'food',    name:'Firewood (book ahead)',    slot:'eve',   mode:'drive', loc:'Firewood Penang, George Town'},
+    {id:'pe-hwa', city:'penang', cat:'food',    name:'Hwa Ting',                 slot:'lunch', mode:'drive', loc:'Hwa Ting Restaurant, George Town, Penang'},
+    {id:'pe-auc', city:'penang', cat:'food',    name:'Auction Rooms café',       slot:'lunch', mode:'drive', loc:'Auction Rooms, George Town Penang'},
+    {id:'pe-cen', city:'penang', cat:'food',    name:'Penang Rd Famous Cendol',  slot:'pm',    mode:'drive', loc:'Penang Road Famous Teochew Chendul, George Town'},
+    {id:'pe-gur', city:'penang', cat:'food',    name:'Gurney Drive hawker',      slot:'eve',   mode:'drive', loc:'Gurney Drive Hawker Centre, George Town, Penang'},
+    // --- OSAKA (mode: transit = train) ---
+    {id:'os-dot', city:'osaka', cat:'sight',   name:'Dotonbori',               slot:'eve',   mode:'transit', loc:'Dotonbori, Osaka'},
+    {id:'os-cas', city:'osaka', cat:'sight',   name:'Osaka Castle & park',     slot:'am',    mode:'transit', loc:'Osaka Castle, Osaka'},
+    {id:'os-ume', city:'osaka', cat:'sight',   name:'Umeda Sky Building',      slot:'eve',   mode:'transit', loc:'Umeda Sky Building, Osaka'},
+    {id:'os-tsu', city:'osaka', cat:'sight',   name:'Tsutenkaku & Shinsekai',  slot:'eve',   mode:'transit', loc:'Tsutenkaku, Shinsekai, Osaka'},
+    {id:'os-tem', city:'osaka', cat:'relax',   name:'Tempozan Ferris Wheel',   slot:'pm',    mode:'transit', loc:'Tempozan Ferris Wheel, Osaka'},
+    {id:'os-nara',city:'osaka', cat:'nature',  name:'Nara day trip (Todai-ji)',slot:'am',    mode:'transit', loc:'Todai-ji, Nara, Japan'},
+    {id:'os-kyo', city:'osaka', cat:'culture', name:'Kyoto day trip (Fushimi)',slot:'am',    mode:'transit', loc:'Fushimi Inari Taisha, Kyoto, Japan'},
+    {id:'os-gion',city:'osaka', cat:'culture', name:'Kyoto: Gion streets',     slot:'pm',    mode:'transit', loc:'Gion, Kyoto, Japan'},
+    {id:'os-gyu', city:'osaka', cat:'food',    name:'Gyukatsu Motomura',       slot:'lunch', mode:'transit', loc:'Gyukatsu Motomura Namba, Osaka'},
+    {id:'os-yuk', city:'osaka', cat:'food',    name:'Yukichi ramen + wagyu',   slot:'lunch', mode:'transit', loc:'Kyoto Wamen Yukichi Honpo, Osaka'},
+    {id:'os-kuu', city:'osaka', cat:'food',    name:'Okonomiyaki Kuuya',       slot:'lunch', mode:'transit', loc:'Tsukishima Monja Kuuya, Sennichimae, Osaka'},
+    {id:'os-oni', city:'osaka', cat:'food',    name:'Onigiri Gorichan',        slot:'am',    mode:'transit', loc:'Onigiri Gorichan, Nankai Namba, Osaka'},
+  ];
+  const VMAP = Object.fromEntries(VENUES.map(v=>[v.id,v]));
+
+  // Day definitions (date label, city, base origin for first-leg travel)
+  const BASES = {
+    seoul:  'Hongik University Station, Seoul',
+    penang: 'Iconic Regency Service Residences, Bayan Lepas, Penang',
+    osaka:  'Kuromon Market, Nihonbashi, Osaka',
+  };
+  const DAYS = [
+    {id:'d0921', city:'seoul',  date:'Sun Sep 21'}, {id:'d0922', city:'seoul', date:'Mon Sep 22'},
+    {id:'d0923', city:'seoul',  date:'Tue Sep 23'}, {id:'d0924', city:'seoul', date:'Wed Sep 24'},
+    {id:'d0925', city:'seoul',  date:'Thu Sep 25'},
+    {id:'d0927', city:'penang', date:'Sat Sep 27'}, {id:'d0928', city:'penang', date:'Sun Sep 28'},
+    {id:'d0929', city:'penang', date:'Mon Sep 29'}, {id:'d0930', city:'penang', date:'Tue Sep 30'},
+    {id:'d1001', city:'penang', date:'Wed Oct 1'},  {id:'d1002', city:'penang', date:'Thu Oct 2'},
+    {id:'d1003', city:'penang', date:'Fri Oct 3'},  {id:'d1004', city:'penang', date:'Sat Oct 4'},
+    {id:'d1005', city:'penang', date:'Sun Oct 5'},  {id:'d1006', city:'penang', date:'Mon Oct 6'},
+    {id:'d1007', city:'penang', date:'Tue Oct 7'},  {id:'d1008', city:'penang', date:'Wed Oct 8'},
+    {id:'d1009', city:'penang', date:'Thu Oct 9'},
+    {id:'d1011', city:'osaka',  date:'Sat Oct 11'}, {id:'d1012', city:'osaka', date:'Sun Oct 12'},
+    {id:'d1013', city:'osaka',  date:'Mon Oct 13'}, {id:'d1014', city:'osaka', date:'Tue Oct 14'},
+    {id:'d1015', city:'osaka',  date:'Wed Oct 15'}, {id:'d1016', city:'osaka', date:'Thu Oct 16'},
+  ];
+  const SLOTS = [
+    {id:'am',    lbl:'Morning',  ic:'🌅'},
+    {id:'lunch', lbl:'Lunch',    ic:'🍽'},
+    {id:'pm',    lbl:'Afternoon',ic:'☀'},
+    {id:'eve',   lbl:'Evening',  ic:'🌙'},
+  ];
+  const cityName = {seoul:'Seoul', penang:'Penang', osaka:'Osaka'};
+  const modeLabel = {drive:{seoul:'Kakao T',penang:'Grab'}, transit:'Train'};
+
+  // PLAN state: { dayId: { slotId: [venueId, ...] } }
+  const PLKEY = 'asia2025_planner_v1';
+  let PLAN = {};
+  try { const s = localStorage.getItem(PLKEY); if(s) PLAN = JSON.parse(s); } catch(e){}
+  function savePlan(){ try{ localStorage.setItem(PLKEY, JSON.stringify(PLAN)); }catch(e){} }
+  function dayObj(id){ return PLAN[id] || (PLAN[id] = {am:[],lunch:[],pm:[],eve:[]}); }
+  function isPicked(vid){ return Object.values(PLAN).some(d=>Object.values(d).some(arr=>arr.includes(vid))); }
+  function removeEverywhere(vid){
+    Object.values(PLAN).forEach(d=>Object.keys(d).forEach(s=>{ d[s]=d[s].filter(x=>x!==vid); }));
+  }
+
+  // ---- filters ----
+  let fCity='all', fCat='all';
+  const palEl=document.getElementById('pl-palette');
+  const boardEl=document.getElementById('pl-board');
+  const countEl=document.getElementById('pl-count');
+
+  function renderPalette(){
+    const list=VENUES.filter(v=>(fCity==='all'||v.city===fCity)&&(fCat==='all'||v.cat===fCat));
+    countEl.textContent = list.length+' places'+(fCity!=='all'?' · '+cityName[fCity]:'');
+    palEl.innerHTML = list.map(v=>{
+      const picked=isPicked(v.id);
+      return `<div class="pcard ${picked?'picked':''}" draggable="true" data-vid="${v.id}">
+        <div class="pc-top">
+          <span class="pc-name">${v.name}</span>
+          <span class="pc-cat cat-${v.cat}">${v.cat}</span>
+        </div>
+        <div class="pc-meta">${cityName[v.city]} · ${slotName(v.slot)}${picked?' · added':''}</div>
+        <button class="pc-add" data-add="${v.id}" title="Add to plan">+</button>
+      </div>`;
+    }).join('') || '<div class="pl-empty">No places match these filters.</div>';
+    bindPaletteDrag();
+  }
+  function slotName(s){ return ({am:'morning',lunch:'lunch',pm:'afternoon',eve:'evening'})[s]||s; }
+
+  function travelLabel(city,mode){
+    if(mode==='transit') return '🚆 Train';
+    return (modeLabel.drive[city]==='Grab'?'🚗 Grab':'🚗 Kakao T');
+  }
+
+  function renderBoard(){
+    let cur=null, html='';
+    DAYS.forEach(day=>{
+      const d=PLAN[day.id]||{am:[],lunch:[],pm:[],eve:[]};
+      html+=`<div class="dayblock" data-day="${day.id}">
+        <div class="dayblock-head">
+          <span class="dh-date">${day.date}</span>
+          <span class="dh-city">${cityName[day.city]}</span>
+          <button class="dh-opt" data-opt="${day.id}">✦ Optimize day</button>
+        </div>
+        <div class="slots">`;
+      SLOTS.forEach(s=>{
+        const items=(d[s.id]||[]);
+        html+=`<div class="slot ${items.length?'':'empty-hint'}" data-day="${day.id}" data-slot="${s.id}">
+          <div class="slot-lbl"><span class="ic">${s.ic}</span>${s.lbl}</div>`;
+        items.forEach((vid,idx)=>{
+          const v=VMAP[vid]; if(!v) return;
+          const prev = idx>0 ? VMAP[items[idx-1]] : null;
+          const fromLoc = prev ? prev.loc : BASES[day.city];
+          const fromTxt = prev ? prev.name : 'base';
+          html+=`<div class="chip cat-${v.cat}" draggable="true" data-vid="${vid}" data-day="${day.id}" data-slot="${s.id}">
+            <button class="ch-x" data-remove="${vid}" data-day="${day.id}" data-slot="${s.id}" title="Remove">×</button>
+            <div class="ch-name">${v.name}</div>
+            <div class="ch-travel">${travelLabel(day.city,v.mode)} from ${fromTxt}
+              <button class="ch-go" data-from="${fromLoc}" data-to="${v.loc}" data-mode="${v.mode}" data-title="${fromTxt} → ${v.name}" data-sub="${travelLabel(day.city,v.mode)}">directions ↗</button>
+            </div>
+          </div>`;
+        });
+        html+=`</div>`;
+      });
+      html+=`</div></div>`;
+    });
+    boardEl.innerHTML=html;
+    bindBoard();
+  }
+
+  // ---- drag & drop ----
+  let dragVid=null, dragFrom=null;
+  function bindPaletteDrag(){
+    palEl.querySelectorAll('.pcard').forEach(c=>{
+      c.addEventListener('dragstart',e=>{ dragVid=c.dataset.vid; dragFrom=null; e.dataTransfer.effectAllowed='move'; });
+    });
+    palEl.querySelectorAll('[data-add]').forEach(b=>{
+      b.addEventListener('click',()=>{ addToFirstOpen(b.dataset.add); });
+    });
+  }
+  function bindBoard(){
+    boardEl.querySelectorAll('.chip').forEach(c=>{
+      c.addEventListener('dragstart',e=>{ dragVid=c.dataset.vid; dragFrom={day:c.dataset.day,slot:c.dataset.slot}; e.dataTransfer.effectAllowed='move'; e.stopPropagation(); });
+    });
+    boardEl.querySelectorAll('.slot').forEach(sl=>{
+      sl.addEventListener('dragover',e=>{ e.preventDefault(); sl.classList.add('dragover'); });
+      sl.addEventListener('dragleave',()=>sl.classList.remove('dragover'));
+      sl.addEventListener('drop',e=>{
+        e.preventDefault(); sl.classList.remove('dragover');
+        if(!dragVid) return;
+        const day=sl.dataset.day, slot=sl.dataset.slot;
+        const v=VMAP[dragVid];
+        // city guard: only allow venues into a matching-city day
+        const dayCity=DAYS.find(d=>d.id===day).city;
+        if(v.city!==dayCity){ flash(sl,'wrong city'); return; }
+        removeEverywhere(dragVid);
+        dayObj(day)[slot].push(dragVid);
+        savePlan(); renderPalette(); renderBoard();
+        dragVid=null; dragFrom=null;
+      });
+    });
+    boardEl.querySelectorAll('[data-remove]').forEach(b=>{
+      b.addEventListener('click',()=>{ removeEverywhere(b.dataset.remove); savePlan(); renderPalette(); renderBoard(); });
+    });
+    boardEl.querySelectorAll('[data-opt]').forEach(b=>{
+      b.addEventListener('click',()=>optimizeDay(b.dataset.opt));
+    });
+    boardEl.querySelectorAll('.ch-go').forEach(b=>b.addEventListener('click',()=>openDirections(b)));
+  }
+  function flash(el,msg){
+    const old=el.style.outline; el.style.outline='2px solid var(--pop)';
+    setTimeout(()=>el.style.outline=old,500);
+  }
+  function addToFirstOpen(vid){
+    const v=VMAP[vid];
+    const day=DAYS.find(d=>d.city===v.city && countItems(d.id) < 8);
+    if(!day){ return; }
+    removeEverywhere(vid);
+    dayObj(day.id)[v.slot].push(vid);
+    savePlan(); renderPalette(); renderBoard();
+    document.querySelector(`[data-day="${day.id}"]`)?.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  function countItems(dayId){ const d=PLAN[dayId]; return d?Object.values(d).reduce((a,b)=>a+b.length,0):0; }
+
+  // ---- optimize: re-bucket a day's items into their preferred slots ----
+  function optimizeDay(dayId){
+    const d=dayObj(dayId);
+    const all=[].concat(d.am,d.lunch,d.pm,d.eve);
+    const fresh={am:[],lunch:[],pm:[],eve:[]};
+    all.forEach(vid=>{ const v=VMAP[vid]; if(v) fresh[v.slot].push(vid); });
+    // within each slot, keep stable; food sorts after sights in the same slot
+    Object.keys(fresh).forEach(s=>{
+      fresh[s].sort((a,b)=>{
+        const order={sight:0,nature:1,culture:2,relax:3,food:4};
+        return (order[VMAP[a].cat]??9)-(order[VMAP[b].cat]??9);
+      });
+    });
+    PLAN[dayId]=fresh; savePlan(); renderBoard();
+    const head=document.querySelector(`[data-day="${dayId}"] .dh-opt`);
+    if(head){ const t=head.textContent; head.textContent='✓ Optimized'; setTimeout(()=>head.textContent=t,1400); }
+  }
+
+  // ---- filter buttons ----
+  document.querySelectorAll('#pl-city button').forEach(b=>b.addEventListener('click',()=>{
+    fCity=b.dataset.city; document.querySelectorAll('#pl-city button').forEach(x=>x.setAttribute('aria-pressed',x===b)); renderPalette();
+  }));
+  document.querySelectorAll('#pl-cat button').forEach(b=>b.addEventListener('click',()=>{
+    fCat=b.dataset.cat; document.querySelectorAll('#pl-cat button').forEach(x=>x.setAttribute('aria-pressed',x===b)); renderPalette();
+  }));
+
+  // ---- actions ----
+  document.getElementById('pl-reset').addEventListener('click',()=>{
+    if(confirm('Clear your whole plan? This cannot be undone.')){ PLAN={}; savePlan(); renderPalette(); renderBoard(); }
+  });
+  document.getElementById('pl-print').addEventListener('click',()=>window.print());
+  document.getElementById('pl-export').addEventListener('click',()=>{
+    const lines=['ASIA 2025 — MY PLAN',''];
+    DAYS.forEach(day=>{
+      const d=PLAN[day.id]; if(!d) return;
+      if(!countItems(day.id)) return;
+      lines.push(day.date+' ('+cityName[day.city]+')');
+      SLOTS.forEach(s=>{ (d[s.id]||[]).forEach(vid=>{ lines.push('  · ['+s.lbl+'] '+VMAP[vid].name); }); });
+      lines.push('');
+    });
+    const blob=new Blob([lines.join('\n')],{type:'text/plain'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='asia-2025-plan.txt'; a.click();
+  });
+
+  // initial render
+  renderPalette(); renderBoard();
 </script>
 </body>
 </html>
