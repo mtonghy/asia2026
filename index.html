@@ -388,6 +388,27 @@
   .chip .ch-go{border:0;background:transparent;color:var(--accent);cursor:pointer;font-family:var(--mono);font-size:9.5px;font-weight:700;padding:0;text-decoration:underline}
   .pl-empty{padding:20px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:12px}
 
+  /* cost breakdown */
+  .costwrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+  @media(max-width:760px){.costwrap{grid-template-columns:1fr}}
+  .costcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .costcard h3{margin:0 0 12px;font-size:16px;font-family:var(--font-head);color:var(--accent-2);display:flex;align-items:center;gap:8px}
+  .costcard h3 .ic{width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+  .costrow{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:13.5px}
+  .costrow:last-of-type{border-bottom:0}
+  .costrow .cname{flex:1;color:var(--ink)}
+  .costrow .csub{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+  .costrow .camt{font-family:var(--mono);font-weight:700;color:var(--accent-2);white-space:nowrap}
+  .costtot{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:12px;border-top:2px solid var(--accent);font-family:var(--font-head)}
+  .costtot .l{font-weight:700;font-size:15px;color:var(--accent-2)}
+  .costtot .v{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--pop)}
+  .grandcost{background:var(--accent);color:#fff;border-radius:14px;padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin-bottom:18px}
+  .grandcost .gl{font-family:var(--font-head);font-size:17px;font-weight:700}
+  .grandcost .gsub{font-family:var(--mono);font-size:11px;opacity:.85;letter-spacing:.04em}
+  .grandcost .gv{margin-left:auto;font-family:var(--mono);font-size:26px;font-weight:800}
+  .grandcost .gper{font-family:var(--mono);font-size:11px;opacity:.85}
+  .costnote{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:2px}
+
   @media print{
     header,nav,footer,.palette,.planner-controls,.planner-intro,.secthead .hint,.modal-overlay{display:none !important}
     .panel{display:none !important}
@@ -441,7 +462,7 @@
   <div class="leg">
     <span class="flightcode">AC 63</span>
     <span class="route"><b>YVR</b> <span class="arrow">→</span> <b>ICN</b></span>
-    <span class="route">Sat Sep 20 dep · arr <b>Sep 21</b> · ~11h35</span>
+    <span class="route">Sun Sep 20 · 12:20 → 16:05 <b>+1</b> · 11h45</span>
     <span class="nights">Base: <b>Hongdae</b> · 5 nights</span>
   </div>
 
@@ -452,11 +473,11 @@
       <div class="tagrow"><span class="pill your">Your booking · Airbnb</span><span class="pill">Hongdae</span><span class="pill rate">★ 4.97</span><span class="pill">4 guests · 2BR</span></div>
       <p>Hosted by Min (Superhost). Entire ground-floor flat, completely flat access, 1-min walk from Hongik Univ Station Exit 3 — direct AREX airport train (ICN ~50 min), and line 2 for the city. Two bedrooms, full kitchen, washer + dryer. Quiet residential street but steps from cafés, Olive Young and CGV. A genuinely easy, local base.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Sun Sep 21 <small>· from 14:00</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Sep 26 <small>· by 11:00</small></div></div>
-        <div class="cell"><div class="lbl">Total</div><div class="val">$1,167 <small>CAD · 5 nts</small></div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Mon Sep 21 <small>· from 14:00</small></div></div>
+        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Sep 26 <small>· by 11:00</small></div></div>
+        <div class="cell"><div class="lbl">Total</div><div class="val">$1,174 <small>CAD · 5 nts</small></div></div>
       </div>
-      <div class="addr">Hongik Univ Station Exit 3, Mapo-gu · self check-in (keypad) · contactless</div>
+      <div class="addr">4-17 Yanghwa-ro 23-gil, Mapo-gu · Hongik Univ Stn Exit 3 · keypad self check-in · conf HMFJ2SB5AY</div>
       <a class="link" href="https://www.airbnb.com/rooms/1593062002890366271?adults=3&check_in=2026-09-21&check_out=2026-09-26" target="_blank" rel="noopener">View Airbnb listing →</a>
     </div>
     <div class="card">
@@ -468,7 +489,7 @@
         Transit: ICN → Hongdae
       </button>
       <div class="depart">
-        <h3>Departure day → ICN · Fri Sep 26</h3>
+        <h3>Departure day → ICN · Sat Sep 26</h3>
         <ol>
           <li><b>Check out of the Airbnb</b> per the host's time, and follow their key-return / self check-out steps. Ask about bag storage if your flight is later.</li>
           <li><b>To the airport:</b> the AREX runs direct from Hongik Univ Station to ICN — about 50 min, no transfer. A taxi is ~50–70 min and ₩60,000–75,000 depending on traffic.</li>
@@ -482,7 +503,7 @@
       </div>
     </div>
   </div>
-  <div class="note"><b>Arrival timing:</b> AC 63 leaves YVR midday Sat Sep 20 and lands ICN <b>~16:05 on Sun Sep 21</b> (crosses the date line). Your Airbnb starts Sep 21, so dates line up — expect to reach Hongdae early evening after the ~50-min AREX in.</div>
+  <div class="note"><b>Arrival timing:</b> AC 63 leaves YVR midday Sun Sep 20 and lands ICN <b>~16:05 on Mon Sep 21</b> (crosses the date line). Your Airbnb starts Sep 21, so dates line up — expect to reach Hongdae early evening after the ~50-min AREX in.</div>
 
   <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">short metro from Hongdae</span></div>
   <div class="grid cols-2">
@@ -569,7 +590,7 @@
   <div class="note"><b>Getting around Seoul:</b> for door-to-door comfort, call a <b>Kakao T</b> taxi (the local ride app — set it up before you go; cars are metered, cheap, and everywhere). Each stop below has a 🚗 <b>Kakao T</b> or 🚆 <b>train</b> label, the estimated time, and a directions button. Times are typical midday estimates — tap a button for live routing.</div>
   <div class="days">
     <div class="day arrive">
-      <div class="daynum"><span class="d">SEP</span><span class="n">21</span><span class="dow">SUN</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">21</span><span class="dow">MON</span></div>
       <div class="dbody">
         <div class="dtitle">Arrive &amp; settle in Hongdae</div>
         <p>Land ICN ~16:05, take the AREX airport train direct to Hongik Univ Station, check into the Airbnb. No agenda — a short stroll for an easy first dinner nearby, then an early night to beat the jet lag.</p>
@@ -580,7 +601,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">22</span><span class="dow">MON</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">22</span><span class="dow">TUE</span></div>
       <div class="dbody">
         <div class="dtitle">Gyeongbokgung Palace &amp; an Insadong tea house</div>
         <p>Kakao T to <b>Gyeongbokgung Palace</b> — flat, wide grounds, easy to wander at your own pace; the guard-changing ceremony is at 11:00. Sit-down lunch nearby, then a short car to <b>Insadong</b> for a traditional tea house (Namusae Tea House) before heading back to rest. <i>Note: palace is closed Tuesdays — Monday works.</i></p>
@@ -592,7 +613,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">23</span><span class="dow">TUE</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">23</span><span class="dow">WED</span></div>
       <div class="dbody">
         <div class="dtitle">Cheonggyecheon stream &amp; Myeongdong</div>
         <p>Kakao T to <b>Cheonggyecheon</b> for a gentle, level riverside walk — benches the whole way, step out whenever you like. Short car to <b>Myeongdong</b> for a relaxed lunch at <b>Myeongdong Kyoja</b> (hand-cut noodles) and easy K-beauty browsing. Optional <b>N Seoul Tower</b> cable car at golden hour if energy allows.</p>
@@ -605,7 +626,7 @@
       </div>
     </div>
     <div class="day restday">
-      <div class="daynum"><span class="d">SEP</span><span class="n">24</span><span class="dow">WED</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">24</span><span class="dow">THU</span></div>
       <div class="dbody">
         <div class="dtitle">Slow morning + Bukchon at your pace</div>
         <p>Lazy start in Hongdae's cafés. Mid-afternoon, Kakao T to <b>Bukchon Hanok Village</b> — go gently; the lanes are pretty but sloped, so just see the main viewpoint and turn back. Early KBBQ dinner at <b>Daol Charcoal Grilling</b>. Plenty of downtime.</p>
@@ -617,7 +638,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">25</span><span class="dow">THU</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">25</span><span class="dow">FRI</span></div>
       <div class="dbody">
         <div class="dtitle">Namsangol Hanok Village &amp; a special last dinner</div>
         <p>Kakao T to the calm, free <b>Namsangol Hanok Village</b> (flat, uncrowded). Relaxed afternoon, then a memorable final dinner — the soy-marinated crab at <b>Odarijip Ganjang Gejang</b> in Myeongdong is a Seoul highlight. Pack tonight for an easy departure.</p>
@@ -629,7 +650,7 @@
       </div>
     </div>
     <div class="day depart">
-      <div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">FRI</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">SAT</span></div>
       <div class="dbody">
         <div class="dtitle">Depart for Penang</div>
         <p>Relaxed morning, check out, AREX direct from Hongik Univ to ICN (~50 min). CX 413 → Hong Kong → CX 621 to Penang.</p>
@@ -647,7 +668,7 @@
   <div class="leg">
     <span class="flightcode">CX 413</span><span class="route"><b>ICN</b><span class="arrow">→</span><b>HKG</b></span>
     <span class="flightcode">CX 621</span><span class="route"><b>HKG</b><span class="arrow">→</span><b>PEN</b></span>
-    <span class="route">Fri Sep 26</span>
+    <span class="route">Sat Sep 26 · 08:00→10:50, 15:30→19:10</span>
     <span class="nights">Base: <b>Bayan Lepas</b> · 14 nights</span>
   </div>
   <div class="note"><b>One base, near the airport:</b> The Iconic Regency is in <b>Bayan Lepas</b> in Penang's south — next to the airport and ~20–30 min by Grab from George Town's heritage core. Great for an easy arrival/departure and a rooftop pool with bridge views, but plan on a Grab (cheap, ~RM15–25) for George Town eats and sights rather than walking.</div>
@@ -656,15 +677,15 @@
   <div class="grid cols-2">
     <div class="card hotel">
       <h3>Iconic Regency Service Residences</h3>
-      <div class="tagrow"><span class="pill your">Your booking</span><span class="pill">Bayan Lepas</span><span class="pill rate">★ 4.5</span><span class="pill">Rooftop pool</span></div>
-      <p>Modern serviced apartments managed by Iconic Hotel, near the airport and USM. Full kitchen, washer and a sky-deck pool with views of both Penang bridges — handy for a 14-night stay with laundry and self-catering. Grab into George Town for food and heritage.</p>
+      <div class="tagrow"><span class="pill your">Your booking</span><span class="pill">Bayan Lepas</span><span class="pill rate">★ 4.5</span><span class="pill">3BR · city view</span></div>
+      <p>Modern serviced apartments managed by Iconic Hotel, near the airport and USM. Your unit is a 3-bedroom Family Apartment with city view — full kitchen, washer and a sky-deck pool with views of both Penang bridges, ideal for a 14-night stay with laundry and self-catering. Grab into George Town for food and heritage.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Fri Sep 26 <small>· from 15:00</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Oct 10 <small>· by 12:00</small></div></div>
-        <div class="cell"><div class="lbl">Nights</div><div class="val">14</div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Sat Sep 26 <small>· from 15:00</small></div></div>
+        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Oct 10 <small>· by 12:00</small></div></div>
+        <div class="cell"><div class="lbl">Total</div><div class="val">$1,795 <small>CAD · 14 nts</small></div></div>
       </div>
-      <div class="addr">239 Jln Sultan Azlan Shah, Bayan Lepas · +60 4-688 7888</div>
-      <p class="confirm" style="margin-top:8px">Confirm exact in/out times &amp; unit on your booking.</p>
+      <div class="addr">239 Jln Sultan Azlan Shah, George Town 11900 · conf 73489311349873 · +60 4-688 7888</div>
+      <p class="confirm" style="margin-top:8px">MYR 200 deposit + MYR 2/night city tax due at property.</p>
     </div>
     <div class="card">
       <h3>Getting in from PEN · arrival Sep 26</h3>
@@ -675,7 +696,7 @@
         Transit: PEN → Iconic Regency
       </button>
       <div class="depart">
-        <h3>Departure day → PEN · Fri Oct 10</h3>
+        <h3>Departure day → PEN · Sat Oct 10</h3>
         <ol>
           <li><b>Check out of Iconic Regency by 12:00</b> (bag hold available if your flight is later).</li>
           <li><b>To the airport:</b> Grab or taxi to Penang International (PEN) — only ~10–15 min from Bayan Lepas, a short cheap hop. Easiest departure of the trip.</li>
@@ -773,7 +794,7 @@
   <div class="note"><b>The Penang philosophy:</b> you have two full weeks here, so this is paced for rest, not rushing. One outing per active day, late mornings, and a Grab door-to-door for everything (cheap, air-conditioned, no bus transfers). Heritage George Town sights are clustered so you can see several in one easy loop. Several days are deliberately left open for the pool, the beach, or doing nothing.</div>
   <div class="days">
     <div class="day arrive">
-      <div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">FRI</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">SAT</span></div>
       <div class="dbody">
         <div class="dtitle">Arrive Penang · settle in Bayan Lepas</div>
         <p>Short 10–15 min Grab from the airport to the Iconic Regency. Unpack, enjoy the rooftop pool with bridge views, and have an easy first dinner nearby. No agenda.</p>
@@ -781,7 +802,7 @@
       </div>
     </div>
     <div class="day restday">
-      <div class="daynum"><span class="d">SEP</span><span class="n">27</span><span class="dow">SAT</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">27</span><span class="dow">SUN</span></div>
       <div class="dbody">
         <div class="dtitle">Settle-in day</div>
         <p>Recover from travel. Pool, a gentle look around the neighbourhood, and an early George Town dinner if you're up for it — Grab in for cendol + a relaxed meal at <b>Auction Rooms</b>. Otherwise just rest.</p>
@@ -792,7 +813,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">28</span><span class="dow">SUN</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">28</span><span class="dow">MON</span></div>
       <div class="dbody">
         <div class="dtitle">George Town heritage loop (the easy version)</div>
         <p>Grab to the <b>Pinang Peranakan Mansion</b> (a lavish, mostly flat museum house with a guided tour). Lunch at <b>Hwa Ting</b>, then a short Grab to the <b>Khoo Kongsi</b> clan temple. The famous street-art murals are along the way — see them from the car or a short stroll. Home to rest by mid-afternoon.</p>
@@ -805,7 +826,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">29</span><span class="dow">MON</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">29</span><span class="dow">TUE</span></div>
       <div class="dbody">
         <div class="dtitle">Tropical Spice Garden &amp; the north coast</div>
         <p>A calm, beautiful garden on the Teluk Bahang coast — shaded paths, benches, and a gentle audio-guide loop you can shorten as you like. Relaxed lunch nearby, then back for a swim. One of the most restful outings on the island.</p>
@@ -816,7 +837,7 @@
       </div>
     </div>
     <div class="day restday">
-      <div class="daynum"><span class="d">SEP</span><span class="n">30</span><span class="dow">TUE</span></div>
+      <div class="daynum"><span class="d">SEP</span><span class="n">30</span><span class="dow">WED</span></div>
       <div class="dbody">
         <div class="dtitle">Rest &amp; pool day</div>
         <p>A genuine do-nothing day. Pool, reading, a long lunch. Optional evening Grab to the <b>Gurney Drive</b> hawker centre for a relaxed local-food dinner if you feel like it.</p>
@@ -827,7 +848,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">OCT</span><span class="n">1–2</span><span class="dow">WED–THU</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">1–2</span><span class="dow">THU–FRI</span></div>
       <div class="dbody">
         <div class="dtitle">Penang Hill (cool air, big views) + a slow follow-up day</div>
         <p>Day 1: Grab to the <b>Penang Hill funicular</b> base — buy the fast-lane ticket to skip the queue; the 5-min railway carries you up (no climbing). It's ~10°C cooler at the top with gentle, level viewpoints. Down by early afternoon to rest. Day 2 is intentionally open for recovery.</p>
@@ -838,7 +859,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">OCT</span><span class="n">3</span><span class="dow">FRI</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">3</span><span class="dow">SAT</span></div>
       <div class="dbody">
         <div class="dtitle">Kek Lok Si Temple (use the lift)</div>
         <p>Malaysia's largest Buddhist temple in Air Itam. It's terraced, but there's a paid lift up to the giant Guan Yin statue so you skip the steep steps — lift up, wander the level upper area, lift down. Calm and atmospheric. Easy lunch in Air Itam after.</p>
@@ -849,7 +870,7 @@
       </div>
     </div>
     <div class="day restday">
-      <div class="daynum"><span class="d">OCT</span><span class="n">4–6</span><span class="dow">SAT–MON</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">4–6</span><span class="dow">SUN–TUE</span></div>
       <div class="dbody">
         <div class="dtitle">Slow stretch — beach, pool, your favourites</div>
         <p>Three easy days with no fixed plans. Dip back into George Town for any eats you loved (<b>Firewood</b> for one nice dinner — book ahead), spend a morning at Batu Ferringhi beach, or simply enjoy the residence. Pace entirely your own.</p>
@@ -861,7 +882,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">OCT</span><span class="n">7</span><span class="dow">TUE</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">7</span><span class="dow">WED</span></div>
       <div class="dbody">
         <div class="dtitle">Entopia butterfly garden (gentle &amp; indoor-cool)</div>
         <p>An easy, mostly flat butterfly-and-nature centre near Teluk Bahang — shaded, air-conditioned indoor sections, lots to look at without much walking. A lovely calm half-day. Relaxed lunch on the way back.</p>
@@ -872,7 +893,7 @@
       </div>
     </div>
     <div class="day restday">
-      <div class="daynum"><span class="d">OCT</span><span class="n">8–9</span><span class="dow">WED–THU</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">8–9</span><span class="dow">THU–FRI</span></div>
       <div class="dbody">
         <div class="dtitle">Wind-down &amp; pack</div>
         <p>Final calm days — last hawker meals, a final swim, and easy packing. Keep it light so you're rested before the travel day. <b>Chew Jetty</b> at sunset makes a gentle, flat last evening stroll if you'd like one.</p>
@@ -883,7 +904,7 @@
       </div>
     </div>
     <div class="day depart">
-      <div class="daynum"><span class="d">OCT</span><span class="n">10</span><span class="dow">FRI</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">10</span><span class="dow">SAT</span></div>
       <div class="dbody">
         <div class="dtitle">Depart for Osaka</div>
         <p>Easy morning, check out, short Grab to the airport (only 10–15 min away). CX 622 → Hong Kong → CX 502 to Osaka. (See "Getting in" above for the airport route.)</p>
@@ -898,62 +919,62 @@
   <div class="leg">
     <span class="flightcode">CX 622</span><span class="route"><b>PEN</b><span class="arrow">→</span><b>HKG</b></span>
     <span class="flightcode">CX 502</span><span class="route"><b>HKG</b><span class="arrow">→</span><b>KIX</b></span>
-    <span class="route">Fri Oct 10</span>
-    <span class="nights">Base: <b>Namba</b> · 7 nights</span>
+    <span class="route">Sat Oct 10 · 07:30→11:30, 16:30→<b>21:15</b></span>
+    <span class="nights">Base: <b>Daikokucho</b> · 6 nights + KIX hotel</span>
   </div>
 
   <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2><span class="hint">airport hotel night 1, then Airbnb</span></div>
-  <div class="note"><b>Late arrival plan:</b> because you land at KIX very late on Oct 10, you'll sleep at the <b>Hotel Nikko Kansai Airport</b> right at the terminal that first night — no late-night train needed. Next morning, take the Nankai train into the city and check into the <b>Kuromon Airbnb</b> for the remaining 6 nights.</div>
+  <div class="note"><b>Late arrival plan:</b> your CX 502 lands KIX at 21:15 on Oct 10, so by the time you clear immigration and collect bags it's late — you'll sleep at the <b>Hotel Nikko Kansai Airport</b> right at the terminal that first night rather than train into the city tired. Next morning, take the train into the city and check into the <b>Apartment Hotel 11 Namba Minami 2</b> for the remaining 6 nights.</div>
   <div class="grid cols-2">
     <div class="card hotel">
       <h3>Hotel Nikko Kansai Airport</h3>
-      <div class="tagrow"><span class="pill your">Night 1 · hotel</span><span class="pill">At KIX terminal</span><span class="pill rate">★ 4.4</span><span class="pill">Late arrival</span></div>
-      <p>Directly connected to Kansai Airport — a short covered walk from arrivals, ideal after a very late landing. Clean, simple, and zero stress: drop your bags and sleep, then ride into Osaka refreshed in the morning.</p>
+      <div class="tagrow"><span class="pill your">Night 1 · hotel</span><span class="pill">At KIX terminal</span><span class="pill rate">★ 4.4</span><span class="pill">Breakfast incl.</span></div>
+      <p>Directly connected to Kansai Airport — a short covered walk from arrivals, ideal after a late (21:15) landing. Business Class Triple (29 m²) with breakfast buffet included. Clean, simple, zero stress: drop your bags and sleep, then ride into Osaka refreshed. <b>Check-in desk is open until 2:00 AM</b> — if you'll land later, call ahead.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Fri Oct 10 <small>· late night</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Oct 11 <small>· morning</small></div></div>
-        <div class="cell"><div class="lbl">Nights</div><div class="val">1</div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Sat Oct 10 <small>· 15:00–02:00</small></div></div>
+        <div class="cell"><div class="lbl">Check out</div><div class="val">Sun Oct 11 <small>· by 11:00</small></div></div>
+        <div class="cell"><div class="lbl">Total</div><div class="val">$304 <small>CAD · 1 nt</small></div></div>
       </div>
-      <div class="addr">1 Senshūkūkōkita, Izumisano · walk from KIX Terminal 1 · +81 72-455-1111</div>
+      <div class="addr">1 Senshu-kuko Kita, Tajiri · walk from KIX Terminal 1 · conf 73489307343829 · +81 72-455-1111</div>
     </div>
     <div class="card hotel" style="border-left-color:var(--pop)">
-      <h3>Kuromon Airbnb · by Yuko</h3>
-      <div class="tagrow"><span class="pill your">Nights 2–7 · Airbnb</span><span class="pill">Nihonbashi</span><span class="pill rate">★ 4.86</span><span class="pill">5 guests · 2BR</span></div>
-      <p>Superhost flat by Kuromon Market — Nihonbashi Station 2-min walk, with Namba (~12 min), Dotonbori (~15 min) and Shinsaibashi all in walking distance. Two bedrooms, full kitchen, washer, elevator (easy with luggage), small balcony. Spacious and quiet, right in the food heart of Osaka.</p>
+      <h3>Apartment Hotel 11 Namba Minami 2</h3>
+      <div class="tagrow"><span class="pill your">Nights 2–7 · apt hotel</span><span class="pill">Daikokucho</span><span class="pill rate">★ 4.8</span><span class="pill">Self check-in</span></div>
+      <p>Spacious, spotless serviced apartment in the quieter Naniwa Ward — 2-min walk to Daikokucho Station (Midosuji line, one stop to Namba), or ~15-min flat walk to Namba/Dotonbori. In-room washer with free detergent, kitchen, dining table, elevator. Autonomous self check-in (QR/keypad), luggage drop in the lobby. Cosy and peaceful, right by the subway.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Sat Oct 11 <small>· from 16:00</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Fri Oct 17 <small>· by 11:00</small></div></div>
-        <div class="cell"><div class="lbl">Total</div><div class="val">$960 <small>CAD · 6 nts</small></div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Sun Oct 11 <small>· from 16:00</small></div></div>
+        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Oct 17 <small>· by 10:00</small></div></div>
+        <div class="cell"><div class="lbl">Total</div><div class="val">$1,113 <small>CAD · 6 nts</small></div></div>
       </div>
-      <div class="addr">Nihonbashi, Chuo-ku (by Kuromon Market) · self check-in (lockbox)</div>
-      <a class="link" href="https://www.airbnb.com/rooms/1522969530165577846?adults=3&check_in=2026-10-11&check_out=2026-10-17" target="_blank" rel="noopener">View Airbnb listing →</a>
+      <div class="addr">Daikoku 1-2-22, Naniwa Ward · 2-min walk Daikokucho Stn · conf HMHMA2P44Y · +81 50-1725-7998</div>
+      <p class="confirm" style="margin-top:8px">Tip: guests note the tiny elevator gets busy near 10am checkout — head out a little earlier on travel day.</p>
     </div>
   </div>
-  <div class="note"><b>Note on the Airbnb check-in:</b> the listing's standard check-in is 4:00 PM. If you arrive in the city earlier on Oct 11, message Yuko about luggage drop — she's a responsive Superhost and the flat has elevator access.</div>
+  <div class="note"><b>Note on check-in:</b> the apartment hotel uses autonomous self check-in (QR/keypad) — no front desk. You can drop luggage in the lobby if you arrive before your room's ready on Oct 11. Have your booking QR and passport handy.</div>
 
   <div class="grid cols-2" style="margin-top:16px">
     <div class="card">
       <h3>Getting in from KIX</h3>
       <div class="tagrow"><span class="pill">Night 1: walk</span><span class="pill">Day 2: Nankai train</span></div>
-      <p><b>Oct 10 (late):</b> walk straight from arrivals to the Hotel Nikko at the terminal — a few minutes, no train. <b>Oct 11 (morning):</b> Nankai train from KIX to Nihonbashi/Namba (~45 min), then the 2-min walk to the Airbnb. Grab an ICOCA card for the week.</p>
+      <p><b>Oct 10 (late):</b> walk straight from arrivals to the Hotel Nikko at the terminal — a few minutes, no train. <b>Oct 11 (morning):</b> Nankai train from KIX to Namba, then Midosuji line one stop to Daikokucho (~2-min walk to the apartment hotel). Grab an ICOCA card for the week.</p>
       <button class="dirbtn" data-from="Kansai International Airport, Japan" data-to="Hotel Nikko Kansai Airport, Izumisano, Japan" data-mode="walk" data-title="KIX arrivals → Hotel Nikko" data-sub="Night 1 · short covered walk">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
         Walk: KIX → Hotel Nikko
       </button>
-      <button class="dirbtn ghost" data-from="Kansai International Airport, Japan" data-to="Kuromon Market, Nihonbashi, Osaka" data-mode="transit" data-title="KIX → Kuromon (Airbnb)" data-sub="Day 2 · Nankai train">
+      <button class="dirbtn ghost" data-from="Kansai International Airport, Japan" data-to="Daikoku 1-2-22, Naniwa Ward, Osaka" data-mode="transit" data-title="KIX → apartment hotel" data-sub="Day 2 · Nankai + Midosuji">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
-        Train: KIX → Kuromon
+        Train: KIX → apartment
       </button>
       <div class="depart">
-        <h3>Departure day → KIX · Fri Oct 17</h3>
+        <h3>Departure day → KIX · Sat Oct 17</h3>
         <ol>
-          <li><b>Check out of the Kuromon Airbnb by 11:00</b> (lockbox return per Yuko's instructions).</li>
-          <li><b>To the airport:</b> Nankai train from Nihonbashi/Namba straight to KIX — about 45 min. A taxi is far pricier (¥18,000+) and not faster.</li>
+          <li><b>Check out of the apartment hotel by ~10:00</b> (self checkout; head down before the 10am elevator crowd).</li>
+          <li><b>To the airport:</b> Midosuji to Namba then Nankai train straight to KIX — about 45–50 min. A taxi is far pricier (¥18,000+) and not faster.</li>
           <li><b>Flight home:</b> AC 24 KIX → YVR, Vancouver. Allow time for international check-in and pre-security.</li>
         </ol>
-        <button class="dirbtn" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Kansai International Airport, Japan" data-mode="transit" data-title="Kuromon → KIX" data-sub="Departure day · Nankai train">
+        <button class="dirbtn" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Kansai International Airport, Japan" data-mode="transit" data-title="Apartment hotel → KIX" data-sub="Departure day · Nankai train">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
-          Train: Kuromon → KIX
+          Train: apartment → KIX
         </button>
         <div class="leaveby">Leave ≈3.5 hrs before departure. Confirm AC 24's exact departure time on your ticket.</div>
       </div>
@@ -968,7 +989,7 @@
       <p>Crisp beef cutlet you finish grilling on your own hot stone to taste — fun, fast and unmissable. Expect a line; go just before opening or off-peak. In Namba Stagata B1F.</p>
       <div class="addr">3-3-1 Namba, Chuo-ku · 11:00–22:00</div>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Gyukatsu Motomura Namba, Osaka" data-title="To Gyukatsu Motomura — Namba" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Gyukatsu Motomura Namba, Osaka" data-title="To Gyukatsu Motomura — Namba" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Kyoto Wamen Yukichi Honpo</h3>
@@ -976,7 +997,7 @@
       <p>A tiny, cosy room near Dotonbori serving some of the best ramen in the city paired with torched A5 wagyu, run by a warm older couple. A genuine highlight.</p>
       <div class="addr">1-9-6 Sennichimae, Chuo-ku · 12:00–23:00</div>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Kyoto Wamen Yukichi Honpo, Osaka" data-title="To Kyoto Wamen Yukichi Honpo" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Kyoto Wamen Yukichi Honpo, Osaka" data-title="To Kyoto Wamen Yukichi Honpo" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Tsukishima Monja Kuuya</h3>
@@ -984,7 +1005,7 @@
       <p>Cook-at-table okonomiyaki and Tokyo-style monjayaki with staff who help you make it — a hands-on Osaka food night. Under-seat storage keeps your bag smoke-free.</p>
       <div class="addr">2-8-17 Sennichimae, Chuo-ku · 11:00–23:00</div>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Tsukishima Monja Kuuya, Osaka" data-title="To Tsukishima Monja Kuuya" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Tsukishima Monja Kuuya, Osaka" data-title="To Tsukishima Monja Kuuya" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Onigiri Gorichan</h3>
@@ -992,7 +1013,7 @@
       <p>Hand-formed rice balls — salmon butter, spicy cod roe — eaten half plain, half dunked in dashi. It's <i>inside</i> the Nankai Namba ticket gates; ask staff for a pass to enter.</p>
       <div class="addr">Nankai Namba Stn 3F · 10:00–21:30</div>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Onigiri Gorichan, Osaka" data-title="To Onigiri Gorichan" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Onigiri Gorichan, Osaka" data-title="To Onigiri Gorichan" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
   </div>
   <div class="note"><b>Halal options:</b> If useful, <b>Gyumon</b> (★4.9, halal wagyu & vegan ramen) and the Michelin-supervised <b>King Wagyu Ramen</b> (★4.9) are both right on Dotonbori with prayer facilities.</div>
@@ -1004,35 +1025,35 @@
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Neon · canal</span></div>
       <p>The neon heart of Osaka and the Glico sign — a few minutes' walk from your hotel. Best after dark; eat on the side streets, not the canal front.</p>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Dotonbori, Osaka" data-title="To Dotonbori" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Dotonbori, Osaka" data-title="To Dotonbori" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Osaka Castle & Park</h3>
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">History</span></div>
       <p>Iconic keep set in a huge moated park. Book tickets online to skip the line; the grounds alone are worth the walk. 9–6.</p>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Osaka Castle & Park, Osaka" data-title="To Osaka Castle & Park" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Osaka Castle & Park, Osaka" data-title="To Osaka Castle & Park" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Umeda Sky Building</h3>
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Sunset deck</span></div>
       <p>Floating Garden Observatory with a 360° open-air deck — go for sunset into night. Glass-tunnel escalators up are part of the fun.</p>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Umeda Sky Building, Osaka" data-title="To Umeda Sky Building" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Umeda Sky Building, Osaka" data-title="To Umeda Sky Building" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Tsutenkaku & Shinsekai</h3>
       <div class="tagrow"><span class="pill rate">★ 4.1</span><span class="pill">Retro · kushikatsu</span></div>
       <p>Old-school Osaka tower with a slide and walk decks, ringed by neon kushikatsu joints. Great for an atmospheric evening.</p>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Tsutenkaku & Shinsekai, Osaka" data-title="To Tsutenkaku & Shinsekai" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Tsutenkaku & Shinsekai, Osaka" data-title="To Tsutenkaku & Shinsekai" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Tempozan Ferris Wheel</h3>
       <div class="tagrow"><span class="pill rate">★ 4.5</span><span class="pill">Bay views</span></div>
       <p>Big wheel over Osaka Bay (~¥1000, 15 min), next to the aquarium. Sunset or night for the best ride; clear-floor cabins available.</p>
 
-      <button class="dirmini" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Tempozan Ferris Wheel, Osaka" data-title="To Tempozan Ferris Wheel" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Tempozan Ferris Wheel, Osaka" data-title="To Tempozan Ferris Wheel" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Day trips: Kyoto / Nara</h3>
@@ -1045,10 +1066,10 @@
   <div class="note"><b>Getting around Osaka:</b> trains are the easy way here — frequent, punctual, and elevators at all major stations. Grab an <b>ICOCA</b> card (tap on/off). Each stop shows 🚆 <b>Train</b> or 🚶 <b>Walk</b>, the estimated time, and a directions button with live platforms. A taxi is always an option for tired moments.</div>
   <div class="days">
     <div class="day arrive">
-      <div class="daynum"><span class="d">OCT</span><span class="n">10</span><span class="dow">FRI</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">10</span><span class="dow">SAT</span></div>
       <div class="dbody">
         <div class="dtitle">Late arrival · sleep at the airport hotel</div>
-        <p>Land KIX very late. Walk straight from arrivals to the <b>Hotel Nikko Kansai Airport</b> at the terminal — no train tonight. Drop your bags and rest. A grab-and-go konbini dinner is all you'll need.</p>
+        <p>Land KIX at 21:15. After immigration and bags, walk straight from arrivals to the <b>Hotel Nikko Kansai Airport</b> at the terminal — no train tonight. Drop your bags and rest. A grab-and-go konbini dinner is all you'll need.</p>
         <div class="stops">
           <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">KIX arrivals → Hotel Nikko Kansai Airport</span><span class="est">~5 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Hotel Nikko Kansai Airport, Izumisano, Japan" data-mode="walk" data-title="KIX → Hotel Nikko" data-sub="Covered walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
@@ -1056,19 +1077,19 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">OCT</span><span class="n">11</span><span class="dow">SAT</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">11</span><span class="dow">SUN</span></div>
       <div class="dbody">
-        <div class="dtitle">Into the city · Kuromon Airbnb &amp; Dotonbori</div>
-        <p>After breakfast, Nankai train from KIX to <b>Nihonbashi</b> and check into the Kuromon Airbnb (bag drop if early). Step out to <b>Kuromon Market</b> next door for lunch, then an easy stroll to <b>Dotonbori</b> and the Glico sign. Relaxed ramen at <b>Yukichi</b>; Dotonbori is even better lit after dark.</p>
+        <div class="dtitle">Into the city · check in &amp; Dotonbori</div>
+        <p>After breakfast, Nankai train from KIX to Namba, then Midosuji one stop to <b>Daikokucho</b> and check into the apartment hotel (self check-in; bag drop if early). Head to <b>Dotonbori</b> and the Glico sign, with a relaxed ramen lunch at <b>Yukichi</b>. Dotonbori is even better lit after dark, a short ride or flat walk away.</p>
         <div class="stops">
-          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">KIX → Nihonbashi (Kuromon Airbnb)</span><span class="est">~45 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Kuromon Market, Nihonbashi, Osaka" data-mode="transit" data-title="KIX → Kuromon" data-sub="Nankai train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
-          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Kuromon → Dotonbori</span><span class="est">~12 min</span><button class="go" data-from="Kuromon Market, Nihonbashi, Osaka" data-to="Dotonbori, Osaka" data-mode="walk" data-title="Kuromon → Dotonbori" data-sub="Short flat walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">KIX → Daikokucho (apartment hotel)</span><span class="est">~50 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Daikoku 1-2-22, Naniwa Ward, Osaka" data-mode="transit" data-title="KIX → apartment hotel" data-sub="Nankai + Midosuji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Daikokucho → Dotonbori (Namba)</span><span class="est">~10 min</span><button class="go" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Dotonbori, Osaka" data-mode="transit" data-title="Apartment → Dotonbori" data-sub="Midosuji line, 1 stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
-        <div class="dmeta"><span class="tag">Check-in · flat walks</span><span class="tag eat">Kuromon Market + Yukichi</span></div>
+        <div class="dmeta"><span class="tag">Check-in · flat</span><span class="tag eat">Dotonbori + Yukichi</span></div>
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">OCT</span><span class="n">12</span><span class="dow">SUN</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">12</span><span class="dow">MON</span></div>
       <div class="dbody">
         <div class="dtitle">Osaka Castle &amp; park</div>
         <p>Train to <b>Osaka Castle</b>. The park is broad and flat with shuttle options; enjoy the grounds and the keep's exterior without the climb, or take the lift inside. A calm, green half-day. Easy lunch, then back to rest.</p>
@@ -1079,7 +1100,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">OCT</span><span class="n">13</span><span class="dow">MON</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">13</span><span class="dow">TUE</span></div>
       <div class="dbody">
         <div class="dtitle">Day trip: Nara (deer &amp; gentle paths)</div>
         <p>Easy train to Nara. The deer park is famously flat and just minutes from the station — feed the bowing deer, see <b>Todai-ji</b>'s great hall, sit under the trees. Go at your own pace and return mid-afternoon. One of the calmest, most charming days of the trip.</p>
@@ -1091,7 +1112,7 @@
       </div>
     </div>
     <div class="day restday">
-      <div class="daynum"><span class="d">OCT</span><span class="n">14</span><span class="dow">TUE</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">14</span><span class="dow">WED</span></div>
       <div class="dbody">
         <div class="dtitle">Slow day in Namba</div>
         <p>Recover after the day trip. Late start, in-room laundry, a leisurely okonomiyaki lunch at <b>Kuuya</b>, and an easy potter around the local arcades. Sunset at the <b>Umeda Sky</b> open-air deck if you're up for one short outing.</p>
@@ -1102,7 +1123,7 @@
       </div>
     </div>
     <div class="day">
-      <div class="daynum"><span class="d">OCT</span><span class="n">15</span><span class="dow">WED</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">15</span><span class="dow">THU</span></div>
       <div class="dbody">
         <div class="dtitle">Day trip: Kyoto (the gentle highlights)</div>
         <p>Smooth train to Kyoto. Keep it relaxed — pick one or two flat, atmospheric spots: the <b>Gion</b> streets with a riverside tea, or <b>Fushimi Inari</b>'s famous torii gates (you can see the iconic stretch near the entrance without the full hill climb). Long lunch, unhurried return.</p>
@@ -1114,7 +1135,7 @@
       </div>
     </div>
     <div class="day restday">
-      <div class="daynum"><span class="d">OCT</span><span class="n">16</span><span class="dow">THU</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">16</span><span class="dow">FRI</span></div>
       <div class="dbody">
         <div class="dtitle">Wind-down &amp; favourites</div>
         <p>Last full day kept open — revisit a favourite meal, do any last shopping in the covered arcades, and pack. A calm farewell dinner near base — <b>Tsutenkaku / Shinsekai</b> for retro atmosphere, or back to Dotonbori.</p>
@@ -1125,7 +1146,7 @@
       </div>
     </div>
     <div class="day depart">
-      <div class="daynum"><span class="d">OCT</span><span class="n">17</span><span class="dow">FRI</span></div>
+      <div class="daynum"><span class="d">OCT</span><span class="n">17</span><span class="dow">SAT</span></div>
       <div class="dbody">
         <div class="dtitle">Fly home to Vancouver</div>
         <p>Relaxed morning, check out, Nankai train from Namba to KIX (~40–50 min). AC 24 KIX → YVR.</p>
@@ -1142,6 +1163,40 @@
 <section class="panel" id="planner" role="tabpanel" aria-labelledby="tab-planner">
   <div class="secthead"><span class="num">✦</span><h2>Trip Planner</h2><span class="hint">drag · drop · optimize</span></div>
   <p class="planner-intro">Browse every venue by city and category, then drag the ones you want into a day's time slots — or tap <b>+</b> on mobile. Leave any slot, day, or whole stretch blank. Hit <b>Optimize day</b> to auto-arrange a day's picks into a sensible order (sights in the morning, meals at meal times, nightlife in the evening). Your plan saves automatically on this device, and you can print or export it.</p>
+
+  <div class="secthead"><span class="num">$</span><h2>Cost breakdown</h2><span class="hint">booked · CAD · 3 travellers</span></div>
+  <div class="grandcost">
+    <div>
+      <div class="gl">Total booked so far</div>
+      <div class="gsub">Flights + all accommodation · 3 travellers</div>
+    </div>
+    <div style="text-align:right">
+      <div class="gv">$8,623</div>
+      <div class="gper">≈ $2,874 per person</div>
+    </div>
+  </div>
+  <div class="costwrap">
+    <div class="costcard">
+      <h3><span class="ic">✈</span>Flights — $4,237.11</h3>
+      <div class="costrow"><span class="cname">AC 63 · YVR → ICN</span><span class="csub">Sep 20</span></div>
+      <div class="costrow"><span class="cname">CX 413 / 621 · ICN → HKG → PEN</span><span class="csub">Sep 26</span></div>
+      <div class="costrow"><span class="cname">CX 622 / 502 · PEN → HKG → KIX</span><span class="csub">Oct 10</span></div>
+      <div class="costrow"><span class="cname">AC 24 · KIX → YVR</span><span class="csub">Oct 17</span></div>
+      <div class="costrow"><span class="cname">Per traveller</span><span class="camt">$1,412.37</span></div>
+      <div class="costtot"><span class="l">3 travellers</span><span class="v">$4,237.11</span></div>
+      <div class="costnote">Booking ADVZX4 · one itinerary, all 6 segments · economy, 1 free bag each</div>
+    </div>
+    <div class="costcard">
+      <h3><span class="ic">🛏</span>Accommodation — $4,386.10</h3>
+      <div class="costrow"><span class="cname">Berry House, Seoul</span><span class="csub">5 nts</span><span class="camt">$1,174.50</span></div>
+      <div class="costrow"><span class="cname">Iconic Regency, Penang</span><span class="csub">14 nts</span><span class="camt">$1,795.05</span></div>
+      <div class="costrow"><span class="cname">Hotel Nikko KIX</span><span class="csub">1 nt</span><span class="camt">$303.95</span></div>
+      <div class="costrow"><span class="cname">Apartment Hotel 11, Osaka</span><span class="csub">6 nts</span><span class="camt">$1,112.60</span></div>
+      <div class="costtot"><span class="l">26 nights total</span><span class="v">$4,386.10</span></div>
+      <div class="costnote">Small extras at property: Penang MYR 200 deposit + MYR 2/nt tax; Osaka/Japan city tax may apply</div>
+    </div>
+  </div>
+  <div class="note"><b>Not yet included:</b> daily food, local transport (Kakao T / Grab / trains + IC cards), attraction tickets (Penang Hill, Kek Lok Si lift, N Seoul Tower, day-trip trains), travel insurance, and shopping. As a rough planning figure, budgeting another ~$60–100 CAD per person per day for those covers a comfortable, calm pace.</div>
 
   <div class="planner-controls">
     <div class="seg" id="pl-city" role="group" aria-label="Filter by city">
@@ -1346,22 +1401,22 @@
   const BASES = {
     seoul:  'Hongik University Station, Seoul',
     penang: 'Iconic Regency Service Residences, Bayan Lepas, Penang',
-    osaka:  'Kuromon Market, Nihonbashi, Osaka',
+    osaka:  'Daikoku 1-2-22, Naniwa Ward, Osaka',
   };
   const DAYS = [
-    {id:'d0921', city:'seoul',  date:'Sun Sep 21'}, {id:'d0922', city:'seoul', date:'Mon Sep 22'},
-    {id:'d0923', city:'seoul',  date:'Tue Sep 23'}, {id:'d0924', city:'seoul', date:'Wed Sep 24'},
-    {id:'d0925', city:'seoul',  date:'Thu Sep 25'},
-    {id:'d0927', city:'penang', date:'Sat Sep 27'}, {id:'d0928', city:'penang', date:'Sun Sep 28'},
-    {id:'d0929', city:'penang', date:'Mon Sep 29'}, {id:'d0930', city:'penang', date:'Tue Sep 30'},
-    {id:'d1001', city:'penang', date:'Wed Oct 1'},  {id:'d1002', city:'penang', date:'Thu Oct 2'},
-    {id:'d1003', city:'penang', date:'Fri Oct 3'},  {id:'d1004', city:'penang', date:'Sat Oct 4'},
-    {id:'d1005', city:'penang', date:'Sun Oct 5'},  {id:'d1006', city:'penang', date:'Mon Oct 6'},
-    {id:'d1007', city:'penang', date:'Tue Oct 7'},  {id:'d1008', city:'penang', date:'Wed Oct 8'},
-    {id:'d1009', city:'penang', date:'Thu Oct 9'},
-    {id:'d1011', city:'osaka',  date:'Sat Oct 11'}, {id:'d1012', city:'osaka', date:'Sun Oct 12'},
-    {id:'d1013', city:'osaka',  date:'Mon Oct 13'}, {id:'d1014', city:'osaka', date:'Tue Oct 14'},
-    {id:'d1015', city:'osaka',  date:'Wed Oct 15'}, {id:'d1016', city:'osaka', date:'Thu Oct 16'},
+    {id:'d0921', city:'seoul',  date:'Mon Sep 21'}, {id:'d0922', city:'seoul', date:'Tue Sep 22'},
+    {id:'d0923', city:'seoul',  date:'Wed Sep 23'}, {id:'d0924', city:'seoul', date:'Thu Sep 24'},
+    {id:'d0925', city:'seoul',  date:'Fri Sep 25'},
+    {id:'d0927', city:'penang', date:'Sun Sep 27'}, {id:'d0928', city:'penang', date:'Mon Sep 28'},
+    {id:'d0929', city:'penang', date:'Tue Sep 29'}, {id:'d0930', city:'penang', date:'Wed Sep 30'},
+    {id:'d1001', city:'penang', date:'Thu Oct 1'},  {id:'d1002', city:'penang', date:'Fri Oct 2'},
+    {id:'d1003', city:'penang', date:'Sat Oct 3'},  {id:'d1004', city:'penang', date:'Sun Oct 4'},
+    {id:'d1005', city:'penang', date:'Mon Oct 5'},  {id:'d1006', city:'penang', date:'Tue Oct 6'},
+    {id:'d1007', city:'penang', date:'Wed Oct 7'},  {id:'d1008', city:'penang', date:'Thu Oct 8'},
+    {id:'d1009', city:'penang', date:'Fri Oct 9'},
+    {id:'d1011', city:'osaka',  date:'Sun Oct 11'}, {id:'d1012', city:'osaka', date:'Mon Oct 12'},
+    {id:'d1013', city:'osaka',  date:'Tue Oct 13'}, {id:'d1014', city:'osaka', date:'Wed Oct 14'},
+    {id:'d1015', city:'osaka',  date:'Thu Oct 15'}, {id:'d1016', city:'osaka', date:'Fri Oct 16'},
   ];
   const SLOTS = [
     {id:'am',    lbl:'Morning',  ic:'🌅'},
