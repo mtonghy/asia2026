@@ -62,6 +62,16 @@
     --hpattern:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(59,81,104,.05) 20px,rgba(59,81,104,.05) 22px);
     --bgtint1:rgba(59,81,104,.05);--bgtint2:rgba(192,101,58,.04);
   }
+  /* ===== SUMMARY · neutral slate (same as planner) ===== */
+  body[data-city="summary"]{
+    --paper:#f3f4f6;--paper-2:#e6e8ec;--card:#ffffff;--line:#cfd4dc;
+    --accent:#3b5168;--accent-2:#222a35;--pop:#c0653a;
+    --gold:#9a7b3f;--green:#3f6b4a;--muted:#646b76;
+    --ink-blue:#3b5168;--stamp:#c0653a;
+    --font-head:var(--serif);--font-body:var(--sans);
+    --hpattern:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(59,81,104,.05) 20px,rgba(59,81,104,.05) 22px);
+    --bgtint1:rgba(59,81,104,.05);--bgtint2:rgba(192,101,58,.04);
+  }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
@@ -409,17 +419,62 @@
   .grandcost .gper{font-family:var(--mono);font-size:11px;opacity:.85}
   .costnote{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:2px}
 
+  /* ===== SUMMARY tables ===== */
+  .sum-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:6px}
+  .sum-head h2{margin:0;font-family:var(--font-head);color:var(--accent-2);font-size:22px}
+  .sum-head .who{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .sum-actions{margin:14px 0 22px}
+  .sumtable-wrap{overflow-x:auto;margin-bottom:26px}
+  table.sum{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+  table.sum caption{caption-side:top;text-align:left;font-family:var(--font-head);font-weight:700;color:var(--accent-2);font-size:16px;padding:12px 14px 8px;display:flex;align-items:center;gap:8px}
+  table.sum th{background:var(--accent);color:#fff;text-align:left;padding:9px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:700}
+  table.sum td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink)}
+  table.sum tr:nth-child(even) td{background:color-mix(in srgb,var(--accent) 3%,var(--card))}
+  table.sum td .b{font-weight:700;color:var(--accent-2)}
+  table.sum td .m{font-family:var(--mono);font-size:11.5px}
+  table.sum td .s{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+  table.sum td.amt{font-family:var(--mono);font-weight:700;color:var(--accent-2);white-space:nowrap;text-align:right}
+  table.sum tr.total td{background:var(--paper-2);font-weight:700;border-top:2px solid var(--accent)}
+  table.sum tr.total td.amt{color:var(--pop);font-size:15px}
+  .conf{font-family:var(--mono);font-size:11px;background:color-mix(in srgb,var(--accent) 8%,var(--card));border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--accent-2);white-space:nowrap}
+  .sum-foot{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:26px}
+
   @media print{
-    header,nav,footer,.palette,.planner-controls,.planner-intro,.secthead .hint,.modal-overlay{display:none !important}
-    .panel{display:none !important}
-    .panel#planner{display:block !important}
-    .planner-layout{grid-template-columns:1fr !important}
-    .board{gap:10px}
-    .dayblock{break-inside:avoid;box-shadow:none;border:1px solid #999}
-    .dh-opt,.ch-x,.ch-go{display:none !important}
-    .slot{min-height:auto}
+    body[data-city="summary"] header,
+    body[data-city="summary"] nav,
+    body[data-city="summary"] footer,
+    body[data-city="summary"] .sum-actions{display:none !important}
+    body[data-city="summary"] .panel{display:none !important}
+    body[data-city="summary"] #summary{display:block !important}
+    body[data-city="summary"] main{padding:0}
+    table.sum{break-inside:auto;box-shadow:none;border:1px solid #999;font-size:11px}
+    table.sum tr{break-inside:avoid}
+    table.sum th{background:#3b5168 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .grandcost{background:#3b5168 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     body{background:#fff}
-    .day-empty-print{display:none}
+    .sumtable-wrap{overflow:visible;margin-bottom:16px}
+    @page{margin:1.4cm}
+  }
+
+  @media print{
+    body[data-city="planner"] header,
+    body[data-city="planner"] nav,
+    body[data-city="planner"] footer,
+    body[data-city="planner"] .palette,
+    body[data-city="planner"] .planner-controls,
+    body[data-city="planner"] .planner-intro,
+    body[data-city="planner"] .secthead .hint,
+    body[data-city="planner"] .modal-overlay{display:none !important}
+    body[data-city="planner"] .panel{display:none !important}
+    body[data-city="planner"] .panel#planner{display:block !important}
+    body[data-city="planner"] .planner-layout{grid-template-columns:1fr !important}
+    body[data-city="planner"] .board{gap:10px}
+    body[data-city="planner"] .dayblock{break-inside:avoid;box-shadow:none;border:1px solid #999}
+    body[data-city="planner"] .dh-opt,
+    body[data-city="planner"] .ch-x,
+    body[data-city="planner"] .ch-go{display:none !important}
+    body[data-city="planner"] .slot{min-height:auto}
+    body[data-city="planner"]{background:#fff}
   }
   a.tab:focus-visible,.tab:focus-visible{outline:3px solid var(--pop);outline-offset:-3px}
 </style>
@@ -451,6 +506,9 @@
     </button>
     <button class="tab" role="tab" aria-selected="false" aria-controls="planner" id="tab-planner">
       <span class="city">Planner ✦</span><span class="meta">Build your days</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="summary" id="tab-summary">
+      <span class="city">Summary ⎙</span><span class="meta">Print / PDF</span>
     </button>
   </div>
 </nav>
@@ -1230,6 +1288,154 @@
   </div>
 </section>
 
+<!-- ============ SUMMARY ============ -->
+<section class="panel" id="summary" role="tabpanel" aria-labelledby="tab-summary">
+  <div class="sum-head">
+    <h2>Trip Summary — Asia 2026</h2>
+    <span class="who">Matthew Ho Yin Tong · Desiree Bun Wai Ng · Ka-Kei Tong · 3 travellers</span>
+  </div>
+  <p class="planner-intro">Everything on one page for printing or saving as PDF — flights, stays, addresses, times, and confirmation numbers. Use the button below (or your browser's Print → Save as PDF).</p>
+  <div class="sum-actions">
+    <button class="pl-btn" id="sum-print">🖨 Print / Save as PDF</button>
+  </div>
+
+  <div class="grandcost">
+    <div>
+      <div class="gl">Total booked · flights + accommodation</div>
+      <div class="gsub">Booking refs: Air/hotel confirmations below</div>
+    </div>
+    <div style="text-align:right">
+      <div class="gv">$8,623.21</div>
+      <div class="gper">CAD · ≈ $2,874.40 per person</div>
+    </div>
+  </div>
+
+  <div class="sumtable-wrap">
+    <table class="sum">
+      <caption>✈ Flights — Booking ADVZX4 · $4,237.11 CAD (3 travellers)</caption>
+      <thead>
+        <tr><th>Date</th><th>Flight</th><th>Route</th><th>Depart</th><th>Arrive</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="b">Sun Sep 20</span></td>
+          <td><span class="m">AC 63</span></td>
+          <td>Vancouver (YVR) → Seoul (ICN)</td>
+          <td><span class="m">12:20</span><span class="s">Term M</span></td>
+          <td><span class="m">16:05 +1</span><span class="s">Sep 21 · Term 1</span></td>
+          <td>11h45 · Economy (K)<span class="s">Seats 24H/J/K · 1 free bag</span></td>
+        </tr>
+        <tr>
+          <td><span class="b">Sat Sep 26</span></td>
+          <td><span class="m">CX 413</span></td>
+          <td>Seoul (ICN) → Hong Kong (HKG)</td>
+          <td><span class="m">08:00</span><span class="s">Term 1</span></td>
+          <td><span class="m">10:50</span><span class="s">Term 1</span></td>
+          <td>3h50 · Economy (Q)</td>
+        </tr>
+        <tr>
+          <td><span class="s">↳ same day</span></td>
+          <td><span class="m">CX 621</span></td>
+          <td>Hong Kong (HKG) → Penang (PEN)</td>
+          <td><span class="m">15:30</span><span class="s">Term 1 · 4h40 layover</span></td>
+          <td><span class="m">19:10</span></td>
+          <td>3h40 · Economy (Q)</td>
+        </tr>
+        <tr>
+          <td><span class="b">Sat Oct 10</span></td>
+          <td><span class="m">CX 622</span></td>
+          <td>Penang (PEN) → Hong Kong (HKG)</td>
+          <td><span class="m">07:30</span></td>
+          <td><span class="m">11:30</span><span class="s">Term 1</span></td>
+          <td>4h00 · Economy (S)</td>
+        </tr>
+        <tr>
+          <td><span class="s">↳ same day</span></td>
+          <td><span class="m">CX 502</span></td>
+          <td>Hong Kong (HKG) → Osaka (KIX)</td>
+          <td><span class="m">16:30</span><span class="s">Term 1 · 5h layover</span></td>
+          <td><span class="m">21:15</span><span class="s">Term 1</span></td>
+          <td>3h45 · Economy (S)<span class="s">Airport hotel this night</span></td>
+        </tr>
+        <tr>
+          <td><span class="b">Sat Oct 17</span></td>
+          <td><span class="m">AC 24</span></td>
+          <td>Osaka (KIX) → Vancouver (YVR)</td>
+          <td><span class="m">18:00</span><span class="s">Term 1</span></td>
+          <td><span class="m">11:15</span><span class="s">same day · Term M</span></td>
+          <td>9h15 · Economy (L)<span class="s">Seats 19H/J/K · 1 free bag</span></td>
+        </tr>
+        <tr class="total">
+          <td colspan="5">Flights total · 3 travellers ($1,412.37 each)</td>
+          <td class="amt">$4,237.11</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sum-foot">Tickets: 0149551184072 (Matthew) · 0149551184074 (Desiree) · 0149551184070 (Ka-Kei) · Itinerary #73479417699671</p>
+
+  <div class="sumtable-wrap">
+    <table class="sum">
+      <caption>🛏 Accommodation — $4,386.10 CAD · 26 nights</caption>
+      <thead>
+        <tr><th>Stay</th><th>Location</th><th>Check-in</th><th>Check-out</th><th>Confirmation</th><th>Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="b">Berry House</span><span class="s">Seoul · Airbnb · keypad</span></td>
+          <td>4-17 Yanghwa-ro 23-gil, Mapo-gu<span class="s">Hongik Univ Stn Exit 3 (1-min)</span></td>
+          <td><span class="m">Mon Sep 21</span><span class="s">14:00</span></td>
+          <td><span class="m">Sat Sep 26</span><span class="s">11:00</span></td>
+          <td><span class="conf">HMFJ2SB5AY</span></td>
+          <td class="amt">$1,174.50</td>
+        </tr>
+        <tr>
+          <td><span class="b">Iconic Regency</span><span class="s">Penang · 3BR apt</span></td>
+          <td>239 Jln Sultan Azlan Shah, George Town 11900<span class="s">Bayan Lepas · +60 4-688 7888</span></td>
+          <td><span class="m">Sat Sep 26</span><span class="s">15:00</span></td>
+          <td><span class="m">Sat Oct 10</span><span class="s">12:00</span></td>
+          <td><span class="conf">73489311349873</span></td>
+          <td class="amt">$1,795.05</td>
+        </tr>
+        <tr>
+          <td><span class="b">Hotel Nikko Kansai Airport</span><span class="s">Osaka · night 1 · Business Triple</span></td>
+          <td>1 Senshu-kuko Kita, Tajiri<span class="s">At KIX Terminal 1 · +81 72-455-1111</span></td>
+          <td><span class="m">Sat Oct 10</span><span class="s">15:00–02:00</span></td>
+          <td><span class="m">Sun Oct 11</span><span class="s">11:00</span></td>
+          <td><span class="conf">73489307343829</span></td>
+          <td class="amt">$303.95</td>
+        </tr>
+        <tr>
+          <td><span class="b">Apartment Hotel 11 Namba Minami 2</span><span class="s">Osaka · nights 2–7</span></td>
+          <td>Daikoku 1-2-22, Naniwa Ward 556-0014<span class="s">Daikokucho Stn (2-min) · +81 50-1725-7998</span></td>
+          <td><span class="m">Sun Oct 11</span><span class="s">16:00</span></td>
+          <td><span class="m">Sat Oct 17</span><span class="s">10:00</span></td>
+          <td><span class="conf">HMHMA2P44Y</span></td>
+          <td class="amt">$1,112.60</td>
+        </tr>
+        <tr class="total">
+          <td colspan="5">Accommodation total · 26 nights</td>
+          <td class="amt">$4,386.10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sum-foot">Extras due at property: Penang MYR 200 deposit + MYR 2/night city tax · Japan city tax may apply per night.</p>
+
+  <div class="sumtable-wrap">
+    <table class="sum">
+      <caption>$ Grand total</caption>
+      <thead><tr><th>Category</th><th>Detail</th><th>Amount (CAD)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b">Flights</span></td><td>6 segments · 3 travellers · Booking ADVZX4</td><td class="amt">$4,237.11</td></tr>
+        <tr><td><span class="b">Accommodation</span></td><td>4 properties · 26 nights</td><td class="amt">$4,386.10</td></tr>
+        <tr class="total"><td>Total booked</td><td>≈ $2,874.40 per person</td><td class="amt">$8,623.21</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>Not included above:</b> daily food, local transport (Kakao T / Grab / trains + IC cards), attraction tickets, travel insurance, and shopping — budget roughly $60–100 CAD per person per day for a comfortable pace.</div>
+</section>
+
 </main>
 
 <footer>
@@ -1264,7 +1470,7 @@
   /* ---------- tabs ---------- */
   const tabs = Array.from(document.querySelectorAll('.tab'));
   const panels = Array.from(document.querySelectorAll('.panel'));
-  const cityIds = ['seoul','penang','osaka','planner'];
+  const cityIds = ['seoul','penang','osaka','planner','summary'];
   const cityMeta = {
     seoul:  {motif:'한국 · KOREA', big:'한국 KOREA', sml:'SEP 21–26'},
     penang: {motif:'PULAU PINANG · MALAYSIA', big:'PENANG · MY', sml:'SEP 26–OCT 10'},
@@ -1588,6 +1794,7 @@
     if(confirm('Clear your whole plan? This cannot be undone.')){ PLAN={}; savePlan(); renderPalette(); renderBoard(); }
   });
   document.getElementById('pl-print').addEventListener('click',()=>window.print());
+  document.getElementById('sum-print').addEventListener('click',()=>window.print());
   document.getElementById('pl-export').addEventListener('click',()=>{
     const lines=['ASIA 2025 — MY PLAN',''];
     DAYS.forEach(day=>{
