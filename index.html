@@ -419,6 +419,18 @@
   .grandcost .gper{font-family:var(--mono);font-size:11px;opacity:.85}
   .costnote{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:2px}
 
+  /* local-script names (Hangul / Japanese) */
+  .kr{font-weight:400;font-size:.82em;color:var(--muted);white-space:nowrap}
+  .card h3 .kr{display:inline-block}
+  .stop .dest .kr{font-size:.9em;color:var(--muted)}
+  .day .dbody p .kr,.card p .kr{color:var(--accent);font-weight:600}
+  /* Chinese names */
+  .cn{font-weight:400;font-size:.82em;color:var(--pop);white-space:nowrap}
+  .cn::before{content:"·";margin-right:4px;color:var(--line)}
+  .card h3 .cn{display:inline-block}
+  .stop .dest .cn{font-size:.9em}
+  .day .dbody p .cn,.card p .cn{font-weight:600}
+
   /* ===== SUMMARY tables ===== */
   .sum-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:6px}
   .sum-head h2{margin:0;font-family:var(--font-head);color:var(--accent-2);font-size:22px}
@@ -521,81 +533,82 @@
     <span class="flightcode">AC 63</span>
     <span class="route"><b>YVR</b> <span class="arrow">→</span> <b>ICN</b></span>
     <span class="route">Sun Sep 20 · 12:20 → 16:05 <b>+1</b> · 11h45</span>
-    <span class="nights">Base: <b>Hongdae</b> · 5 nights</span>
+    <span class="nights">Base: <b>Jongno</b> · 5 nights</span>
   </div>
 
   <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2></div>
   <div class="grid cols-2">
     <div class="card hotel" style="border-left-color:var(--stamp)">
-      <h3>Berry House · Hongik Univ Station</h3>
-      <div class="tagrow"><span class="pill your">Your booking · Airbnb</span><span class="pill">Hongdae</span><span class="pill rate">★ 4.97</span><span class="pill">4 guests · 2BR</span></div>
-      <p>Hosted by Min (Superhost). Entire ground-floor flat, completely flat access, 1-min walk from Hongik Univ Station Exit 3 — direct AREX airport train (ICN ~50 min), and line 2 for the city. Two bedrooms, full kitchen, washer + dryer. Quiet residential street but steps from cafés, Olive Young and CGV. A genuinely easy, local base.</p>
+      <h3>찰나[:달] · Jonggak Station</h3>
+      <div class="tagrow"><span class="pill your">Your booking · Airbnb</span><span class="pill">Jongno 종로 鍾路</span><span class="pill rate">★ 5.0</span><span class="pill">8 guests · 2BR · 2 bath</span></div>
+      <p>Hosted by Challa (Superhost). Newly renovated flat in the historic heart of Seoul — 1-min walk to Jonggak Station (Line 1), with Cheonggyecheon 3 min, Insadong and Gwanghwamun ~10 min, Myeongdong ~15 min on foot. Four queen beds, two full bathrooms, kitchen, washer + dryer, elevator, balcony overlooking Bosingak. Airport bus 6002 stops 4 min away.</p>
       <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Mon Sep 21 <small>· from 14:00</small></div></div>
+        <div class="cell"><div class="lbl">Check in</div><div class="val">Mon Sep 21 <small>· after 17:00</small></div></div>
         <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Sep 26 <small>· by 11:00</small></div></div>
-        <div class="cell"><div class="lbl">Total</div><div class="val">$1,174 <small>CAD · 5 nts</small></div></div>
+        <div class="cell"><div class="lbl">Nights</div><div class="val">5</div></div>
       </div>
-      <div class="addr">4-17 Yanghwa-ro 23-gil, Mapo-gu · Hongik Univ Stn Exit 3 · keypad self check-in · conf HMFJ2SB5AY</div>
-      <a class="link" href="https://www.airbnb.com/rooms/1593062002890366271?adults=3&check_in=2026-09-21&check_out=2026-09-26" target="_blank" rel="noopener">View Airbnb listing →</a>
+      <div class="addr">15 Jong-ro 8-gil, Jongno District <span class="kr">서울 종로구 종로8길 15</span> <span class="cn">首爾鍾路區鍾路8街15</span><br>Jonggak Stn <span class="kr">종각역</span> <span class="cn">鐘閣站</span> Exit 4 (1 min) · keypad self check-in</div>
+      <p class="confirm" style="margin-top:8px">Free airport pick-up or drop-off included on 5+ night stays — ask Challa when you message. Door code sent 1 hr before check-in.</p>
     </div>
     <div class="card">
       <h3>Getting in from ICN</h3>
-      <div class="tagrow"><span class="pill">AREX</span><span class="pill">~50 min</span></div>
-      <p>The AREX runs direct from Incheon to Hongik Univ Station — the closest hub to your Airbnb, no transfer needed. Grab a T-money card at the airport; it covers metro, buses and most convenience stores all week.</p>
-      <button class="dirbtn" data-from="Incheon International Airport, South Korea" data-to="Hongik University Station, Seoul" data-title="ICN → Hongdae" data-sub="Arrival · AREX direct">
+      <div class="tagrow"><span class="pill">Airport bus 6002</span><span class="pill">or AREX</span><span class="pill">~70 min</span></div>
+      <p>Easiest with luggage: <b>airport bus 6002</b> stops a 4-min walk from the flat — one seat, no transfers. Alternative: AREX to Seoul Station, then Line 1 one stop to Jonggak. Grab a T-money card at the airport; it covers metro, buses and convenience stores all week. <b>Challa also offers a free airport pick-up on 5+ night stays</b> — message ahead to arrange it.</p>
+      <button class="dirbtn" data-from="Incheon International Airport, South Korea" data-to="15 Jong-ro 8-gil, Jongno District, Seoul" data-mode="transit" data-title="ICN → Jongno flat" data-sub="Arrival · bus 6002 / AREX">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
-        Transit: ICN → Hongdae
+        Transit: ICN → Jongno
       </button>
       <div class="depart">
         <h3>Departure day → ICN · Sat Sep 26</h3>
         <ol>
-          <li><b>Check out of the Airbnb</b> per the host's time, and follow their key-return / self check-out steps. Ask about bag storage if your flight is later.</li>
-          <li><b>To the airport:</b> the AREX runs direct from Hongik Univ Station to ICN — about 50 min, no transfer. A taxi is ~50–70 min and ₩60,000–75,000 depending on traffic.</li>
-          <li><b>Terminal:</b> Cathay Pacific (CX 413) departs ICN <b>Terminal 1</b>.</li>
+          <li><b>CX 413 departs ICN at 08:00</b> — this is an early one. Aim to be at the airport by ~05:30–06:00.</li>
+          <li><b>Check out</b> by 11:00 doesn't apply here since you'll leave before dawn — settle the keypad/key steps with Challa the night before.</li>
+          <li><b>To the airport:</b> the first AREX from Seoul Station runs about 05:20, which is likely too late. Book a <b>Kakao T taxi</b> the night before (~60–70 min, ₩60,000–75,000) or take Challa's free airport drop-off if available.</li>
+          <li><b>Terminal:</b> Cathay Pacific departs ICN <b>Terminal 1</b>.</li>
         </ol>
-        <button class="dirbtn" data-from="Hongik University Station, Seoul" data-to="Incheon International Airport Terminal 1, South Korea" data-title="Hongdae → ICN Terminal 1" data-sub="Departure day · AREX">
+        <button class="dirbtn" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Incheon International Airport Terminal 1, South Korea" data-mode="drive" data-title="Jongno → ICN Terminal 1" data-sub="Departure · pre-dawn taxi">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg>
-          Transit: Hongdae → ICN
+          Drive: Jongno → ICN
         </button>
-        <div class="leaveby">Leave ≈3.5 hrs before departure (international). Confirm CX 413's exact departure time on your ticket.</div>
+        <div class="leaveby">Leave the flat ≈04:15–04:45 for an 08:00 departure. Arrange the taxi or host drop-off in advance.</div>
       </div>
     </div>
   </div>
-  <div class="note"><b>Arrival timing:</b> AC 63 leaves YVR midday Sun Sep 20 and lands ICN <b>~16:05 on Mon Sep 21</b> (crosses the date line). Your Airbnb starts Sep 21, so dates line up — expect to reach Hongdae early evening after the ~50-min AREX in.</div>
+  <div class="note"><b>Arrival timing:</b> AC 63 leaves YVR midday Sun Sep 20 and lands ICN <b>16:05 on Mon Sep 21</b> (crosses the date line). Check-in is after 17:00, so the timing lines up well — expect to reach Jongno early evening.</div>
 
-  <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">short metro from Hongdae</span></div>
+  <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">walkable from Jongno</span></div>
   <div class="grid cols-2">
     <div class="card">
-      <h3>Odarijip Ganjang Gejang</h3>
+      <h3>Odarijip Ganjang Gejang <span class="kr">오다리집 간장게장</span> <span class="cn">醬蟹</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Soy-marinated crab</span><span class="pill price">$$</span></div>
       <p>The Myeongdong ganjang-gejang everyone raves about — fresh raw crab in a balanced, not-too-salty marinade, plus standout marinated prawns and a big banchan spread. Inside the Savoy Hotel, opposite Olive Young.</p>
       <div class="addr">Myeongdong, Jung-gu · open daily 9:00–23:00</div>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Odarijip Ganjang Gejang, Seoul" data-title="To Odarijip Ganjang Gejang" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Odarijip Ganjang Gejang, Seoul" data-title="To Odarijip Ganjang Gejang" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
-      <h3>Myeongdong Kyoja</h3>
+      <h3>Myeongdong Kyoja <span class="kr">명동교자</span> <span class="cn">明洞餃子</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.2</span><span class="pill">Kalguksu · mandu</span><span class="pill price">$$</span><span class="pill">Michelin-listed</span></div>
       <p>A Seoul institution: a four-item menu of hand-cut noodle soup and juicy dumplings done expertly. The line looks long but moves fast. Garlicky kimchi is the house signature.</p>
       <div class="addr">129 Toegye-ro, Jung-gu · 10:30–21:00</div>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Myeongdong Kyoja, Seoul" data-title="To Myeongdong Kyoja" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Myeongdong Kyoja, Seoul" data-title="To Myeongdong Kyoja" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
-      <h3>Myeongdong Korean BBQ Mongvely</h3>
+      <h3>Myeongdong BBQ Mongvely <span class="kr">몽블리</span> <span class="cn">明洞烤肉</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.9</span><span class="pill">All-you-can-eat KBBQ</span></div>
       <p>Unlimited grilled meats and sides at a strong price point, staff help with the grill, and it runs late (to ~2 AM). Touristy but reliably fun for a first-night cookout.</p>
       <div class="addr">9 Myeongdong 8na-gil, Jung-gu · 11:30–02:00</div>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Myeongdong Korean BBQ Mongvely, Seoul" data-title="To Myeongdong Korean BBQ Mongvely" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Myeongdong Korean BBQ Mongvely, Seoul" data-title="To Myeongdong Korean BBQ Mongvely" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
-      <h3>Daol Charcoal Grilling</h3>
+      <h3>Daol Charcoal Grilling <span class="kr">다올숯불구이</span> <span class="cn">炭火烤肉</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Real charcoal KBBQ</span></div>
       <p>Quieter, higher-end charcoal grill a block off the main drag — staff cook brisket, galbi and pork belly tableside. Go for a sit-down KBBQ when you want it done properly.</p>
       <div class="addr">8-11 Myeongdong 8-gil, Jung-gu · 11:00–23:00</div>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Daol Charcoal Grilling, Seoul" data-title="To Daol Charcoal Grilling" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Daol Charcoal Grilling, Seoul" data-title="To Daol Charcoal Grilling" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
   </div>
   <div class="note"><b>Worth the metro ride:</b> For the best charcoal pork belly in town, Itaewon's <b>Bogwangjung</b> (★4.9) and <b>JD BBQ</b> (★4.9) are ~15 min away and consistently rated above the Myeongdong tourist spots.</div>
@@ -603,44 +616,44 @@
   <div class="secthead"><span class="num">C</span><h2>Places to go</h2></div>
   <div class="grid cols-3">
     <div class="card">
-      <h3>N Seoul Tower</h3>
+      <h3>N Seoul Tower <span class="kr">N서울타워</span> <span class="cn">南山首爾塔</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.5</span><span class="pill">Sunset</span></div>
       <p>The classic skyline view on Namsan, a cable car ride up from near Myeongdong. Best at golden hour into night.</p>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="N Seoul Tower, Seoul" data-title="To N Seoul Tower" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="N Seoul Tower, Seoul" data-title="To N Seoul Tower" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
-      <h3>Bukchon Hanok Village</h3>
+      <h3>Bukchon Hanok Village <span class="kr">북촌한옥마을</span> <span class="cn">北村韓屋村</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Heritage</span></div>
       <p>Lived-in alleys of traditional hanok homes between the palaces. Go early and keep quiet — residents still live here (visiting hours 10–5).</p>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Bukchon Hanok Village, Seoul" data-title="To Bukchon Hanok Village" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Bukchon Hanok Village, Seoul" data-title="To Bukchon Hanok Village" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
-      <h3>Namsangol Hanok Village</h3>
+      <h3>Namsangol Hanok Village <span class="kr">남산골한옥마을</span> <span class="cn">南山谷韓屋村</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Free</span></div>
       <p>A calmer, free hanok village walkable from Myeongdong, with Namsan tower views. Closed Mondays.</p>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Namsangol Hanok Village, Seoul" data-title="To Namsangol Hanok Village" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Namsangol Hanok Village, Seoul" data-title="To Namsangol Hanok Village" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
-      <h3>Myeongdong Shopping Street</h3>
+      <h3>Myeongdong Shopping St <span class="kr">명동거리</span> <span class="cn">明洞街</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">K-beauty · street food</span></div>
-      <p>K-beauty flagships and a legendary night-time street-food run, ~15 min from Hongdae on line 2. Liveliest before 11 PM.</p>
+      <p>K-beauty flagships and a legendary night-time street-food run, a ~15-min walk from the flat. Liveliest before 11 PM.</p>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Myeongdong Shopping Street, Seoul" data-title="To Myeongdong Shopping Street" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Myeongdong Shopping Street, Seoul" data-title="To Myeongdong Shopping Street" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
-      <h3>Myeongdong Cathedral</h3>
+      <h3>Myeongdong Cathedral <span class="kr">명동성당</span> <span class="cn">明洞聖堂</span></h3>
       <div class="tagrow"><span class="pill rate">★ 4.7</span><span class="pill">Architecture</span></div>
       <p>Gothic-style 1898 cathedral and a quiet break from the crowds, with a small mall in the basement. Closed midday 12–1.</p>
 
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Myeongdong Cathedral, Seoul" data-title="To Myeongdong Cathedral" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
+      <button class="dirmini" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Myeongdong Cathedral, Seoul" data-title="To Myeongdong Cathedral" data-sub="From base · transit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Transit from base</button>
     </div>
     <div class="card">
       <h3>Day-trip ideas</h3>
       <div class="tagrow"><span class="pill">Palaces</span><span class="pill">DMZ</span></div>
-      <p>Six nights leaves room for Gyeongbokgung & Insadong, a DMZ tour, or Hongdae nightlife — all easy metro hops from base.</p>
+      <p>Five nights leaves room for a DMZ tour, Dongdaemun (DDP), or a Hongdae/Seongsu evening — all easy metro hops from Jonggak.</p>
     </div>
   </div>
 
@@ -650,10 +663,10 @@
     <div class="day arrive">
       <div class="daynum"><span class="d">SEP</span><span class="n">21</span><span class="dow">MON</span></div>
       <div class="dbody">
-        <div class="dtitle">Arrive &amp; settle in Hongdae</div>
-        <p>Land ICN ~16:05, take the AREX airport train direct to Hongik Univ Station, check into the Airbnb. No agenda — a short stroll for an easy first dinner nearby, then an early night to beat the jet lag.</p>
+        <div class="dtitle">Arrive &amp; settle in Jongno</div>
+        <p>Land ICN 16:05, take airport bus 6002 (stops 4 min from the door) or the AREX via Seoul Station, check in after 17:00. No agenda — a short stroll for an easy first dinner nearby, then an early night to beat the jet lag.</p>
         <div class="stops">
-          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">ICN → Hongik Univ Station (AREX)</span><span class="est">~50 min</span><button class="go" data-from="Incheon International Airport, South Korea" data-to="Hongik University Station, Seoul" data-mode="transit" data-title="ICN → Hongdae" data-sub="AREX airport train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">ICN → Jongno flat (bus 6002 / AREX)</span><span class="est">~70 min</span><button class="go" data-from="Incheon International Airport, South Korea" data-to="15 Jong-ro 8-gil, Jongno District, Seoul" data-mode="transit" data-title="ICN → Jongno" data-sub="AREX airport train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
         <div class="dmeta"><span class="tag">Arrival</span><span class="tag eat">Casual dinner near base</span></div>
       </div>
@@ -662,10 +675,10 @@
       <div class="daynum"><span class="d">SEP</span><span class="n">22</span><span class="dow">TUE</span></div>
       <div class="dbody">
         <div class="dtitle">Gyeongbokgung Palace &amp; an Insadong tea house</div>
-        <p>Kakao T to <b>Gyeongbokgung Palace</b> — flat, wide grounds, easy to wander at your own pace; the guard-changing ceremony is at 11:00. Sit-down lunch nearby, then a short car to <b>Insadong</b> for a traditional tea house (Namusae Tea House) before heading back to rest. <i>Note: palace is closed Tuesdays — Monday works.</i></p>
+        <p>Subway one stop (or a 15-min walk) to <b>Gyeongbokgung Palace <span class="kr">경복궁</span> <span class="cn">景福宮</span></b> — flat, wide grounds, easy to wander at your own pace; the guard-changing ceremony is at 11:00. Sit-down lunch nearby, then a short car to <b>Insadong <span class="kr">인사동</span> <span class="cn">仁寺洞</span></b> for a traditional tea house (Namusae <span class="kr">나무새</span>) before heading back to rest. <i>Note: palace is closed Tuesdays — Monday works.</i></p>
         <div class="stops">
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Hongdae → Gyeongbokgung Palace</span><span class="est">~20 min</span><button class="go" data-from="Hongik University Station, Seoul" data-to="Gyeongbokgung Palace, Seoul" data-mode="drive" data-title="Hongdae → Gyeongbokgung" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Gyeongbokgung → Namusae Tea House, Insadong</span><span class="est">~8 min</span><button class="go" data-from="Gyeongbokgung Palace, Seoul" data-to="Namusae Tea House, Insadong, Seoul" data-mode="drive" data-title="Gyeongbokgung → Insadong tea" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode train">🚆 Subway</span><span class="dest">Jonggak → Gyeongbokgung <span class="kr">경복궁</span> <span class="cn">景福宮</span></span><span class="est">~10 min</span><button class="go" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Gyeongbokgung Palace, Seoul" data-mode="transit" data-title="Jonggak → Gyeongbokgung" data-sub="Line 1→3, or 15-min walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Gyeongbokgung → Insadong <span class="kr">인사동</span> <span class="cn">仁寺洞</span></span><span class="est">~8 min</span><button class="go" data-from="Gyeongbokgung Palace, Seoul" data-to="Namusae Tea House, Insadong, Seoul" data-mode="drive" data-title="Gyeongbokgung → Insadong tea" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
         <div class="dmeta"><span class="tag">Palace · flat</span><span class="tag eat">Insadong tea &amp; sweets</span></div>
       </div>
@@ -674,11 +687,11 @@
       <div class="daynum"><span class="d">SEP</span><span class="n">23</span><span class="dow">WED</span></div>
       <div class="dbody">
         <div class="dtitle">Cheonggyecheon stream &amp; Myeongdong</div>
-        <p>Kakao T to <b>Cheonggyecheon</b> for a gentle, level riverside walk — benches the whole way, step out whenever you like. Short car to <b>Myeongdong</b> for a relaxed lunch at <b>Myeongdong Kyoja</b> (hand-cut noodles) and easy K-beauty browsing. Optional <b>N Seoul Tower</b> cable car at golden hour if energy allows.</p>
+        <p>Step out the door — <b>Cheonggyecheon <span class="kr">청계천</span> <span class="cn">清溪川</span></b> is a 3-min walk for a gentle, level riverside stroll with benches the whole way. Continue on foot or short car to <b>Myeongdong</b> for a relaxed lunch at <b>Myeongdong Kyoja <span class="kr">명동교자</span> <span class="cn">明洞餃子</span></b> (hand-cut noodles) and easy K-beauty browsing. Optional <b>N Seoul Tower <span class="kr">N서울타워</span> <span class="cn">南山首爾塔</span></b> cable car at golden hour if energy allows.</p>
         <div class="stops">
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Hongdae → Cheonggyecheon stream</span><span class="est">~18 min</span><button class="go" data-from="Hongik University Station, Seoul" data-to="Cheonggyecheon, Seoul" data-mode="drive" data-title="Hongdae → Cheonggyecheon" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
-          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Stream → Myeongdong Kyoja</span><span class="est">~12 min</span><button class="go" data-from="Cheonggyecheon, Seoul" data-to="Myeongdong Kyoja, Seoul" data-mode="walk" data-title="Stream → Myeongdong Kyoja" data-sub="Short flat walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Myeongdong → N Seoul Tower (optional)</span><span class="est">~10 min</span><button class="go" data-from="Myeongdong, Seoul" data-to="N Seoul Tower, Seoul" data-mode="drive" data-title="Myeongdong → N Seoul Tower" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Flat → Cheonggyecheon <span class="kr">청계천</span> <span class="cn">清溪川</span></span><span class="est">~3 min</span><button class="go" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Cheonggyecheon, Seoul" data-mode="walk" data-title="Flat → Cheonggyecheon" data-sub="3-min walk from the door"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Stream → Myeongdong Kyoja <span class="kr">명동교자</span> <span class="cn">明洞餃子</span></span><span class="est">~12 min</span><button class="go" data-from="Cheonggyecheon, Seoul" data-to="Myeongdong Kyoja, Seoul" data-mode="walk" data-title="Stream → Myeongdong Kyoja" data-sub="Short flat walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Myeongdong → N Seoul Tower <span class="kr">N서울타워</span> <span class="cn">南山首爾塔</span></span><span class="est">~10 min</span><button class="go" data-from="Myeongdong, Seoul" data-to="N Seoul Tower, Seoul" data-mode="drive" data-title="Myeongdong → N Seoul Tower" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
         <div class="dmeta"><span class="tag">Level stream walk</span><span class="tag eat">Myeongdong Kyoja</span></div>
       </div>
@@ -687,10 +700,10 @@
       <div class="daynum"><span class="d">SEP</span><span class="n">24</span><span class="dow">THU</span></div>
       <div class="dbody">
         <div class="dtitle">Slow morning + Bukchon at your pace</div>
-        <p>Lazy start in Hongdae's cafés. Mid-afternoon, Kakao T to <b>Bukchon Hanok Village</b> — go gently; the lanes are pretty but sloped, so just see the main viewpoint and turn back. Early KBBQ dinner at <b>Daol Charcoal Grilling</b>. Plenty of downtime.</p>
+        <p>Lazy start at a Jongno café. Mid-afternoon, Kakao T to <b>Bukchon Hanok Village <span class="kr">북촌한옥마을</span> <span class="cn">北村韓屋村</span></b> — go gently; the lanes are pretty but sloped, so just see the main viewpoint and turn back. Early KBBQ dinner at <b>Daol Charcoal Grilling <span class="kr">다올숯불구이</span> <span class="cn">炭火烤肉</span></b>. Plenty of downtime.</p>
         <div class="stops">
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Hongdae → Bukchon Hanok Village</span><span class="est">~22 min</span><button class="go" data-from="Hongik University Station, Seoul" data-to="Bukchon Hanok Village, Seoul" data-mode="drive" data-title="Hongdae → Bukchon" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Bukchon → Daol Charcoal Grilling</span><span class="est">~12 min</span><button class="go" data-from="Bukchon Hanok Village, Seoul" data-to="Daol Charcoal Grilling, Myeongdong, Seoul" data-mode="drive" data-title="Bukchon → Daol KBBQ" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Jongno → Bukchon <span class="kr">북촌한옥마을</span> <span class="cn">北村韓屋村</span></span><span class="est">~8 min</span><button class="go" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Bukchon Hanok Village, Seoul" data-mode="drive" data-title="Jongno → Bukchon" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Bukchon → Daol <span class="kr">다올숯불구이</span> <span class="cn">炭火烤肉</span></span><span class="est">~12 min</span><button class="go" data-from="Bukchon Hanok Village, Seoul" data-to="Daol Charcoal Grilling, Myeongdong, Seoul" data-mode="drive" data-title="Bukchon → Daol KBBQ" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
         <div class="dmeta"><span class="tag rest">Easy day</span><span class="tag eat">Daol charcoal KBBQ</span></div>
       </div>
@@ -699,10 +712,10 @@
       <div class="daynum"><span class="d">SEP</span><span class="n">25</span><span class="dow">FRI</span></div>
       <div class="dbody">
         <div class="dtitle">Namsangol Hanok Village &amp; a special last dinner</div>
-        <p>Kakao T to the calm, free <b>Namsangol Hanok Village</b> (flat, uncrowded). Relaxed afternoon, then a memorable final dinner — the soy-marinated crab at <b>Odarijip Ganjang Gejang</b> in Myeongdong is a Seoul highlight. Pack tonight for an easy departure.</p>
+        <p>Short Kakao T to the calm, free <b>Namsangol Hanok Village <span class="kr">남산골한옥마을</span> <span class="cn">南山谷韓屋村</span></b> (flat, uncrowded). Relaxed afternoon, then a memorable final dinner — the soy-marinated crab at <b>Odarijip Ganjang Gejang <span class="kr">오다리집 간장게장</span> <span class="cn">醬蟹</span></b> in Myeongdong <span class="kr">명동</span> <span class="cn">明洞</span> is a Seoul highlight. Pack tonight for an easy departure.</p>
         <div class="stops">
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Hongdae → Namsangol Hanok Village</span><span class="est">~18 min</span><button class="go" data-from="Hongik University Station, Seoul" data-to="Namsangol Hanok Village, Seoul" data-mode="drive" data-title="Hongdae → Namsangol" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Namsangol → Odarijip Ganjang Gejang</span><span class="est">~8 min</span><button class="go" data-from="Namsangol Hanok Village, Seoul" data-to="Odarijip Ganjang Gejang, Seoul" data-mode="drive" data-title="Namsangol → Odarijip crab" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Jongno → Namsangol <span class="kr">남산골한옥마을</span> <span class="cn">南山谷韓屋村</span></span><span class="est">~10 min</span><button class="go" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Namsangol Hanok Village, Seoul" data-mode="drive" data-title="Jongno → Namsangol" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Namsangol → Odarijip <span class="kr">오다리집 간장게장</span> <span class="cn">醬蟹</span></span><span class="est">~8 min</span><button class="go" data-from="Namsangol Hanok Village, Seoul" data-to="Odarijip Ganjang Gejang, Seoul" data-mode="drive" data-title="Namsangol → Odarijip crab" data-sub="Kakao T car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
         <div class="dmeta"><span class="tag">Free · flat grounds</span><span class="tag eat">Odarijip ganjang-gejang</span></div>
       </div>
@@ -711,9 +724,9 @@
       <div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">SAT</span></div>
       <div class="dbody">
         <div class="dtitle">Depart for Penang</div>
-        <p>Relaxed morning, check out, AREX direct from Hongik Univ to ICN (~50 min). CX 413 → Hong Kong → CX 621 to Penang.</p>
+        <p>Pre-dawn start — CX 413 leaves ICN at 08:00. Kakao T taxi (~60–70 min) or Challa's free airport drop-off. Then CX 413 → Hong Kong → CX 621 to Penang.</p>
         <div class="stops">
-          <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Hongik Univ Station → ICN Terminal 1 (AREX)</span><span class="est">~50 min</span><button class="go" data-from="Hongik University Station, Seoul" data-to="Incheon International Airport Terminal 1, South Korea" data-mode="transit" data-title="Hongdae → ICN" data-sub="AREX airport train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
+          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Jongno → ICN Terminal 1 (taxi, pre-dawn)</span><span class="est">~60–70 min</span><button class="go" data-from="15 Jong-ro 8-gil, Jongno District, Seoul" data-to="Incheon International Airport Terminal 1, South Korea" data-mode="drive" data-title="Jongno → ICN" data-sub="Pre-dawn Kakao T"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Go</button></div>
         </div>
         <div class="dmeta"><span class="tag">Departure</span></div>
       </div>
@@ -1229,8 +1242,8 @@
       <div class="gsub">Flights + all accommodation · 3 travellers</div>
     </div>
     <div style="text-align:right">
-      <div class="gv">$8,623</div>
-      <div class="gper">≈ $2,874 per person</div>
+      <div class="gv">$7,449<span style="font-size:14px">+</span></div>
+      <div class="gper">CAD · Seoul stay price TBC</div>
     </div>
   </div>
   <div class="costwrap">
@@ -1245,12 +1258,12 @@
       <div class="costnote">Booking ADVZX4 · one itinerary, all 6 segments · economy, 1 free bag each</div>
     </div>
     <div class="costcard">
-      <h3><span class="ic">🛏</span>Accommodation — $4,386.10</h3>
-      <div class="costrow"><span class="cname">Berry House, Seoul</span><span class="csub">5 nts</span><span class="camt">$1,174.50</span></div>
+      <h3><span class="ic">🛏</span>Accommodation — $3,211.60 + Seoul</h3>
+      <div class="costrow"><span class="cname">찰나[:달], Jongno · Seoul</span><span class="csub">5 nts</span><span class="camt">TBC</span></div>
       <div class="costrow"><span class="cname">Iconic Regency, Penang</span><span class="csub">14 nts</span><span class="camt">$1,795.05</span></div>
       <div class="costrow"><span class="cname">Hotel Nikko KIX</span><span class="csub">1 nt</span><span class="camt">$303.95</span></div>
       <div class="costrow"><span class="cname">Apartment Hotel 11, Osaka</span><span class="csub">6 nts</span><span class="camt">$1,112.60</span></div>
-      <div class="costtot"><span class="l">26 nights total</span><span class="v">$4,386.10</span></div>
+      <div class="costtot"><span class="l">26 nights total</span><span class="v">$3,211.60+</span></div>
       <div class="costnote">Small extras at property: Penang MYR 200 deposit + MYR 2/nt tax; Osaka/Japan city tax may apply</div>
     </div>
   </div>
@@ -1305,8 +1318,8 @@
       <div class="gsub">Booking refs: Air/hotel confirmations below</div>
     </div>
     <div style="text-align:right">
-      <div class="gv">$8,623.21</div>
-      <div class="gper">CAD · ≈ $2,874.40 per person</div>
+      <div class="gv">$7,448.71<span style="font-size:15px">+</span></div>
+      <div class="gper">CAD · excl. Seoul stay (price TBC)</div>
     </div>
   </div>
 
@@ -1376,18 +1389,18 @@
 
   <div class="sumtable-wrap">
     <table class="sum">
-      <caption>🛏 Accommodation — $4,386.10 CAD · 26 nights</caption>
+      <caption>🛏 Accommodation — $3,211.60 CAD + Seoul (TBC) · 26 nights</caption>
       <thead>
         <tr><th>Stay</th><th>Location</th><th>Check-in</th><th>Check-out</th><th>Confirmation</th><th>Cost</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td><span class="b">Berry House</span><span class="s">Seoul · Airbnb · keypad</span></td>
-          <td>4-17 Yanghwa-ro 23-gil, Mapo-gu<span class="s">Hongik Univ Stn Exit 3 (1-min)</span></td>
-          <td><span class="m">Mon Sep 21</span><span class="s">14:00</span></td>
+          <td><span class="b">찰나[:달] (Challa)</span><span class="s">Seoul · Airbnb · keypad</span></td>
+          <td>15 Jong-ro 8-gil, Jongno District<span class="s">서울 종로구 종로8길 15 · Jonggak 종각역 鐘閣站 Exit 4</span></td>
+          <td><span class="m">Mon Sep 21</span><span class="s">after 17:00</span></td>
           <td><span class="m">Sat Sep 26</span><span class="s">11:00</span></td>
-          <td><span class="conf">HMFJ2SB5AY</span></td>
-          <td class="amt">$1,174.50</td>
+          <td><span class="conf">—</span></td>
+          <td class="amt">TBC</td>
         </tr>
         <tr>
           <td><span class="b">Iconic Regency</span><span class="s">Penang · 3BR apt</span></td>
@@ -1414,8 +1427,8 @@
           <td class="amt">$1,112.60</td>
         </tr>
         <tr class="total">
-          <td colspan="5">Accommodation total · 26 nights</td>
-          <td class="amt">$4,386.10</td>
+          <td colspan="5">Accommodation total · 26 nights (excl. Seoul)</td>
+          <td class="amt">$3,211.60+</td>
         </tr>
       </tbody>
     </table>
@@ -1428,8 +1441,8 @@
       <thead><tr><th>Category</th><th>Detail</th><th>Amount (CAD)</th></tr></thead>
       <tbody>
         <tr><td><span class="b">Flights</span></td><td>6 segments · 3 travellers · Booking ADVZX4</td><td class="amt">$4,237.11</td></tr>
-        <tr><td><span class="b">Accommodation</span></td><td>4 properties · 26 nights</td><td class="amt">$4,386.10</td></tr>
-        <tr class="total"><td>Total booked</td><td>≈ $2,874.40 per person</td><td class="amt">$8,623.21</td></tr>
+        <tr><td><span class="b">Accommodation</span></td><td>4 properties · 26 nights · Seoul price TBC</td><td class="amt">$3,211.60+</td></tr>
+        <tr class="total"><td>Total booked</td><td>excl. Seoul stay · ≈ $2,482.90 pp so far</td><td class="amt">$7,448.71+</td></tr>
       </tbody>
     </table>
   </div>
@@ -1560,18 +1573,18 @@
   // mode = how you'd travel there in that city: drive (Kakao/Grab) or transit (train)
   const VENUES = [
     // --- SEOUL (mode: drive = Kakao T) ---
-    {id:'se-gbg', city:'seoul', cat:'sight',   name:'Gyeongbokgung Palace',     slot:'am',    mode:'drive', loc:'Gyeongbokgung Palace, Seoul'},
-    {id:'se-buk', city:'seoul', cat:'sight',   name:'Bukchon Hanok Village',    slot:'am',    mode:'drive', loc:'Bukchon Hanok Village, Seoul'},
-    {id:'se-nam', city:'seoul', cat:'culture', name:'Namsangol Hanok Village',  slot:'am',    mode:'drive', loc:'Namsangol Hanok Village, Seoul'},
-    {id:'se-che', city:'seoul', cat:'nature',  name:'Cheonggyecheon Stream',    slot:'pm',    mode:'drive', loc:'Cheonggyecheon, Seoul'},
-    {id:'se-nst', city:'seoul', cat:'sight',   name:'N Seoul Tower',            slot:'eve',   mode:'drive', loc:'N Seoul Tower, Seoul'},
-    {id:'se-mys', city:'seoul', cat:'culture', name:'Myeongdong Shopping St',   slot:'pm',    mode:'drive', loc:'Myeongdong Shopping Street, Seoul'},
-    {id:'se-cat', city:'seoul', cat:'culture', name:'Myeongdong Cathedral',     slot:'pm',    mode:'drive', loc:'Myeongdong Cathedral, Seoul'},
-    {id:'se-ins', city:'seoul', cat:'culture', name:'Insadong tea house',       slot:'pm',    mode:'drive', loc:'Namusae Tea House, Insadong, Seoul'},
-    {id:'se-kyo', city:'seoul', cat:'food',    name:'Myeongdong Kyoja',         slot:'lunch', mode:'drive', loc:'Myeongdong Kyoja, Seoul'},
-    {id:'se-oda', city:'seoul', cat:'food',    name:'Odarijip Ganjang Gejang',  slot:'eve',   mode:'drive', loc:'Odarijip Ganjang Gejang, Seoul'},
-    {id:'se-mon', city:'seoul', cat:'food',    name:'KBBQ Mongvely',            slot:'eve',   mode:'drive', loc:'Myeongdong Korean BBQ Mongvely, Seoul'},
-    {id:'se-dao', city:'seoul', cat:'food',    name:'Daol Charcoal KBBQ',       slot:'eve',   mode:'drive', loc:'Daol Charcoal Grilling, Myeongdong, Seoul'},
+    {id:'se-gbg', city:'seoul', cat:'sight',   name:'Gyeongbokgung 경복궁 景福宮',     slot:'am',    mode:'drive', loc:'Gyeongbokgung Palace, Seoul'},
+    {id:'se-buk', city:'seoul', cat:'sight',   name:'Bukchon 북촌한옥마을 北村韓屋村',    slot:'am',    mode:'drive', loc:'Bukchon Hanok Village, Seoul'},
+    {id:'se-nam', city:'seoul', cat:'culture', name:'Namsangol 남산골한옥마을 南山谷韓屋村',  slot:'am',    mode:'drive', loc:'Namsangol Hanok Village, Seoul'},
+    {id:'se-che', city:'seoul', cat:'nature',  name:'Cheonggyecheon 청계천 清溪川',    slot:'pm',    mode:'drive', loc:'Cheonggyecheon, Seoul'},
+    {id:'se-nst', city:'seoul', cat:'sight',   name:'N Seoul Tower N서울타워 南山首爾塔',            slot:'eve',   mode:'drive', loc:'N Seoul Tower, Seoul'},
+    {id:'se-mys', city:'seoul', cat:'culture', name:'Myeongdong 명동거리 明洞街',   slot:'pm',    mode:'drive', loc:'Myeongdong Shopping Street, Seoul'},
+    {id:'se-cat', city:'seoul', cat:'culture', name:'Myeongdong Cathedral 명동성당 明洞聖堂',     slot:'pm',    mode:'drive', loc:'Myeongdong Cathedral, Seoul'},
+    {id:'se-ins', city:'seoul', cat:'culture', name:'Insadong tea 인사동 仁寺洞',       slot:'pm',    mode:'drive', loc:'Namusae Tea House, Insadong, Seoul'},
+    {id:'se-kyo', city:'seoul', cat:'food',    name:'Myeongdong Kyoja 명동교자 明洞餃子',         slot:'lunch', mode:'drive', loc:'Myeongdong Kyoja, Seoul'},
+    {id:'se-oda', city:'seoul', cat:'food',    name:'Odarijip 오다리집 醬蟹',  slot:'eve',   mode:'drive', loc:'Odarijip Ganjang Gejang, Seoul'},
+    {id:'se-mon', city:'seoul', cat:'food',    name:'KBBQ Mongvely 몽블리 明洞烤肉',            slot:'eve',   mode:'drive', loc:'Myeongdong Korean BBQ Mongvely, Seoul'},
+    {id:'se-dao', city:'seoul', cat:'food',    name:'Daol KBBQ 다올숯불구이 炭火烤肉',       slot:'eve',   mode:'drive', loc:'Daol Charcoal Grilling, Myeongdong, Seoul'},
     // --- PENANG (mode: drive = Grab) ---
     {id:'pe-per', city:'penang', cat:'culture', name:'Pinang Peranakan Mansion', slot:'am',    mode:'drive', loc:'Pinang Peranakan Mansion, George Town, Penang'},
     {id:'pe-khoo',city:'penang', cat:'culture', name:'Khoo Kongsi clan temple',  slot:'am',    mode:'drive', loc:'Leong San Tong Khoo Kongsi, George Town, Penang'},
@@ -1605,7 +1618,7 @@
 
   // Day definitions (date label, city, base origin for first-leg travel)
   const BASES = {
-    seoul:  'Hongik University Station, Seoul',
+    seoul:  '15 Jong-ro 8-gil, Jongno District, Seoul',
     penang: 'Iconic Regency Service Residences, Bayan Lepas, Penang',
     osaka:  'Daikoku 1-2-22, Naniwa Ward, Osaka',
   };
