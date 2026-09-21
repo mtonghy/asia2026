@@ -84,6 +84,11 @@
   .taxi .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .cpy{font:inherit;font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
   .cpy:hover{background:rgba(255,255,255,.14)}
+  /* supermarket cards: light-background copy button + link row */
+  .martlinks{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:4px}
+  .martlinks a.dirmini{text-decoration:none}
+  .cpy.lite{margin-top:9px;padding:3px 9px;font-size:11px;border:1px solid var(--line);color:var(--ink-blue);background:transparent}
+  .cpy.lite:hover{background:color-mix(in srgb, var(--ink-blue) 8%, transparent)}
   .doors{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .doors figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
   .doors img{width:100%;height:230px;object-fit:cover;object-position:center bottom;display:block}
@@ -365,6 +370,14 @@
   @media(max-width:620px){.modeswitch button{padding:6px 9px}.modeswitch button .lbl{display:none}}
   .modal-body{padding:0;overflow:auto}
   .modal-body iframe{display:block;width:100%;height:440px;border:0;background:#e9e4d8}
+  .naver-pane{padding:26px 22px 28px;display:flex;flex-direction:column;align-items:stretch;gap:10px;max-width:460px;margin:0 auto}
+  .naver-pane[hidden]{display:none}
+  .naver-pane .np-lbl{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .naver-pane .np-dest{font-size:21px;font-weight:800;line-height:1.2}
+  .naver-pane .np-kr{font-size:17px;color:var(--muted);margin-bottom:6px}
+  .naver-pane .np-btn{display:block;text-align:center;text-decoration:none;cursor:pointer;font:inherit;font-weight:700;font-size:15px;padding:13px 16px;border-radius:10px;border:1px solid #03a94d;background:#03c75a;color:#fff}
+  .naver-pane .np-btn.ghost{background:transparent;color:inherit;border-color:var(--line);font-weight:600;font-size:14px}
+  .naver-pane .np-note{margin:6px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
   .modal-foot{
     padding:13px 18px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center;
     font-family:ui-monospace,monospace;font-size:12px;color:var(--muted)
@@ -594,7 +607,7 @@
     <div class="card hotel" style="border-left-color:var(--stamp)">
       <h3>BIOS building, Unit 601 · Hongdae <span class="cn">弘大</span></h3>
       <div class="tagrow"><span class="pill your">Your booking · Airbnb (Hangang Stay)</span><span class="pill">Seogyo-dong 서교동</span><span class="pill rate">★ 4.97</span><span class="pill">Unit 601 · BIOS building</span><span class="pill">6 guests · duplex · elevator</span></div>
-      <p>New-build 2026 duplex in the heart of Hongdae — 1 min to the Hongdae shopping street, about 7 min on foot from Hongik Univ Station Exit 9 (8–9 with suitcases), 5 min to Hapjeong. Two queen bedrooms + sofa beds over two levels, kitchen, washer + dryer, elevator, and free capsule coffee/ramen/water. A lively, walkable, young-Seoul base with cafés, GS25 and Olive Young at the door.</p>
+      <p>New-build 2026 duplex in the heart of Hongdae — 1 min to the Hongdae shopping street, about 7 min on foot from Hongik Univ Station Exit 9 (8–9 with suitcases), 5 min to Hapjeong. Two queen bedrooms + sofa beds over two levels, kitchen, washer + dryer, elevator, and free capsule coffee/ramen/water. A lively, walkable, young-Seoul base with cafés, GS25 and Olive Young at the door, and six supermarkets within a 12-minute walk (see <b>Supermarkets within walking distance</b> below).</p>
       <div class="stay">
         <div class="cell"><div class="lbl">Check in</div><div class="val">Mon Sep 21 <small>· from 16:00</small></div></div>
         <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Sep 26 <small>· by 12:00</small></div></div>
@@ -731,6 +744,90 @@
     </div>
   </div>
   <div class="note"><b>Arrival timing:</b> AC 63 leaves YVR midday Sun Sep 20 and lands ICN <b>16:05 on Mon Sep 21</b> (crosses the date line). Check-in is from 16:00, so the timing works — after immigration and bags you will be on the road around 17:00 and at the flat roughly 18:00–18:45 (evening traffic can stretch the bus or a taxi).</div>
+
+  <div class="secthead"><span class="num">A3</span><h2>Supermarkets within walking distance</h2><span class="hint">groceries for the kitchen · all on foot from BIOS</span></div>
+  <div class="stay" style="margin-bottom:16px">
+    <div class="cell"><div class="lbl">Within ~12 min</div><div class="val">6 <small>supermarkets</small></div></div>
+    <div class="cell"><div class="lbl">Closest</div><div class="val">~3 min <small>· Harmony Mart Hongdae</small></div></div>
+    <div class="cell"><div class="lbl">Best for fresh food</div><div class="val">Myeongseong <small>· ~11 min</small></div></div>
+    <div class="cell"><div class="lbl">Earliest / latest</div><div class="val">07:30 <small>Myeongseong</small> · 01:00 <small>Harmony</small></div></div>
+  </div>
+  <div class="grid cols-3">
+    <div class="card">
+      <h3>Harmony Mart Hongdae <span class="kr">하모니마트 홍대점</span></h3>
+      <div class="tagrow"><span class="pill your">~3 min walk</span><span class="pill">09:00–01:00</span><span class="pill">★ 2.7 (30)</span></div>
+      <p>The closest proper mart — same side of Yanghwa-ro as the flat, a block toward the station. Snacks, drinks, ramen, basics, some fruit, and open until 1 am. Geared to visitors, so prices run higher than the neighbourhood marts below and reviews of the service are mixed; use it for top-ups and late nights rather than the big shop.</p>
+      <div class="addr">15 Yanghwa-ro 16-gil, 1F #101, Mapo-gu <span class="kr">서울 마포구 양화로16길 15, 1층 101호</span></div>
+      <div class="martlinks">
+        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Harmony Mart Hongdae, 15 Yanghwa-ro 16-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Harmony Mart Hongdae" data-sub="~3 min walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Directions from my location</button>
+        <a class="dirmini" href="https://map.naver.com/p/search/하모니마트 홍대점" target="_blank" rel="noopener">Naver Map</a>
+        <button class="cpy lite" data-copy="하모니마트 홍대점">Copy Korean name</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Wellness Discount Mart</h3>
+      <div class="tagrow"><span class="pill">~8 min walk</span><span class="pill">08:00–23:00</span></div>
+      <p>Neighbourhood mart due south of the flat toward Hapjeong/Sangsu, away from the tourist strip. Known locally for well-picked fruit and vegetables and a bit of everything else at ordinary local prices. No main road to cross.</p>
+      <div class="addr">410-19 Hapjeong-dong, Mapo-gu <span class="kr">서울 마포구 합정동 410-19</span></div>
+      <div class="martlinks">
+        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Wellness Discount Mart, 410-19 Hapjeong-dong, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Wellness Discount Mart" data-sub="~8 min walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Directions from my location</button>
+        <a class="dirmini" href="https://map.naver.com/p/search/서울 마포구 합정동 410-19" target="_blank" rel="noopener">Naver Map</a>
+        <button class="cpy lite" data-copy="서울 마포구 합정동 410-19">Copy Korean address</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Homeplus Hapjeong <span class="kr">홈플러스 합정점</span></h3>
+      <div class="tagrow"><span class="pill">~10 min walk</span><span class="pill">10:00–22:00</span><span class="pill">Hypermarket</span></div>
+      <p>The full-size option: a hypermarket in the basement of the Mecenatpolis mall at Hapjeong Station — fresh produce, meat, seafood, deli, bakery, household goods and a food court. Best place for one big stock-up. <b>Check it is open before walking over:</b> Homeplus shut its big stores in July 2026 and this branch was among those reopened on Aug 13, so hours and stock may still be settling. Normally closed the 2nd and 4th Sunday (not during your stay).</p>
+      <div class="addr">45 Yanghwa-ro, Mecenatpolis B2, Mapo-gu <span class="kr">서울 마포구 양화로 45 메세나폴리스 지하2층</span></div>
+      <div class="martlinks">
+        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Homeplus Hapjeong, 45 Yanghwa-ro, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Homeplus Hapjeong" data-sub="~10 min walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Directions from my location</button>
+        <a class="dirmini" href="https://map.naver.com/p/search/홈플러스 합정점" target="_blank" rel="noopener">Naver Map</a>
+        <button class="cpy lite" data-copy="홈플러스 합정점">Copy Korean name</button>
+      </div>
+    </div>
+    <div class="card" style="border-left:5px solid var(--stamp)">
+      <h3>Myeongseong Mart (Daewoo Mart) <span class="kr">대우명성마트</span></h3>
+      <div class="tagrow"><span class="pill your">Your pick</span><span class="pill">~11 min walk</span><span class="pill">07:30–22:30</span><span class="pill">★ 4.3 (81)</span></div>
+      <p>The best-reviewed local supermarket in range: big for a neighbourhood mart, strong on fresh produce and fruit, clearly price-tagged, cheaper than convenience stores, and staff who are used to foreign shoppers. In-store shopping and delivery. It sits north of Yanghwa-ro, so you cross the main road at the lights and head up toward World Cup buk-ro. Opens earliest of the lot — good for a breakfast run.</p>
+      <div class="addr">18 World Cup buk-ro 5na-gil, #122, Mapo-gu <span class="kr">서울 마포구 월드컵북로5나길 18, 122호</span> · 02-3144-7887</div>
+      <div class="martlinks">
+        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongseong Mart, 18 World Cup buk-ro 5na-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Myeongseong Mart" data-sub="~11 min walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Directions from my location</button>
+        <a class="dirmini" href="https://map.naver.com/p/search/대우명성마트" target="_blank" rel="noopener">Naver Map</a>
+        <button class="cpy lite" data-copy="대우명성마트">Copy Korean name</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Hapjeong Mart</h3>
+      <div class="tagrow"><span class="pill">~12 min walk</span><span class="pill">08:00–22:00</span><span class="pill">Discount mart</span></div>
+      <p>Local discount supermarket on the far side of Hapjeong Station. Fair prices and a solid everyday range — reviewers sum it up as having everything you need, if not everything you want. Pair it with Homeplus, which is on the way.</p>
+      <div class="addr">375-1 Hapjeong-dong, Mapo-gu <span class="kr">서울 마포구 합정동 375-1</span> · 02-334-6323</div>
+      <div class="martlinks">
+        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Hapjeong Mart, 375-1 Hapjeong-dong, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Hapjeong Mart" data-sub="~12 min walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Directions from my location</button>
+        <a class="dirmini" href="https://map.naver.com/p/search/서울 마포구 합정동 375-1" target="_blank" rel="noopener">Naver Map</a>
+        <button class="cpy lite" data-copy="서울 마포구 합정동 375-1">Copy Korean address</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Harmony Mart (station branch) <span class="kr">하모니마트</span></h3>
+      <div class="tagrow"><span class="pill">~12 min walk</span><span class="pill">09:00–01:00</span></div>
+      <p>Sister store to the one near the flat, a couple of minutes from Hongik Univ Station — handy for picking things up on the way home from the subway. Wide range of Korean food and gift snacks, tax-refund friendly, English-speaking staff; priced for the location.</p>
+      <div class="addr">7 Yanghwa-ro 18an-gil, Mapo-gu <span class="kr">서울 마포구 양화로18안길 7</span> · 02-332-1125</div>
+      <div class="martlinks">
+        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Harmony Mart, 7 Yanghwa-ro 18an-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Harmony Mart (station)" data-sub="~12 min walk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3-8 3 8"/><path d="M5 21h14"/><circle cx="12" cy="14" r="2"/></svg> Directions from my location</button>
+        <a class="dirmini" href="https://map.naver.com/p/search/서울 마포구 양화로18안길 7" target="_blank" rel="noopener">Naver Map</a>
+        <button class="cpy lite" data-copy="서울 마포구 양화로18안길 7">Copy Korean address</button>
+      </div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px"><b>A longer walk (13–20 min):</b>
+    <b>Mugwasu Mart</b> <span class="kr">무과수마트</span> — small mart on the Sangsu side of Hongdae, ~13 min, open to about 23:30 ·
+    <b>Sikjajae-wang Wholesale Mart</b> <span class="kr">식자재왕 도매마트 마포점</span> — 76 World Cup-ro 3-gil, ~17 min, 06:00–23:00, bulk and restaurant-supply sizes, big fresh section ·
+    <b>Hongdae Mart 24</b> <span class="kr">홍대마트24</span> — 1 Sinchon-ro, past the station, ~17 min, open 24 hours ·
+    <b>Lotte Fresh &amp; Deli</b> — 13 Sinchon-ro, ~18 min, 10:00–23:00, closed Sundays ·
+    <b>Homeplus Express Yeonnam</b> — 52 Yeonnam-ro, ~20 min, 10:00–24:00.
+    For anything forgotten at midnight, the CU you pass on the walk-in and the GS25 by the door are 24-hour.</div>
+  <div class="note"><b>Before you go:</b> walk times are estimates from map distance at an easy pace — confirm the route in <b>Naver Map</b> or <b>KakaoMap</b>, since Google does not give walking directions in Korea so every Seoul directions button on this page opens <b>Naver Map</b> with a route from wherever you are standing. Opening hours are as listed online in September 2026. <b>Chuseok:</b> small marts often close or cut hours on Chuseok day (<b>Fri Sep 25</b>) and big marts commonly close that day too, so do the main shop by <b>Thursday</b>. Bring a bag — carrier bags are charged.</div>
 
   <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">Myeongdong cluster · Line 2 direct from Hongdae</span></div>
   <div class="grid cols-2">
@@ -1680,7 +1777,16 @@
       </div>
       <button class="modal-close" id="mapClose" aria-label="Close directions">×</button>
     </div>
-    <div class="modal-body"><iframe id="mapFrame" title="Transit directions" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="modal-body"><iframe id="mapFrame" title="Transit directions" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div id="naverPane" class="naver-pane" hidden>
+        <div class="np-lbl">Naver Map · from your current location</div>
+        <div class="np-dest" id="npDest"></div>
+        <div class="np-kr" id="npKr"></div>
+        <a class="np-btn" id="npApp" href="#">Open in Naver Map app</a>
+        <a class="np-btn ghost" id="npWeb" href="#" target="_blank" rel="noopener">Open on map.naver.com instead</a>
+        <button class="np-btn ghost" id="npCopy" type="button">Copy Korean name</button>
+        <p class="np-note" id="npNote">The Naver Map app should have opened with the route already drawn from where you are standing. If nothing happened, tap the first button; if the app is not installed, use the website button. Switch Transit / Walk above to change the route type.</p>
+      </div></div>
     <div class="modal-foot">
       <span id="mapFootLbl">🚆 Transit route · live times in the app</span>
       <a id="mapOpen" href="#" target="_blank" rel="noopener">Open in Google Maps ↗</a>
@@ -1749,34 +1855,127 @@
   let lastFocus = null;
   let curFrom = '', curTo = '', curMode = 'transit';
 
+  /* ---------- Seoul destinations -> Naver Map (Google has no walking/driving routes in Korea) ----------
+     key = the button's data-to (or planner venue loc). kr = name handed to Naver as the destination label. */
+  const NAVER_PLACES = {
+    'Incheon International Airport Terminal 1, South Korea': {lat:37.4492,    lng:126.4512,    kr:'인천국제공항 제1여객터미널'},
+    '5 Jandari-ro 6-gil, Mapo-gu, Seoul':                    {lat:37.5521401, lng:126.9194351, kr:'잔다리로6길 5 (BIOS)'},
+    'City Hall Station, Seoul':                              {lat:37.5657037, lng:126.9768616, kr:'시청역'},
+    'Gyeongbokgung Palace, Seoul':                           {lat:37.579617,  lng:126.977041,  kr:'경복궁'},
+    'Yeonnam-dong, Seoul':                                   {lat:37.5583,    lng:126.9252,    kr:'경의선숲길 연남동'},
+    'Harmony Mart Hongdae, 15 Yanghwa-ro 16-gil, Mapo-gu, Seoul':     {lat:37.5534451, lng:126.9205246, kr:'하모니마트 홍대점'},
+    'Wellness Discount Mart, 410-19 Hapjeong-dong, Mapo-gu, Seoul':   {lat:37.548036,  lng:126.9199202, kr:'합정동 410-19 (Wellness Mart)'},
+    'Homeplus Hapjeong, 45 Yanghwa-ro, Mapo-gu, Seoul':               {lat:37.5508451, lng:126.9136823, kr:'홈플러스 합정점'},
+    'Myeongseong Mart, 18 World Cup buk-ro 5na-gil, Mapo-gu, Seoul':  {lat:37.5573699, lng:126.9167893, kr:'대우명성마트'},
+    'Hapjeong Mart, 375-1 Hapjeong-dong, Mapo-gu, Seoul':             {lat:37.5481868, lng:126.9131907, kr:'합정동 375-1 (합정마트)'},
+    'Harmony Mart, 7 Yanghwa-ro 18an-gil, Mapo-gu, Seoul':            {lat:37.5567709, lng:126.9249599, kr:'하모니마트 양화로18안길 7'},
+    'Odarijip Ganjang Gejang, Seoul':                        {lat:37.5613796, lng:126.9834141, kr:'오다리집 간장게장 명동'},
+    'Myeongdong Kyoja, Seoul':                               {lat:37.5610151, lng:126.9860829, kr:'명동교자 본점'},
+    'Myeongdong Korean BBQ Mongvely, Seoul':                 {lat:37.561357,  lng:126.9844162, kr:'몽블리 명동'},
+    'Daol Charcoal Grilling, Seoul':                         {lat:37.5631782, lng:126.9839641, kr:'다올숯불구이 명동'},
+    'Daol Charcoal Grilling, Myeongdong, Seoul':             {lat:37.5631782, lng:126.9839641, kr:'다올숯불구이 명동'},
+    'N Seoul Tower, Seoul':                                  {lat:37.5511694, lng:126.9882266, kr:'N서울타워'},
+    'Bukchon Hanok Village, Seoul':                          {lat:37.5814696, lng:126.9849519, kr:'북촌한옥마을'},
+    'Namsangol Hanok Village, Seoul':                        {lat:37.559315,  lng:126.994477,  kr:'남산골한옥마을'},
+    'Myeongdong Shopping Street, Seoul':                     {lat:37.5641885, lng:126.986118,  kr:'명동거리'},
+    'Myeongdong Cathedral, Seoul':                           {lat:37.5633851, lng:126.987436,  kr:'명동성당'},
+    'Euljiro 1-ga Station, Seoul':                           {lat:37.566065,  lng:126.982679,  kr:'을지로입구역'},
+    'Cheonggyecheon, Seoul':                                 {lat:37.5690744, lng:126.9775921, kr:'청계광장'},
+    'Namusae Tea House, Insadong, Seoul':                    {lat:37.5741763, lng:126.9840262, kr:'나무새 찻집 인사동'}
+  };
+  const naverPane = document.getElementById('naverPane');
+  const npApp = document.getElementById('npApp'), npWeb = document.getElementById('npWeb');
+  const npCopy = document.getElementById('npCopy');
+  const IS_ANDROID = /Android/i.test(navigator.userAgent);
+  const IS_IOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  let curPlace = null, myPos = null;      // myPos = {lat,lng} once the browser shares location
+
+  // lat/lng -> the Web-Mercator x,y that map.naver.com uses in its /p/directions URLs
+  function merc(lat,lng){
+    const x = lng * 20037508.34 / 180;
+    const y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180) * 20037508.34 / 180;
+    return x.toFixed(2) + ',' + y.toFixed(2);
+  }
+  function naverLinks(){
+    const appMode = curMode === 'walk' ? 'walk' : curMode === 'drive' ? 'car' : 'public';
+    const webMode = curMode === 'walk' ? 'walk' : curMode === 'drive' ? 'car' : 'transit';
+    // no slat/slng => the app starts the route at the phone's current location
+    const q = 'route/' + appMode + '?dlat=' + curPlace.lat + '&dlng=' + curPlace.lng +
+              '&dname=' + encodeURIComponent(curPlace.kr) + '&appname=asia.trip.planner';
+    const start = myPos ? merc(myPos.lat,myPos.lng) + ',' + encodeURIComponent('내 위치') + ',,' : '-';
+    const web = 'https://map.naver.com/p/directions/' + start + '/' + merc(curPlace.lat,curPlace.lng) + ',' +
+                encodeURIComponent(curPlace.kr) + ',,/-/' + webMode;
+    const app = IS_ANDROID
+      ? 'intent://' + q + '#Intent;scheme=nmap;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;' +
+        'package=com.nhn.android.nmap;S.browser_fallback_url=' + encodeURIComponent(web) + ';end'
+      : 'nmap://' + q;
+    return {app, web};
+  }
+  function launchNaver(){
+    const l = naverLinks();
+    if (IS_ANDROID || IS_IOS) window.location.href = l.app;   // hands off to the Naver Map app
+    else window.open(l.web, '_blank', 'noopener');             // laptop/desktop: website
+  }
+  function locate(){
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(pos=>{
+      myPos = {lat:pos.coords.latitude, lng:pos.coords.longitude};
+      if (overlay.classList.contains('open')) render();
+    }, ()=>{}, {enableHighAccuracy:true, timeout:8000, maximumAge:60000});
+  }
+  npCopy.addEventListener('click',()=>{
+    const t = curPlace ? curPlace.kr : '', done=()=>{npCopy.textContent='Copied';setTimeout(()=>npCopy.textContent='Copy Korean name',1400);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,()=>prompt('Copy:',t));} else prompt('Copy:',t);
+  });
+
   // dirflg: r = transit, w = walking, d = driving (embed); travelmode for the deep link
   function render(){
     const dirflg = curMode === 'walk' ? 'w' : curMode === 'drive' ? 'd' : 'r';
     const tmode  = curMode === 'walk' ? 'walking' : curMode === 'drive' ? 'driving' : 'transit';
-    frame.src = 'https://www.google.com/maps?saddr=' + encodeURIComponent(curFrom) +
-                '&daddr=' + encodeURIComponent(curTo) + '&dirflg=' + dirflg + '&output=embed';
-    openLnk.href = 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(curFrom) +
-                   '&destination=' + encodeURIComponent(curTo) + '&travelmode=' + tmode;
     btnTransit.setAttribute('aria-pressed', curMode === 'transit');
     btnWalk.setAttribute('aria-pressed', curMode === 'walk');
-    footLbl.textContent = curMode === 'walk'
-      ? '🚶 Walking route · live in the app'
-      : curMode === 'drive'
-      ? '🚗 Driving route · matches a Kakao/Grab car'
-      : '🚆 Transit route · live times in the app';
+    // leaving origin off the deep link makes Google Maps start from the phone's current location
+    openLnk.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(curTo) + '&travelmode=' + tmode;
+
+    if (curPlace){                                   // ---- Seoul: Naver Map
+      const l = naverLinks();
+      frame.style.display = 'none'; frame.src = 'about:blank';
+      naverPane.hidden = false;
+      npApp.href = l.app; npWeb.href = l.web;
+      npApp.style.display = (IS_ANDROID || IS_IOS) ? '' : 'none';
+      document.getElementById('npDest').textContent = curTo.replace(/,\s*(Seoul|South Korea)$/,'');
+      document.getElementById('npKr').textContent = curPlace.kr;
+      openLnk.textContent = 'Google Maps (transit only) ↗';
+      footLbl.textContent = curMode === 'walk' ? '🚶 Walking · Naver Map from your location'
+                          : curMode === 'drive' ? '🚗 Driving · Naver Map from your location'
+                          : '🚆 Transit · Naver Map from your location';
+      return;
+    }
+    // ---- Penang / Osaka: Google Maps, preview starts at your location once the browser shares it
+    naverPane.hidden = true; frame.style.display = '';
+    const origin = myPos ? (myPos.lat + ',' + myPos.lng) : curFrom;
+    frame.src = 'https://www.google.com/maps?saddr=' + encodeURIComponent(origin) +
+                '&daddr=' + encodeURIComponent(curTo) + '&dirflg=' + dirflg + '&output=embed';
+    openLnk.textContent = 'Open in Google Maps · from my location ↗';
+    const fromTxt = myPos ? 'from your location' : 'preview from your base · the button starts from your location';
+    footLbl.textContent = (curMode === 'walk' ? '🚶 Walking · ' : curMode === 'drive' ? '🚗 Driving · ' : '🚆 Transit · ') + fromTxt;
   }
   function setMode(m){ if(m!==curMode){ curMode=m; render(); } }
 
   function openDirections(btn){
     curFrom = btn.dataset.from; curTo = btn.dataset.to;
     curMode = btn.dataset.mode || 'transit';   // allow a default per button if ever set
-    titleEl.textContent = btn.dataset.title || 'Directions';
-    subEl.textContent = btn.dataset.sub || '';
+    curPlace = NAVER_PLACES[curTo] || null;
+    const t = btn.dataset.title || 'Directions';
+    titleEl.textContent = t.indexOf('→') > -1 ? 'To ' + t.split('→').pop().trim() : t;
+    subEl.textContent = 'From your current location' + (btn.dataset.sub ? ' · ' + btn.dataset.sub.replace(/^From base · /,'') : '');
     render();
     lastFocus = btn;
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     document.getElementById('mapClose').focus();
+    if (curPlace) launchNaver();               // one press: straight into Naver Map
+    locate();                                  // also feeds the web link / Google preview
   }
   function closeDirections(){
     overlay.classList.remove('open');
