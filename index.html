@@ -3,1234 +3,424 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asia 2026 — Seoul · Penang · Osaka</title>
+<title>Asia 2026 — Seoul · Penang · Hong Kong</title>
 <style>
-  :root{
-    --ink:#21201d;
-    --muted:#6b6253;
-    --shadow:0 1px 0 rgba(0,0,0,.04),0 18px 36px -22px rgba(20,20,20,.45);
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    --sans:"Helvetica Neue","Segoe UI",system-ui,-apple-system,sans-serif;
-    --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
-  }
-  /* ===== SEOUL · dancheong (Korea) ===== */
-  body[data-city="seoul"]{
-    --paper:#f5f6f1;--paper-2:#e8ece4;--card:#ffffff;--line:#cdd5cb;
-    --accent:#1f6f5c;--accent-2:#15324f;--pop:#e0592e;
-    --gold:#b88a2e;--green:#1f6f5c;--muted:#5e6b62;
-    --ink-blue:#15324f;--stamp:#e0592e;
-    --font-head:var(--sans);--font-body:var(--sans);
-    --hpattern:repeating-linear-gradient(90deg,transparent,transparent 22px,rgba(31,111,92,.06) 22px,rgba(31,111,92,.06) 24px);
-    --bgtint1:rgba(31,111,92,.05);--bgtint2:rgba(21,50,79,.05);
-  }
-  /* ===== PENANG · Peranakan (Malaysia) ===== */
-  body[data-city="penang"]{
-    --paper:#fbf3ee;--paper-2:#f3e4da;--card:#fffaf6;--line:#e2c5b4;
-    --accent:#0e8a7d;--accent-2:#c5447a;--pop:#e8993b;
-    --gold:#c08a2e;--green:#0e8a7d;--muted:#7a6155;
-    --ink-blue:#0e6b73;--stamp:#c5447a;
-    --font-head:"Iowan Old Style",Georgia,serif;--font-body:var(--sans);
-    --hpattern:
-      radial-gradient(circle at 12px 12px, rgba(197,68,122,.10) 3px, transparent 3.5px),
-      radial-gradient(circle at 0 0, rgba(14,138,125,.08) 3px, transparent 3.5px);
-    --bgtint1:rgba(14,138,125,.06);--bgtint2:rgba(197,68,122,.05);
-  }
-  /* ===== OSAKA · ai-indigo / wabi (Japan) ===== */
-  body[data-city="osaka"]{
-    --paper:#f4f2ec;--paper-2:#e7e3d8;--card:#fcfbf7;--line:#cfc8b6;
-    --accent:#234a6b;--accent-2:#1b2430;--pop:#c0392b;
-    --gold:#9a7b3f;--green:#3f6b4a;--muted:#6a6356;
-    --ink-blue:#234a6b;--stamp:#c0392b;
-    --font-head:var(--serif);--font-body:var(--sans);
-    --hpattern:repeating-linear-gradient(0deg,transparent,transparent 26px,rgba(35,74,107,.05) 26px,rgba(35,74,107,.05) 27px);
-    --bgtint1:rgba(35,74,107,.05);--bgtint2:rgba(192,57,43,.04);
-  }
-  /* ===== PLANNER / SUMMARY / EXPENSES · neutral slate ===== */
-  body[data-city="itinerary"],
-  body[data-city="planner"],
-  body[data-city="summary"],
-  body[data-city="expenses"]{
-    --paper:#f3f4f6;--paper-2:#e6e8ec;--card:#ffffff;--line:#cfd4dc;
-    --accent:#3b5168;--accent-2:#222a35;--pop:#c0653a;
-    --gold:#9a7b3f;--green:#3f6b4a;--muted:#646b76;
-    --ink-blue:#3b5168;--stamp:#c0653a;
-    --font-head:var(--serif);--font-body:var(--sans);
-    --hpattern:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(59,81,104,.05) 20px,rgba(59,81,104,.05) 22px);
-    --bgtint1:rgba(59,81,104,.05);--bgtint2:rgba(192,101,58,.04);
-  }
-
-  .cpy{font:inherit;font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
-  .cpy:hover{background:rgba(255,255,255,.14)}
-  .martlinks{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:4px}
-  .martlinks a.dirmini{text-decoration:none}
-  .cpy.lite{margin-top:9px;padding:3px 9px;font-size:11px;border:1px solid var(--line);color:var(--ink-blue);background:transparent}
-  .cpy.lite:hover{background:color-mix(in srgb, var(--ink-blue) 8%, transparent)}
-
-  /* ===== ITINERARY tab ===== */
+  :root{--ink:#21201d;--muted:#6b6253;--shadow:0 1px 0 rgba(0,0,0,.04),0 18px 36px -22px rgba(20,20,20,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:"Helvetica Neue","Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace}
+  body[data-city="seoul"]{--paper:#f5f6f1;--paper-2:#e8ece4;--card:#fff;--line:#cdd5cb;--accent:#1f6f5c;--accent-2:#15324f;--pop:#e0592e;--gold:#b88a2e;--green:#1f6f5c;--muted:#5e6b62;--ink-blue:#15324f;--stamp:#e0592e;--font-head:var(--sans);--font-body:var(--sans);
+    --hpattern:repeating-linear-gradient(90deg,transparent,transparent 22px,rgba(31,111,92,.06) 22px,rgba(31,111,92,.06) 24px);--bgtint1:rgba(31,111,92,.05);--bgtint2:rgba(21,50,79,.05)}
+  body[data-city="penang"]{--paper:#fbf3ee;--paper-2:#f3e4da;--card:#fffaf6;--line:#e2c5b4;--accent:#0e8a7d;--accent-2:#c5447a;--pop:#e8993b;--gold:#c08a2e;--green:#0e8a7d;--muted:#7a6155;--ink-blue:#0e6b73;--stamp:#c5447a;--font-head:"Iowan Old Style",Georgia,serif;--font-body:var(--sans);
+    --hpattern:radial-gradient(circle at 12px 12px, rgba(197,68,122,.10) 3px, transparent 3.5px),radial-gradient(circle at 0 0, rgba(14,138,125,.08) 3px, transparent 3.5px);--bgtint1:rgba(14,138,125,.06);--bgtint2:rgba(197,68,122,.05)}
+  body[data-city="hongkong"]{--paper:#f6f3f1;--paper-2:#ebe3df;--card:#fffdfb;--line:#d9c9c3;--accent:#8e2a2a;--accent-2:#2b1f1f;--pop:#c9962b;--gold:#c9962b;--green:#3f6b4a;--muted:#6f615c;--ink-blue:#8e2a2a;--stamp:#c9962b;--font-head:var(--serif);--font-body:var(--sans);
+    --hpattern:repeating-linear-gradient(45deg,transparent,transparent 18px,rgba(142,42,42,.06) 18px,rgba(142,42,42,.06) 20px);--bgtint1:rgba(142,42,42,.05);--bgtint2:rgba(201,150,43,.05)}
+  body[data-city="itinerary"],body[data-city="summary"],body[data-city="expenses"]{--paper:#f3f4f6;--paper-2:#e6e8ec;--card:#fff;--line:#cfd4dc;--accent:#3b5168;--accent-2:#222a35;--pop:#c0653a;--gold:#9a7b3f;--green:#3f6b4a;--muted:#646b76;--ink-blue:#3b5168;--stamp:#c0653a;--font-head:var(--serif);--font-body:var(--sans);
+    --hpattern:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(59,81,104,.05) 20px,rgba(59,81,104,.05) 22px);--bgtint1:rgba(59,81,104,.05);--bgtint2:rgba(192,101,58,.04)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body,var(--sans));line-height:1.58;background-image:radial-gradient(circle at 12% 18%, var(--bgtint1), transparent 42%),radial-gradient(circle at 88% 8%, var(--bgtint2), transparent 40%)}
+  header{border-bottom:3px solid var(--accent);background:var(--hpattern), var(--paper-2);padding:30px 22px 22px}
+  .wrap{max-width:1040px;margin:0 auto}
+  .kicker{font-family:var(--mono);letter-spacing:.34em;text-transform:uppercase;font-size:11px;color:var(--pop);font-weight:700;margin:0 0 8px}
+  h1{font-size:clamp(34px,6vw,62px);line-height:.96;margin:0;font-weight:800;font-family:var(--font-head);color:var(--accent-2)}
+  h1 .sep{color:var(--line);font-weight:400;padding:0 6px}
+  h1 .cty{color:var(--line)}
+  body[data-city="seoul"] h1 .cty[data-c="seoul"],body[data-city="penang"] h1 .cty[data-c="penang"],body[data-city="hongkong"] h1 .cty[data-c="hongkong"]{color:var(--accent-2)}
+  .subline{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:18px 26px;align-items:baseline;font-size:14px;color:var(--muted)}
+  .subline b{color:var(--ink)}
+  .stamp{display:inline-block;margin-left:auto;border:2.5px solid var(--pop);color:var(--pop);border-radius:8px;padding:8px 14px;transform:rotate(-7deg);text-align:center;font-family:var(--mono);line-height:1.1}
+  .stamp .big{font-size:16px;font-weight:700}.stamp .sml{display:block;font-size:9px;letter-spacing:.22em;margin-top:3px}
+  nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:3px solid var(--accent)}
+  .tabs{max-width:1040px;margin:0 auto;display:flex;overflow-x:auto}
+  .tab{flex:1 1 auto;min-width:140px;background:transparent;border:0;border-right:1px solid var(--line);padding:15px 14px 13px;cursor:pointer;text-align:left;color:var(--muted);font-family:var(--sans)}
+  .tab .city{font-size:19px;font-weight:700;display:block}
+  .tab .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
+  .tab[aria-selected="true"]{background:var(--accent);color:#fff}
+  .tab[aria-selected="true"] .meta{color:rgba(255,255,255,.8)}
+  main{max-width:1040px;margin:0 auto;padding:30px 22px 80px}
+  .panel{display:none}.panel.active{display:block}
+  .leg{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;border:1.5px dashed var(--line);background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:26px}
+  .leg .flightcode{font-family:var(--mono);font-weight:700;color:var(--ink-blue);border:1.5px solid var(--ink-blue);border-radius:6px;padding:3px 8px;font-size:13px}
+  .leg .route{font-family:var(--mono);font-size:13px}.leg .route b{font-size:15px}.leg .arrow{color:var(--stamp);font-weight:700}
+  .leg .nights{margin-left:auto;font-size:13px;color:var(--muted)}.leg .nights b{color:var(--ink);font-size:16px}
+  .secthead{display:flex;align-items:baseline;gap:14px;margin:36px 0 16px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .secthead .num{font-family:var(--mono);color:var(--pop);font-weight:700;font-size:13px}
+  .secthead h2{margin:0;font-size:25px;font-weight:700;font-family:var(--font-head);color:var(--accent-2)}
+  .secthead .hint{margin-left:auto;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+  .grid{display:grid;gap:16px}.cols-2{grid-template-columns:repeat(2,1fr)}.cols-3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.cols-2,.cols-3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px;box-shadow:var(--shadow)}
+  .card.hotel{border-left:5px solid var(--accent)}
+  .card h3{margin:0 0 4px;font-size:18px;font-weight:700;line-height:1.2;font-family:var(--font-head);color:var(--accent-2)}
+  .card .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 9px}
+  .pill{font-family:var(--mono);font-size:10.5px;background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:2px 9px;color:var(--muted)}
+  .pill.rate{color:#fff;border-color:var(--green);background:var(--green)}
+  .pill.your{color:#fff;border-color:var(--pop);background:var(--pop);font-weight:700}
+  .card p{margin:0;font-size:14px;color:#3a352c}
+  .card .addr{margin-top:9px;font-size:12px;color:var(--muted);font-family:var(--mono);line-height:1.4}
+  .card .link{margin-top:9px;display:inline-block;font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .stay{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:14px;background:var(--card)}
+  .stay .cell{flex:1 1 180px;padding:13px 16px;border-right:1px solid var(--line)}.stay .cell:last-child{border-right:0}
+  .stay .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .stay .val{font-size:16px;font-weight:700}.stay .val small{font-weight:400;color:var(--muted);font-size:13px}
+  .depart{border:1.5px solid var(--line);border-radius:12px;background:var(--paper-2);padding:16px 18px;margin-top:14px}
+  .depart h3{margin:0 0 10px;font-size:16px;font-weight:700;color:var(--accent);font-family:var(--font-head)}
+  .depart ol{margin:0;padding-left:20px}.depart li{font-size:14px;margin-bottom:7px}
+  .depart .leaveby{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--pop);border-top:1px dashed var(--line);padding-top:10px;font-weight:700}
+  .days{display:flex;flex-direction:column;gap:12px}
+  .day{display:flex;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .day .daynum{flex:none;width:74px;background:var(--accent);color:#fff;padding:14px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .day .daynum .d{font-family:var(--mono);font-size:10px}.day .daynum .n{font-size:26px;font-weight:800;line-height:1}.day .daynum .dow{font-family:var(--mono);font-size:9.5px;margin-top:3px}
+  .day .dbody{flex:1;padding:13px 16px;min-width:0}
+  .day .dtitle{font-weight:700;font-size:16px;color:var(--accent-2);font-family:var(--font-head);margin-bottom:3px}
+  .day .dbody p{margin:0;font-size:13.5px;color:#3a352c}
+  .day .dmeta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .day .tag{font-family:var(--mono);font-size:10px;background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:2px 8px;color:var(--muted)}
+  .day .tag.eat{border-color:var(--pop);color:var(--pop)}.day .tag.rest{border-color:var(--green);color:var(--green)}
+  .day.restday .daynum{background:var(--green)}.day.arrive .daynum,.day.depart .daynum{background:var(--accent-2)}
+  .stops{margin-top:10px;display:flex;flex-direction:column;gap:7px}
+  .stop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:7px 10px}
+  .stop .mode{flex:none;font-family:var(--mono);font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:6px;color:#fff;background:var(--accent);text-transform:uppercase}
+  .stop .mode.kakao{background:#2c2c54}.stop .mode.grab{background:#0a8a3f}.stop .mode.train{background:var(--accent-2)}.stop .mode.walk{background:var(--green)}
+  .stop .dest{flex:1;min-width:120px;font-size:13px;font-weight:600;color:var(--accent-2)}
+  .stop .est{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .stop .go,.dirbtn{cursor:pointer;border:0;background:var(--accent);color:#fff;border-radius:7px;padding:6px 10px;font-family:var(--mono);font-size:11px;font-weight:700}
+  .dirbtn{margin-top:11px;padding:8px 13px}.dirbtn.ghost{background:transparent;color:var(--ink-blue);border:1.5px solid var(--ink-blue)}
+  .dirmini{cursor:pointer;margin-top:9px;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-blue);background:transparent;border:0;padding:0;text-decoration:none}
+  .dirmini:hover{color:var(--stamp);text-decoration:underline}
+  .martlinks{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:4px}
+  .note{background:var(--paper-2);border:1px solid var(--line);border-left:5px solid var(--pop);border-radius:10px;padding:12px 15px;font-size:13.5px;margin:18px 0 4px}
+  .note b{color:var(--pop)}
+  footer{border-top:3px solid var(--accent);padding:22px;text-align:center;font-size:12px;color:var(--muted);font-family:var(--mono)}
   .typ-switch{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
   .typ-switch button{font:inherit;font-size:13.5px;font-weight:600;padding:8px 16px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--accent-2);cursor:pointer}
   .typ-switch button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
   .typ-switch button small{font-weight:400;opacity:.75;font-family:var(--mono);font-size:11px;margin-left:4px}
   .typ{display:none}.typ.on{display:block}
   .typ-head{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 14px}
-  .tl{position:relative;display:flex;flex-direction:column;gap:10px}
-  .tl::before{content:"";position:absolute;left:83px;top:10px;bottom:10px;width:2px;background:var(--line)}
-  .tl-row{display:flex;gap:18px;align-items:flex-start;position:relative}
-  .tl-time{flex:none;width:66px;text-align:right;font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--accent);padding-top:13px}
-  .tl-row::before{content:"";position:absolute;left:78px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
-  .tl-row.rest::before{background:var(--green)}.tl-row.eat::before{background:var(--pop)}
-  .tl-card{flex:1;min-width:0;margin-left:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 15px;box-shadow:var(--shadow)}
+  .tl{display:flex;flex-direction:column;gap:10px}
+  .tl-row{display:flex;gap:18px;align-items:flex-start}
+  .tl-time{flex:none;width:60px;text-align:right;font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--accent);padding-top:13px}
+  .tl-card{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 15px;border-left:4px solid var(--accent)}
+  .tl-row.rest .tl-card{border-left-color:var(--green)}.tl-row.eat .tl-card{border-left-color:var(--pop)}
   .tl-card b.t{display:block;font-family:var(--font-head);font-size:15.5px;color:var(--accent-2);margin-bottom:2px}
   .tl-card p{margin:0;font-size:13.5px;color:#3a352c}
-  .tl-row.rest .tl-card{border-left:4px solid var(--green)}.tl-row.eat .tl-card{border-left:4px solid var(--pop)}
-  @media(max-width:520px){.tl::before{left:57px}.tl-row::before{left:52px}.tl-time{width:44px;font-size:11px}.tl-row{gap:12px}}
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--font-body,var(--sans));
-    line-height:1.58;transition:background .4s ease,color .4s ease;
-    background-image:
-      radial-gradient(circle at 12% 18%, var(--bgtint1), transparent 42%),
-      radial-gradient(circle at 88% 8%, var(--bgtint2), transparent 40%);
-  }
-  .mono{font-family:var(--mono)}
-  header{
-    border-bottom:3px solid var(--accent);
-    background:var(--hpattern), var(--paper-2);
-    padding:30px 22px 22px;transition:background .4s ease,border-color .4s ease;
-  }
-  .wrap{max-width:1040px;margin:0 auto}
-  .kicker{font-family:var(--mono);letter-spacing:.34em;text-transform:uppercase;font-size:11px;color:var(--pop);font-weight:700;margin:0 0 8px}
-  h1{font-size:clamp(34px,6vw,62px);line-height:.96;margin:0;font-weight:800;letter-spacing:-.015em;font-family:var(--font-head);color:var(--accent-2)}
-  h1 .sep{color:var(--line);font-weight:400;padding:0 6px}
-  h1 .cty{color:var(--line);transition:color .4s}
-  body[data-city="seoul"]  h1 .cty[data-c="seoul"],
-  body[data-city="penang"] h1 .cty[data-c="penang"],
-  body[data-city="osaka"]  h1 .cty[data-c="osaka"]{color:var(--accent-2)}
-  .subline{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:18px 26px;align-items:baseline;font-size:14px;color:var(--muted)}
-  .subline b{color:var(--ink)}
-  .stamp{position:relative;display:inline-block;margin-left:auto;border:2.5px solid var(--pop);color:var(--pop);border-radius:8px;padding:8px 14px;transform:rotate(-7deg);text-align:center;font-family:var(--mono);line-height:1.1;opacity:.92}
-  .stamp .big{font-size:16px;font-weight:700;letter-spacing:.08em}
-  .stamp .sml{font-size:9px;letter-spacing:.22em;margin-top:3px}
-  nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:3px solid var(--accent);transition:background .4s,border-color .4s}
-  .tabs{max-width:1040px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
-  .tab{flex:1 1 auto;min-width:140px;background:transparent;border:0;border-right:1px solid var(--line);padding:15px 14px 13px;cursor:pointer;text-align:left;color:var(--muted);font-family:var(--sans);transition:background .18s,color .18s}
-  .tab:last-child{border-right:0}
-  .tab .city{font-size:19px;font-weight:700;letter-spacing:-.01em;display:block}
-  .tab .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
-  .tab[aria-selected="true"]{background:var(--accent);color:#fff}
-  .tab[aria-selected="true"] .meta{color:rgba(255,255,255,.8)}
-  .tab:hover:not([aria-selected="true"]){background:var(--paper-2);color:var(--accent-2)}
-  main{max-width:1040px;margin:0 auto;padding:30px 22px 80px}
-  .panel{display:none;animation:fade .4s ease}
-  .panel.active{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.panel.active{animation:none}}
-
-  .leg{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;border:1.5px dashed var(--line);background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:26px}
-  .leg .flightcode{font-family:ui-monospace,monospace;font-weight:700;color:var(--ink-blue);border:1.5px solid var(--ink-blue);border-radius:6px;padding:3px 8px;font-size:13px}
-  .leg .route{font-family:ui-monospace,monospace;font-size:13px;letter-spacing:.06em}
-  .leg .route b{font-size:15px}
-  .leg .arrow{color:var(--stamp);font-weight:700}
-  .leg .nights{margin-left:auto;font-size:13px;color:var(--muted)}
-  .leg .nights b{color:var(--ink);font-size:16px}
-
-  .secthead{display:flex;align-items:baseline;gap:14px;margin:36px 0 16px;border-bottom:1px solid var(--line);padding-bottom:8px}
-  .secthead .num{font-family:var(--mono);color:var(--pop);font-weight:700;font-size:13px;letter-spacing:.1em}
-  .secthead h2{margin:0;font-size:25px;font-weight:700;letter-spacing:-.01em;font-family:var(--font-head);color:var(--accent-2)}
-  .secthead .hint{margin-left:auto;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
-
-  .grid{display:grid;gap:16px}
-  .cols-2{grid-template-columns:repeat(2,1fr)}
-  .cols-3{grid-template-columns:repeat(3,1fr)}
-  @media(max-width:760px){.cols-2,.cols-3{grid-template-columns:1fr}}
-
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .card.hotel{border-left:5px solid var(--accent)}
-  .card h3{margin:0 0 4px;font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2;font-family:var(--font-head);color:var(--accent-2)}
-  .card .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 9px;align-items:center}
-  .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:2px 9px;color:var(--muted)}
-  .pill.rate{color:#fff;border-color:var(--green);background:var(--green)}
-  .pill.price{color:var(--gold);border-color:var(--gold);background:transparent}
-  .pill.your{color:#fff;border-color:var(--pop);background:var(--pop);font-weight:700}
-  .card p{margin:0;font-size:14px;color:#3a352c}
-  .card .addr{margin-top:9px;font-size:12px;color:var(--muted);font-family:var(--mono);line-height:1.4}
-  .card .link{margin-top:9px;display:inline-block;font-family:var(--mono);font-size:12px;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
-  .card .link:hover{color:var(--pop);border-color:var(--pop)}
-
-  .stay{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:14px;background:var(--card)}
-  .stay .cell{flex:1 1 200px;padding:13px 16px;border-right:1px solid var(--line)}
-  .stay .cell:last-child{border-right:0}
-  .stay .lbl{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .stay .val{font-size:16px;font-weight:700}
-  .stay .val small{font-weight:400;color:var(--muted);font-size:13px}
-  @media(max-width:620px){.stay .cell{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--line)}.stay .cell:last-child{border-bottom:0}}
-
-  .depart{border:1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));border-radius:12px;background:color-mix(in srgb, var(--accent) 7%, var(--card));padding:16px 18px;margin-top:14px;position:relative}
-  .depart::before{content:"✈";position:absolute;top:12px;right:16px;color:var(--accent);font-size:22px;opacity:.4}
-  .depart h3{margin:0 0 10px;font-size:16px;font-weight:700;color:var(--accent);letter-spacing:.01em;font-family:var(--font-head)}
-  .depart ol{margin:0;padding-left:20px}
-  .depart li{font-size:14px;margin-bottom:7px;color:var(--ink)}
-  .depart li b{color:var(--accent-2)}
-  .depart .leaveby{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--pop);border-top:1px dashed var(--line);padding-top:10px;font-weight:700}
-  .confirm{color:var(--gold);font-style:italic;font-family:var(--mono);font-size:11px}
-
-  .days{display:flex;flex-direction:column;gap:12px}
-  .day{display:flex;gap:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-  .day .daynum{flex:none;width:74px;background:var(--accent);color:#fff;padding:14px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-  .day .daynum .d{font-family:var(--mono);font-size:10px;letter-spacing:.12em;opacity:.85}
-  .day .daynum .n{font-size:26px;font-weight:800;line-height:1;font-family:var(--font-head)}
-  .day .daynum .dow{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;margin-top:3px;opacity:.85}
-  .day .dbody{flex:1;padding:13px 16px;min-width:0}
-  .day .dtitle{font-weight:700;font-size:16px;color:var(--accent-2);font-family:var(--font-head);margin-bottom:3px}
-  .day .dbody p{margin:0;font-size:13.5px;color:#3a352c}
-  .day .dmeta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
-  .day .tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:2px 8px;color:var(--muted)}
-  .day .tag.rest{background:color-mix(in srgb,var(--green) 14%,var(--card));border-color:var(--green);color:var(--green)}
-  .day .tag.eat{background:color-mix(in srgb,var(--pop) 12%,var(--card));border-color:var(--pop);color:var(--pop)}
-  .day.restday .daynum{background:var(--green)}
-  .day.arrive .daynum,.day.depart .daynum{background:var(--accent-2)}
-  @media(max-width:520px){.day .daynum{width:58px}.day .daynum .n{font-size:21px}}
-  .stops{margin-top:10px;display:flex;flex-direction:column;gap:7px}
-  .stop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:7px 10px}
-  .stop .mode{flex:none;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.04em;padding:3px 7px;border-radius:6px;color:#fff;background:var(--accent);text-transform:uppercase;display:inline-flex;align-items:center;gap:4px}
-  .stop .mode.kakao{background:#2c2c54}
-  .stop .mode.grab{background:#0a8a3f}
-  .stop .mode.train{background:var(--accent-2)}
-  .stop .mode.walk{background:var(--green)}
-  .stop .dest{flex:1;min-width:120px;font-size:13px;font-weight:600;color:var(--accent-2)}
-  .stop .est{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
-  .stop .go{flex:none;cursor:pointer;border:0;background:var(--accent);color:#fff;border-radius:7px;padding:5px 9px;font-family:var(--mono);font-size:10.5px;font-weight:700;display:inline-flex;align-items:center;gap:5px}
-  .stop .go:hover{background:var(--accent-2)}
-  .stop .go svg{width:12px;height:12px}
-
-  .dirbtn{display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.02em;color:#fff;background:var(--accent);border:0;border-radius:8px;padding:8px 13px;margin-top:11px;transition:background .16s,transform .12s}
-  .dirbtn:hover{background:var(--accent-2);transform:translateY(-1px)}
-  .dirbtn:active{transform:none}
-  .dirbtn svg{width:15px;height:15px;flex:none}
-  .dirbtn.ghost{background:transparent;color:var(--ink-blue);border:1.5px solid var(--ink-blue)}
-  .dirbtn.ghost:hover{background:color-mix(in srgb, var(--ink-blue) 8%, var(--card))}
-  .dirmini{display:inline-flex;align-items:center;gap:5px;cursor:pointer;margin-top:9px;font-family:ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--ink-blue);background:transparent;border:0;padding:0}
-  .dirmini svg{width:13px;height:13px;flex:none}
-  .dirmini:hover{color:var(--stamp);text-decoration:underline}
-
-  .modal-overlay{position:fixed;inset:0;background:rgba(28,26,23,.62);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:100;padding:18px}
-  .modal-overlay.open{display:flex;animation:fade .25s ease}
-  .modal{background:var(--paper);border:2px solid var(--ink);border-radius:16px;width:min(760px,100%);max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
-  .modal-head{display:flex;align-items:center;gap:12px;padding:15px 18px;border-bottom:2px solid var(--ink);background:var(--paper-2)}
-  .modal-head h3{margin:0;font-size:18px;font-weight:800;letter-spacing:-.01em;flex:1}
-  .modal-head .route-sub{font-family:ui-monospace,monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;display:block;margin-top:2px;font-weight:400}
-  .modal-close{border:1.5px solid var(--ink);background:var(--paper);border-radius:8px;width:34px;height:34px;font-size:18px;cursor:pointer;line-height:1;color:var(--ink);flex:none}
-  .modal-close:hover{background:var(--stamp);color:#fff;border-color:var(--stamp)}
-  .modeswitch{display:flex;gap:4px;background:var(--paper);border:1.5px solid var(--ink);border-radius:9px;padding:3px}
-  .modeswitch button{border:0;background:transparent;cursor:pointer;border-radius:6px;padding:6px 12px;font-family:ui-monospace,monospace;font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--muted);display:inline-flex;align-items:center;gap:6px;transition:background .15s,color .15s}
-  .modeswitch button svg{width:14px;height:14px}
-  .modeswitch button[aria-pressed="true"]{background:var(--ink-blue);color:#fff}
-  @media(max-width:620px){.modeswitch button{padding:6px 9px}.modeswitch button .lbl{display:none}}
-  .modal-body{padding:0;overflow:auto}
-  .modal-body iframe{display:block;width:100%;height:440px;border:0;background:#e9e4d8}
-  .naver-pane{padding:26px 22px 28px;display:flex;flex-direction:column;align-items:stretch;gap:10px;max-width:460px;margin:0 auto}
-  .naver-pane[hidden]{display:none}
-  .naver-pane .np-lbl{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .naver-pane .np-dest{font-size:21px;font-weight:800;line-height:1.2}
-  .naver-pane .np-kr{font-size:17px;color:var(--muted);margin-bottom:6px}
-  .naver-pane .np-btn{display:block;text-align:center;text-decoration:none;cursor:pointer;font:inherit;font-weight:700;font-size:15px;padding:13px 16px;border-radius:10px;border:1px solid #03a94d;background:#03c75a;color:#fff}
-  .naver-pane .np-btn.ghost{background:transparent;color:inherit;border-color:var(--line);font-weight:600;font-size:14px}
-  .naver-pane .np-note{margin:6px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
-  .modal-foot{padding:13px 18px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-family:ui-monospace,monospace;font-size:12px;color:var(--muted)}
-  .modal-foot a{margin-left:auto;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff;background:var(--green);border-radius:8px;padding:8px 14px;font-weight:700;font-size:12px}
-  .modal-foot a:hover{background:#345a3e}
-  @media(max-width:620px){.modal-body iframe{height:62vh}.modal-foot a{margin-left:0;width:100%;justify-content:center}}
-
-  .note{background:color-mix(in srgb, var(--pop) 9%, var(--card));border:1px solid color-mix(in srgb, var(--pop) 35%, var(--line));border-left:5px solid var(--pop);border-radius:10px;padding:12px 15px;font-size:13.5px;color:var(--ink);margin:18px 0 4px}
-  .note b{color:var(--pop)}
-
-  footer{border-top:3px solid var(--accent);padding:22px;text-align:center;font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.05em;transition:border-color .4s}
-
-  /* ===== PLANNER ===== */
+  .kr{font-weight:400;font-size:.82em;color:var(--muted)}.cn{font-weight:400;font-size:.82em;color:var(--pop)}.cn::before{content:"· ";color:var(--line)}
   .planner-intro{font-size:14px;color:#3a352c;margin:0 0 16px;max-width:70ch}
-  .planner-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
-  .seg{display:flex;gap:3px;background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:3px}
-  .seg button{border:0;background:transparent;cursor:pointer;border-radius:6px;padding:6px 11px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--muted);transition:.15s}
-  .seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
-  .pl-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
-  .pl-btn{border:1.5px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;border-radius:8px;padding:8px 13px;font-family:var(--mono);font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
-  .pl-btn:hover{background:var(--accent-2)}
-  .pl-btn.ghost{background:transparent;color:var(--accent)}
-  .pl-btn.ghost:hover{background:color-mix(in srgb,var(--accent) 8%,var(--card))}
-  .pl-btn.warn{border-color:var(--pop);background:transparent;color:var(--pop)}
-  .pl-btn.warn:hover{background:color-mix(in srgb,var(--pop) 9%,var(--card))}
-  .planner-layout{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:18px;align-items:start}
-  @media(max-width:860px){.planner-layout{grid-template-columns:1fr}}
-  .palette{position:sticky;top:64px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);max-height:calc(100vh - 80px);overflow:auto}
-  @media(max-width:860px){.palette{position:static;max-height:none}}
-  .palette h3{margin:0 0 4px;font-size:16px;font-family:var(--font-head);color:var(--accent-2)}
-  .palette .sub{font-size:11.5px;color:var(--muted);font-family:var(--mono);margin-bottom:10px}
-  .pcard{border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:8px;background:var(--paper);cursor:grab;transition:.12s;position:relative}
-  .pcard:active{cursor:grabbing}
-  .pcard.picked{opacity:.4;filter:grayscale(.4)}
-  .pcard .pc-top{display:flex;align-items:center;gap:8px}
-  .pcard .pc-name{font-size:13.5px;font-weight:700;color:var(--accent-2);flex:1;line-height:1.2}
-  .pcard .pc-cat{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:5px;color:#fff;flex:none}
-  .cat-sight{background:#3b6e8f}.cat-food{background:#c0653a}.cat-nature{background:#3f7d56}.cat-culture{background:#8a5a9e}.cat-relax{background:#2c8c8c}
-  .pcard .pc-meta{font-size:11px;color:var(--muted);margin-top:3px}
-  .pcard .pc-add{position:absolute;top:8px;right:9px;border:0;background:var(--accent);color:#fff;border-radius:6px;width:22px;height:22px;font-size:14px;cursor:pointer;line-height:1;display:none}
-  @media(max-width:860px){.pcard .pc-add{display:block}.pcard{padding-right:38px}}
-  .board{display:flex;flex-direction:column;gap:14px;min-width:0}
-  .dayblock{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
-  .dayblock-head{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--paper-2);border-bottom:1px solid var(--line)}
-  .dayblock-head .dh-date{font-family:var(--font-head);font-weight:700;color:var(--accent-2);font-size:15px}
-  .dayblock-head .dh-city{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:2px 7px;border:1px solid var(--line);border-radius:20px}
-  .dayblock-head .dh-opt{margin-left:auto;border:1.5px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;border-radius:7px;padding:4px 9px;font-family:var(--mono);font-size:10px;font-weight:700;display:inline-flex;align-items:center;gap:4px}
-  .dayblock-head .dh-opt:hover{background:var(--accent);color:#fff}
-  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-  @media(max-width:680px){.slots{grid-template-columns:1fr 1fr}}
-  .slot{border-right:1px dashed var(--line);border-bottom:1px dashed var(--line);min-height:96px;padding:8px;display:flex;flex-direction:column}
-  .slot:nth-child(4n){border-right:0}
-  .slot .slot-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:5px}
-  .slot .slot-lbl .ic{font-size:11px}
-  .slot.dragover{background:color-mix(in srgb,var(--accent) 10%,var(--card));outline:2px dashed var(--accent);outline-offset:-4px}
-  .slot.empty-hint::after{content:"drop here";font-family:var(--mono);font-size:10px;color:var(--line);margin:auto;padding-bottom:12px}
-  .chip{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:6px 8px;margin-bottom:6px;cursor:grab;position:relative;font-size:12px}
-  .chip.cat-food{border-left-color:#c0653a}.chip.cat-sight{border-left-color:#3b6e8f}.chip.cat-nature{border-left-color:#3f7d56}.chip.cat-culture{border-left-color:#8a5a9e}.chip.cat-relax{border-left-color:#2c8c8c}
-  .chip .ch-name{font-weight:700;color:var(--accent-2);line-height:1.2;padding-right:16px}
-  .chip .ch-x{position:absolute;top:4px;right:5px;border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;padding:0}
-  .chip .ch-x:hover{color:var(--pop)}
-  .chip .ch-travel{font-family:var(--mono);font-size:9.5px;color:var(--muted);margin-top:4px;display:flex;align-items:center;gap:5px}
-  .chip .ch-go{border:0;background:transparent;color:var(--accent);cursor:pointer;font-family:var(--mono);font-size:9.5px;font-weight:700;padding:0;text-decoration:underline}
-  .pl-empty{padding:20px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:12px}
-
-  .costwrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
-  @media(max-width:760px){.costwrap{grid-template-columns:1fr}}
-  .costcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
-  .costcard h3{margin:0 0 12px;font-size:16px;font-family:var(--font-head);color:var(--accent-2);display:flex;align-items:center;gap:8px}
-  .costcard h3 .ic{width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
-  .costrow{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:13.5px}
-  .costrow:last-of-type{border-bottom:0}
-  .costrow .cname{flex:1;color:var(--ink)}
-  .costrow .csub{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
-  .costrow .camt{font-family:var(--mono);font-weight:700;color:var(--accent-2);white-space:nowrap}
-  .costtot{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:12px;border-top:2px solid var(--accent);font-family:var(--font-head)}
-  .costtot .l{font-weight:700;font-size:15px;color:var(--accent-2)}
-  .costtot .v{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--pop)}
+  .pl-btn{border:1.5px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;border-radius:8px;padding:8px 13px;font-family:var(--mono);font-size:11.5px;font-weight:700}
   .grandcost{background:var(--accent);color:#fff;border-radius:14px;padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin-bottom:18px}
-  .grandcost .gl{font-family:var(--font-head);font-size:17px;font-weight:700}
-  .grandcost .gsub{font-family:var(--mono);font-size:11px;opacity:.85;letter-spacing:.04em}
+  .grandcost .gl{font-family:var(--font-head);font-size:17px;font-weight:700}.grandcost .gsub,.grandcost .gper{font-family:var(--mono);font-size:11px;opacity:.85}
   .grandcost .gv{margin-left:auto;font-family:var(--mono);font-size:26px;font-weight:800}
-  .grandcost .gper{font-family:var(--mono);font-size:11px;opacity:.85}
-  .costnote{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:2px}
-
-  .kr{font-weight:400;font-size:.82em;color:var(--muted);white-space:nowrap}
-  .card h3 .kr{display:inline-block}
-  .stop .dest .kr{font-size:.9em;color:var(--muted)}
-  .day .dbody p .kr,.card p .kr{color:var(--accent);font-weight:600}
-  .cn{font-weight:400;font-size:.82em;color:var(--pop);white-space:nowrap}
-  .cn::before{content:"·";margin-right:4px;color:var(--line)}
-  .card h3 .cn{display:inline-block}
-  .stop .dest .cn{font-size:.9em}
-  .day .dbody p .cn,.card p .cn{font-weight:600}
-
-  /* ===== SUMMARY tables ===== */
   .sum-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:6px}
   .sum-head h2{margin:0;font-family:var(--font-head);color:var(--accent-2);font-size:22px}
   .sum-head .who{font-family:var(--mono);font-size:11px;color:var(--muted)}
   .sum-actions{margin:14px 0 22px}
   .sumtable-wrap{overflow-x:auto;margin-bottom:26px}
-  table.sum{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
-  table.sum caption{caption-side:top;text-align:left;font-family:var(--font-head);font-weight:700;color:var(--accent-2);font-size:16px;padding:12px 14px 8px;display:flex;align-items:center;gap:8px}
-  table.sum th{background:var(--accent);color:#fff;text-align:left;padding:9px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:700}
-  table.sum td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink)}
-  table.sum tr:nth-child(even) td{background:color-mix(in srgb,var(--accent) 3%,var(--card))}
-  table.sum td .b{font-weight:700;color:var(--accent-2)}
-  table.sum td .m{font-family:var(--mono);font-size:11.5px}
+  table.sum{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13px}
+  table.sum caption{text-align:left;font-family:var(--font-head);font-weight:700;color:var(--accent-2);font-size:16px;padding:12px 14px 8px}
+  table.sum th{background:var(--accent);color:#fff;text-align:left;padding:9px 12px;font-family:var(--mono);font-size:10.5px;text-transform:uppercase}
+  table.sum td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+  table.sum td .b{font-weight:700;color:var(--accent-2)}table.sum td .m{font-family:var(--mono);font-size:11.5px}
   table.sum td .s{font-size:11px;color:var(--muted);display:block;margin-top:2px}
   table.sum td.amt{font-family:var(--mono);font-weight:700;color:var(--accent-2);white-space:nowrap;text-align:right}
   table.sum tr.total td{background:var(--paper-2);font-weight:700;border-top:2px solid var(--accent)}
   table.sum tr.total td.amt{color:var(--pop);font-size:15px}
-  .conf{font-family:var(--mono);font-size:11px;background:color-mix(in srgb,var(--accent) 8%,var(--card));border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--accent-2);white-space:nowrap}
+  .conf{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:5px;padding:1px 6px;white-space:nowrap}
   .sum-foot{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:26px}
-
-  /* ===== EXPENSES ===== */
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
   @media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}}
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
   .kpi .kl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
   .kpi .kv{font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--accent-2);margin-top:4px}
-  .kpi .kv small{font-size:13px;font-weight:400;color:var(--muted)}
-  .kpi .ks{font-size:12px;color:var(--muted);margin-top:2px}
-  .chartbox{position:relative;width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:var(--shadow);margin-bottom:18px}
+  .kpi .kv small{font-size:13px;font-weight:400;color:var(--muted)}.kpi .ks{font-size:12px;color:var(--muted);margin-top:2px}
+  .chartbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:var(--shadow);margin-bottom:18px}
   .chartbox h3{margin:0 0 10px;font-size:15px;font-family:var(--font-head);color:var(--accent-2)}
   .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-bottom:8px}
-  .legend span{display:inline-flex;align-items:center;gap:5px}
-  .legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
-
-  @media print{
-    body[data-city="summary"] header,
-    body[data-city="summary"] nav,
-    body[data-city="summary"] footer,
-    body[data-city="summary"] .sum-actions{display:none !important}
-    body[data-city="summary"] .panel{display:none !important}
-    body[data-city="summary"] #summary{display:block !important}
-    body[data-city="summary"] main{padding:0}
-    body[data-city="expenses"] header,
-    body[data-city="expenses"] nav,
-    body[data-city="expenses"] footer{display:none !important}
-    body[data-city="expenses"] .panel{display:none !important}
-    body[data-city="expenses"] #expenses{display:block !important}
-    table.sum{break-inside:auto;box-shadow:none;border:1px solid #999;font-size:11px}
-    table.sum tr{break-inside:avoid}
-    table.sum th{background:#3b5168 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    .grandcost{background:#3b5168 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    body{background:#fff}
-    .sumtable-wrap{overflow:visible;margin-bottom:16px}
-    @page{margin:1.4cm}
-  }
-  @media print{
-    body[data-city="planner"] header,
-    body[data-city="planner"] nav,
-    body[data-city="planner"] footer,
-    body[data-city="planner"] .palette,
-    body[data-city="planner"] .planner-controls,
-    body[data-city="planner"] .planner-intro,
-    body[data-city="planner"] .secthead .hint,
-    body[data-city="planner"] .modal-overlay{display:none !important}
-    body[data-city="planner"] .panel{display:none !important}
-    body[data-city="planner"] .panel#planner{display:block !important}
-    body[data-city="planner"] .planner-layout{grid-template-columns:1fr !important}
-    body[data-city="planner"] .board{gap:10px}
-    body[data-city="planner"] .dayblock{break-inside:avoid;box-shadow:none;border:1px solid #999}
-    body[data-city="planner"] .dh-opt,
-    body[data-city="planner"] .ch-x,
-    body[data-city="planner"] .ch-go{display:none !important}
-    body[data-city="planner"] .slot{min-height:auto}
-    body[data-city="planner"]{background:#fff}
-  }
-  a.tab:focus-visible,.tab:focus-visible{outline:3px solid var(--pop);outline-offset:-3px}
+  .legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+  @media print{header,nav,footer,.sum-actions{display:none !important}.panel{display:none !important}body[data-city="summary"] #summary,body[data-city="expenses"] #expenses{display:block !important}body{background:#fff}table.sum th,.grandcost{background:#3b5168 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body data-city="seoul">
-<header>
-  <div class="wrap">
-    <p class="kicker"><span id="kicker-motif"></span> Itinerary · Sep–Oct 2026</p>
-    <h1><span class="cty" data-c="seoul">Seoul</span><span class="sep">/</span><span class="cty" data-c="penang">Penang</span><span class="sep">/</span><span class="cty" data-c="osaka">Osaka</span></h1>
-    <div class="subline">
-      <span><b>Out:</b> Sep 20 · YVR</span>
-      <span><b>Home:</b> Oct 17 · YVR</span>
-      <span><b>Carriers:</b> Air Canada · Cathay Pacific</span>
-      <span class="stamp"><span class="big" id="stamp-big">한국 KOREA</span><span class="sml" id="stamp-sml">SEP 21–26</span></span>
-    </div>
-  </div>
-</header>
+<header><div class="wrap">
+  <p class="kicker"><span id="kicker-motif"></span> Itinerary · Sep–Oct 2026</p>
+  <h1><span class="cty" data-c="seoul">Seoul</span><span class="sep">/</span><span class="cty" data-c="penang">Penang</span><span class="sep">/</span><span class="cty" data-c="hongkong">Hong Kong</span></h1>
+  <div class="subline"><span><b>Out:</b> Sep 20 · YVR</span><span><b>Home:</b> Oct 10 · YVR</span><span><b>Carriers:</b> Air Canada · Cathay Pacific</span>
+    <span class="stamp"><span class="big" id="stamp-big">한국 KOREA</span><span class="sml" id="stamp-sml">SEP 21–26</span></span></div>
+</div></header>
 
-<nav>
-  <div class="tabs" role="tablist" aria-label="Destinations">
-    <button class="tab" role="tab" aria-selected="true" aria-controls="seoul" id="tab-seoul"><span class="city">Seoul</span><span class="meta">Sep 21–26 · 5 nts</span></button>
-    <button class="tab" role="tab" aria-selected="false" aria-controls="penang" id="tab-penang"><span class="city">Penang</span><span class="meta">Sep 26–Oct 10 · 14 nts</span></button>
-    <button class="tab" role="tab" aria-selected="false" aria-controls="osaka" id="tab-osaka"><span class="city">Osaka</span><span class="meta">Oct 10–17 · 7 nts</span></button>
-    <button class="tab" role="tab" aria-selected="false" aria-controls="itinerary" id="tab-itinerary"><span class="city">Itinerary</span><span class="meta">A typical day</span></button>
-    <button class="tab" role="tab" aria-selected="false" aria-controls="planner" id="tab-planner"><span class="city">Planner ✦</span><span class="meta">Build your days</span></button>
-    <button class="tab" role="tab" aria-selected="false" aria-controls="summary" id="tab-summary"><span class="city">Summary ⎙</span><span class="meta">Print / PDF</span></button>
-    <button class="tab" role="tab" aria-selected="false" aria-controls="expenses" id="tab-expenses"><span class="city">Expenses $</span><span class="meta">Actuals · Sep 18+</span></button>
-  </div>
-</nav>
+<nav><div class="tabs" role="tablist">
+  <button class="tab" aria-selected="true"><span class="city">Seoul</span><span class="meta">Sep 21–26 · 5 nts</span></button>
+  <button class="tab" aria-selected="false"><span class="city">Penang</span><span class="meta">Sep 26–Oct 3 · 14 nts booked</span></button>
+  <button class="tab" aria-selected="false"><span class="city">Hong Kong</span><span class="meta">Oct 3–10 · 7 nts</span></button>
+  <button class="tab" aria-selected="false"><span class="city">Itinerary</span><span class="meta">A typical day</span></button>
+  <button class="tab" aria-selected="false"><span class="city">Summary ⎙</span><span class="meta">Print / PDF</span></button>
+  <button class="tab" aria-selected="false"><span class="city">Expenses $</span><span class="meta">Actuals</span></button>
+</div></nav>
 
 <main>
-
-<!-- ============ SEOUL ============ -->
-<section class="panel active" id="seoul" role="tabpanel" aria-labelledby="tab-seoul">
-  <div class="leg">
-    <span class="flightcode">AC 63</span>
-    <span class="route"><b>YVR</b> <span class="arrow">→</span> <b>ICN</b></span>
-    <span class="route">Sun Sep 20 · 12:20 → 16:05 <b>+1</b> · 11h45</span>
-    <span class="nights">Base: <b>Hongdae</b> · 5 nights</span>
-  </div>
-
-  <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2></div>
+<!-- SEOUL -->
+<section class="panel active" id="seoul">
+  <div class="leg"><span class="flightcode">AC 63</span><span class="route"><b>YVR</b> <span class="arrow">→</span> <b>ICN</b></span><span class="route">Sun Sep 20 · 12:20 → 16:05 +1</span><span class="nights">Base: <b>Hongdae</b> · 5 nights</span></div>
+  <div class="secthead"><span class="num">A</span><h2>Where you stayed</h2></div>
   <div class="grid cols-2">
-    <div class="card hotel" style="border-left-color:var(--stamp)">
+    <div class="card hotel">
       <h3>BIOS building, Unit 601 · Hongdae <span class="cn">弘大</span></h3>
-      <div class="tagrow"><span class="pill your">Your booking · Airbnb (Hangang Stay)</span><span class="pill">Seogyo-dong 서교동</span><span class="pill rate">★ 4.97</span><span class="pill">Unit 601 · BIOS building</span><span class="pill">6 guests · duplex · elevator</span></div>
-      <p>New-build 2026 duplex in the heart of Hongdae — 1 min to the Hongdae shopping street, about 7 min on foot from Hongik Univ Station Exit 9 (8–9 with suitcases), 5 min to Hapjeong. Two queen bedrooms + sofa beds over two levels, kitchen, washer + dryer, elevator, and free capsule coffee/ramen/water. A lively, walkable, young-Seoul base with cafés, GS25 and Olive Young at the door, and six supermarkets within a 12-minute walk (see <b>Supermarkets within walking distance</b> below).</p>
-      <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Mon Sep 21 <small>· from 16:00</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Sep 26 <small>· by 12:00</small></div></div>
-        <div class="cell"><div class="lbl">Nights</div><div class="val">5</div></div>
-      </div>
-      <div class="addr"><b>5 Jandari-ro 6-gil, Unit 601, Seoul 04038</b> <span class="kr">서울 마포구 잔다리로6길 5, 601호</span><br>Lot address (use for taxis): <b>372-9 Seogyo-dong, Mapo-gu</b> <span class="kr">서울특별시 마포구 서교동 372-9, 601호</span> <span class="cn">首尔特别市 麻浦区 西桥洞 372-9</span><br>Building name on the entrance: <b>BIOS</b> · 1st-floor door plus a B1 entrance on the sloped side street<br>Hongik Univ Stn <span class="kr">홍대입구역</span> Exit 9 (~7 min) · Hapjeong <span class="kr">합정역</span> (5 min) · keypad self check-in<br><a class="link" href="https://drive.google.com/file/d/1rlK0jh-fPPsoA01QNhhfZUh83SBTNPkE/view?usp=sharing" target="_blank" rel="noopener">Host's photo directions (PDF)</a> &nbsp; <a class="link" href="https://url.kr/cs9i3v" target="_blank" rel="noopener">Host's Google Maps pin</a></div>
-      <p class="confirm" style="margin-top:8px">New-build duplex — bedrooms are split over two floors; there's an elevator in the building. Unit is <b>601</b>; get the door code from the host through Airbnb messages before you fly.</p>
+      <div class="tagrow"><span class="pill your">Airbnb (Hangang Stay)</span><span class="pill">Seogyo-dong</span><span class="pill rate">★ 4.97</span><span class="pill">duplex · elevator</span></div>
+      <p>New-build 2026 duplex in the heart of Hongdae — 7 min on foot from Hongik Univ Station Exit 9, 5 min to Hapjeong. Two queen bedrooms + sofa beds, kitchen, washer + dryer.</p>
+      <div class="stay"><div class="cell"><div class="lbl">Check in</div><div class="val">Mon Sep 21 <small>· 16:00</small></div></div><div class="cell"><div class="lbl">Check out</div><div class="val">Sat Sep 26 <small>· 12:00</small></div></div><div class="cell"><div class="lbl">Paid</div><div class="val">$1,335.38 <small>CAD · 5 nts</small></div></div></div>
+      <div class="addr"><b>5 Jandari-ro 6-gil, Unit 601, Seoul 04038</b> <span class="kr">서울 마포구 잔다리로6길 5, 601호</span><br>Taxi address: <b>372-9 Seogyo-dong, Mapo-gu</b> <span class="kr">서울특별시 마포구 서교동 372-9</span><br><a class="link" href="https://drive.google.com/file/d/1rlK0jh-fPPsoA01QNhhfZUh83SBTNPkE/view?usp=sharing" target="_blank">Host's photo directions (PDF)</a> · <a class="link" href="https://url.kr/cs9i3v" target="_blank">Host's map pin</a></div>
     </div>
     <div class="card">
       <h3>Airport transfers</h3>
-      <div class="tagrow"><span class="pill">Arrive Mon Sep 21 · 16:05</span><span class="pill">Leave Sat Sep 26 · 08:00 flight</span></div>
-      <p><b>Arriving:</b> AREX all-stop train to Hongik Univ Station (~55 min, ₩5,000), airport bus 6002 to the stop by Exit 2 (~65 min, ₩17,000), or a taxi from the official rank (~60 min, ₩60–100k). From Exit 9 it is a 7-minute walk: straight past Apple and Adidas, cross at the first crosswalk, continue to the glass ENTAS building, take the alley opposite the RAVI HAIR sign, pass the CU and walk up the slope to the BIOS tower. Full photo walkthrough is in the host's PDF linked above.</p>
-      <div class="depart">
-        <h3>Leaving early on Sat Sep 26 → ICN</h3>
-        <p style="margin:0 0 10px;font-size:13.5px"><b>CX 413 departs ICN Terminal 1 at 08:00 — aim to be at the airport by 05:30–06:00.</b> This is the Saturday of the Chuseok holiday, so expect a busier-than-usual terminal.</p>
-        <ol>
-          <li><b>Simplest: pre-book a taxi for ~04:30</b> (Kakao T reservation, or ask the host to arrange one). About 50–60 min at that hour; expect roughly ₩60,000–100,000 for the car.</li>
-          <li><b>Cheaper: airport bus 6002.</b> The first airport-bound buses leave central Seoul just after 04:10 and run every 12–15 min, so they pass Hongdae from roughly 04:30–05:00. ~60–70 min to T1. ₩17,000 each, tap T-money or pay cash (no change given).</li>
-          <li><b>Find the stop beforehand.</b> The airport-bound stop is on Yanghwa-ro near Hongik Univ Station <span class="kr">홍대입구역</span> — walk to it once in daylight. Exact times per stop: <a class="link" style="margin:0" href="https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=2" target="_blank" rel="noopener">airportlimousine.co.kr</a>.</li>
-          <li><b>AREX is too late:</b> the first train from Hongik Univ is around 05:30, which is cutting it fine for an 08:00 international departure with bags.</li>
-        </ol>
-        <div class="leaveby">Bags packed Friday night. Out the door by ~04:20 either way.</div>
-        <button class="dirbtn ghost" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Incheon International Airport Terminal 1, South Korea" data-mode="drive" data-title="Flat → ICN T1" data-sub="Taxi · ~55 min pre-dawn">Route: flat → ICN T1</button>
-      </div>
+      <div class="tagrow"><span class="pill">Arrive Sep 21 · 16:05</span><span class="pill">Leave Sep 26 · 08:00 flight</span></div>
+      <p><b>Arriving:</b> AREX all-stop train to Hongik Univ (~55 min), bus 6002 (~65 min, ₩17,000), or taxi (~60 min). From Exit 9: straight past Apple and Adidas, cross at the first crosswalk, continue to the glass ENTAS building, take the alley opposite RAVI HAIR, pass the CU and walk up the slope to BIOS.</p>
+      <div class="depart"><h3>Leaving early Sat Sep 26 → ICN</h3><ol><li><b>Pre-book a taxi for ~04:30</b> (Kakao T), ₩60–100k.</li><li><b>Or bus 6002</b> from Yanghwa-ro, from ~04:30.</li><li>AREX is too late (first train ~05:30).</li></ol><div class="leaveby">Out the door by ~04:20.</div>
+      <button class="dirbtn ghost" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Incheon International Airport Terminal 1, South Korea" data-mode="drive" data-title="Flat → ICN T1">Route: flat → ICN T1</button></div>
     </div>
   </div>
 
-  <div class="secthead"><span class="num">A2</span><h2>Sightseeing by subway from Hongdae</h2><span class="hint">Lines 2 &amp; AREX · tap T-money</span></div>
-  <div class="note"><b>Your station:</b> Hongik Univ <span class="kr">홍대입구역</span> <span class="cn">弘大入口站</span> — <b>Line 2</b> (green, the loop line), <b>AREX</b> (airport rail) and the <b>Gyeongui–Jungang</b> line. Line 2 loops around the whole city and reaches Hongdae, Sinchon, City Hall, Euljiro and Gangnam without transfers; Hapjeong adds <b>Line 6</b> for Itaewon and Seongsu.</div>
+  <div class="secthead"><span class="num">A2</span><h2>Sightseeing by subway</h2><span class="hint">Line 2 · tap T-money</span></div>
   <div class="grid cols-2">
-    <div class="card">
-      <h3>Line 2 <span class="kr">2호선</span> — the green loop</h3>
-      <div class="tagrow"><span class="pill">No transfer</span><span class="pill">The easy one</span></div>
-      <p><b>Sinchon / Ewha</b> — 1–2 stops · student cafés and shopping.<br>
-      <b>City Hall</b> — ~15 min · Deoksugung Palace <span class="kr">덕수궁</span>, Cheonggyecheon <span class="kr">청계천</span>.<br>
-      <b>Euljiro 3-ga</b> — retro Euljiro bars &amp; cafés (transfer-free on Line 2).<br>
-      <b>Gangnam / Samseong</b> — the south side, COEX mall &amp; aquarium.<br>
-      <b>Hongdae itself</b> — the shopping street, buskers and cafés are right at your door.</p>
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="City Hall Station, Seoul" data-mode="transit" data-title="Hongdae → City Hall" data-sub="Line 2 · direct">Route to City Hall</button>
-    </div>
-    <div class="card">
-      <h3>One easy transfer</h3>
-      <div class="tagrow"><span class="pill">1 change</span></div>
-      <p><b>Gyeongbokgung <span class="kr">경복궁</span></b> — Line 2 to Euljiro 3-ga, Line 3 to Gyeongbokgung. ~30 min.<br>
-      <b>Insadong / Anguk <span class="kr">인사동</span></b> — Line 2 to Euljiro 3-ga, Line 3 to Anguk. ~28 min.<br>
-      <b>Myeongdong <span class="kr">명동</span></b> — Line 2 to Euljiro 1-ga + short walk, or Line 4. ~25 min.<br>
-      <b>Bukchon Hanok Village <span class="kr">북촌</span></b> — via Anguk (as above), then a short walk.<br>
-      <b>Seongsu cafés <span class="kr">성수</span></b> — Line 2 direct around the loop, ~25 min.</p>
-      <button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Gyeongbokgung Palace, Seoul" data-mode="transit" data-title="Hongdae → Gyeongbokgung" data-sub="Line 2 → Line 3">Route to Gyeongbokgung</button>
-    </div>
-    <div class="card">
-      <h3>Right on your doorstep</h3>
-      <div class="tagrow"><span class="pill">Walk</span></div>
-      <p><b>Hongdae shopping street <span class="kr">홍대거리</span></b> — a couple of minutes · buskers, fashion, street food, cafés.<br>
-      <b>Yeonnam-dong <span class="kr">연남동</span></b> — the leafy "Yeontral Park" café district, ~15 min walk.<br>
-      <b>Hapjeong / Mangwon <span class="kr">망원</span></b> — Hapjeong is ~5 min on foot; Mangwon Market is one stop further on Line 6.<br>
-      <b>Han River (Mapo) <span class="kr">한강</span></b> — riverside walk and picnics, short taxi.</p>
-      <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Yeonnam-dong, Seoul" data-mode="walk" data-title="Flat → Yeonnam-dong" data-sub="~10 min walk">Walk to Yeonnam-dong</button>
-    </div>
-    <div class="card">
-      <h3>How to ride</h3>
-      <div class="tagrow"><span class="pill">T-money</span></div>
-      <p>Buy a <b>T-money card</b> at any convenience store (₩3,000–5,000) and top it up with cash. Tap in and tap out at the gates — the base fare is about ₩1,550. Trains run roughly 05:30–24:00.</p>
-      <p style="margin-top:8px">Use <b>Naver Map</b> or <b>KakaoMap</b> rather than Google for live Korean transit directions — Google's transit data in Korea is limited. Both have English modes.</p>
-    </div>
+    <div class="card"><h3>Line 2 — the green loop</h3><div class="tagrow"><span class="pill">No transfer</span></div><p><b>Sinchon / Ewha</b> 1–2 stops · <b>City Hall</b> ~15 min · <b>Euljiro 3-ga</b> · <b>Gangnam / Samseong</b> (COEX).</p><button class="dirmini" data-from="Hongik University Station, Seoul" data-to="City Hall Station, Seoul" data-mode="transit" data-title="Hongdae → City Hall">Route to City Hall</button></div>
+    <div class="card"><h3>One easy transfer</h3><div class="tagrow"><span class="pill">1 change</span></div><p><b>Gyeongbokgung</b> Line 2 → 3, ~30 min · <b>Insadong / Anguk</b> ~28 min · <b>Myeongdong</b> via Euljiro 1-ga ~25 min · <b>Bukchon</b> via Anguk.</p><button class="dirmini" data-from="Hongik University Station, Seoul" data-to="Gyeongbokgung Palace, Seoul" data-mode="transit" data-title="Hongdae → Gyeongbokgung">Route to Gyeongbokgung</button></div>
+    <div class="card"><h3>On your doorstep</h3><div class="tagrow"><span class="pill">Walk</span></div><p><b>Hongdae shopping street</b> · <b>Yeonnam-dong</b> cafés ~15 min · <b>Hapjeong / Mangwon Market</b>.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Yeonnam-dong, Seoul" data-mode="walk" data-title="Flat → Yeonnam-dong">Walk to Yeonnam-dong</button></div>
+    <div class="card"><h3>How to ride</h3><div class="tagrow"><span class="pill">T-money</span></div><p>T-money card from any convenience store; base fare ~₩1,550. Use <b>Naver Map</b> or <b>KakaoMap</b> for transit — Google is limited in Korea.</p></div>
   </div>
-  <div class="note"><b>Arrival timing:</b> AC 63 leaves YVR midday Sun Sep 20 and lands ICN <b>16:05 on Mon Sep 21</b> (crosses the date line). Check-in is from 16:00, so the timing works — after immigration and bags you will be on the road around 17:00 and at the flat roughly 18:00–18:45.</div>
 
-  <div class="secthead"><span class="num">A3</span><h2>Supermarkets within walking distance</h2><span class="hint">groceries for the kitchen · all on foot from BIOS</span></div>
-  <div class="stay" style="margin-bottom:16px">
-    <div class="cell"><div class="lbl">Within ~12 min</div><div class="val">6 <small>supermarkets</small></div></div>
-    <div class="cell"><div class="lbl">Closest</div><div class="val">~3 min <small>· Harmony Mart Hongdae</small></div></div>
-    <div class="cell"><div class="lbl">Best for fresh food</div><div class="val">Myeongseong <small>· ~11 min</small></div></div>
-    <div class="cell"><div class="lbl">Earliest / latest</div><div class="val">07:30 <small>Myeongseong</small> · 01:00 <small>Harmony</small></div></div>
-  </div>
+  <div class="secthead"><span class="num">A3</span><h2>Supermarkets within walking distance</h2></div>
   <div class="grid cols-3">
-    <div class="card">
-      <h3>Harmony Mart Hongdae <span class="kr">하모니마트 홍대점</span></h3>
-      <div class="tagrow"><span class="pill your">~3 min walk</span><span class="pill">09:00–01:00</span><span class="pill">★ 2.7 (30)</span></div>
-      <p>The closest proper mart — same side of Yanghwa-ro as the flat, a block toward the station. Snacks, drinks, ramen, basics, some fruit, and open until 1 am. Geared to visitors, so prices run higher; use it for top-ups and late nights rather than the big shop.</p>
-      <div class="addr">15 Yanghwa-ro 16-gil, 1F #101, Mapo-gu <span class="kr">서울 마포구 양화로16길 15, 1층 101호</span></div>
-      <div class="martlinks">
-        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Harmony Mart Hongdae, 15 Yanghwa-ro 16-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Harmony Mart Hongdae" data-sub="~3 min walk">Directions from my location</button>
-        <a class="dirmini" href="https://map.naver.com/p/search/하모니마트 홍대점" target="_blank" rel="noopener">Naver Map</a>
-        <button class="cpy lite" data-copy="하모니마트 홍대점">Copy Korean name</button>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Wellness Discount Mart</h3>
-      <div class="tagrow"><span class="pill">~8 min walk</span><span class="pill">08:00–23:00</span></div>
-      <p>Neighbourhood mart due south of the flat toward Hapjeong/Sangsu, away from the tourist strip. Known locally for well-picked fruit and vegetables at ordinary local prices. No main road to cross.</p>
-      <div class="addr">410-19 Hapjeong-dong, Mapo-gu <span class="kr">서울 마포구 합정동 410-19</span></div>
-      <div class="martlinks">
-        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Wellness Discount Mart, 410-19 Hapjeong-dong, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Wellness Discount Mart" data-sub="~8 min walk">Directions from my location</button>
-        <a class="dirmini" href="https://map.naver.com/p/search/서울 마포구 합정동 410-19" target="_blank" rel="noopener">Naver Map</a>
-        <button class="cpy lite" data-copy="서울 마포구 합정동 410-19">Copy Korean address</button>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Homeplus Hapjeong <span class="kr">홈플러스 합정점</span></h3>
-      <div class="tagrow"><span class="pill">~10 min walk</span><span class="pill">10:00–22:00</span><span class="pill">Hypermarket</span></div>
-      <p>The full-size option: a hypermarket in the basement of the Mecenatpolis mall at Hapjeong Station — fresh produce, meat, seafood, deli, bakery, household goods and a food court. <b>Check it is open before walking over:</b> this branch reopened on Aug 13, 2026 after the chain's July closures. Normally closed the 2nd and 4th Sunday (not during your stay).</p>
-      <div class="addr">45 Yanghwa-ro, Mecenatpolis B2, Mapo-gu <span class="kr">서울 마포구 양화로 45 메세나폴리스 지하2층</span></div>
-      <div class="martlinks">
-        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Homeplus Hapjeong, 45 Yanghwa-ro, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Homeplus Hapjeong" data-sub="~10 min walk">Directions from my location</button>
-        <a class="dirmini" href="https://map.naver.com/p/search/홈플러스 합정점" target="_blank" rel="noopener">Naver Map</a>
-        <button class="cpy lite" data-copy="홈플러스 합정점">Copy Korean name</button>
-      </div>
-    </div>
-    <div class="card" style="border-left:5px solid var(--stamp)">
-      <h3>Myeongseong Mart (Daewoo Mart) <span class="kr">대우명성마트</span></h3>
-      <div class="tagrow"><span class="pill your">Your pick</span><span class="pill">~11 min walk</span><span class="pill">07:30–22:30</span><span class="pill">★ 4.3 (81)</span></div>
-      <p>The best-reviewed local supermarket in range: big for a neighbourhood mart, strong on fresh produce and fruit, clearly price-tagged, cheaper than convenience stores. North of Yanghwa-ro, so cross the main road at the lights. Opens earliest of the lot — good for a breakfast run.</p>
-      <div class="addr">18 World Cup buk-ro 5na-gil, #122, Mapo-gu <span class="kr">서울 마포구 월드컵북로5나길 18, 122호</span> · 02-3144-7887</div>
-      <div class="martlinks">
-        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongseong Mart, 18 World Cup buk-ro 5na-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Myeongseong Mart" data-sub="~11 min walk">Directions from my location</button>
-        <a class="dirmini" href="https://map.naver.com/p/search/대우명성마트" target="_blank" rel="noopener">Naver Map</a>
-        <button class="cpy lite" data-copy="대우명성마트">Copy Korean name</button>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Hapjeong Mart</h3>
-      <div class="tagrow"><span class="pill">~12 min walk</span><span class="pill">08:00–22:00</span><span class="pill">Discount mart</span></div>
-      <p>Local discount supermarket on the far side of Hapjeong Station. Fair prices and a solid everyday range. Pair it with Homeplus, which is on the way.</p>
-      <div class="addr">375-1 Hapjeong-dong, Mapo-gu <span class="kr">서울 마포구 합정동 375-1</span> · 02-334-6323</div>
-      <div class="martlinks">
-        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Hapjeong Mart, 375-1 Hapjeong-dong, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Hapjeong Mart" data-sub="~12 min walk">Directions from my location</button>
-        <a class="dirmini" href="https://map.naver.com/p/search/서울 마포구 합정동 375-1" target="_blank" rel="noopener">Naver Map</a>
-        <button class="cpy lite" data-copy="서울 마포구 합정동 375-1">Copy Korean address</button>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Harmony Mart (station branch) <span class="kr">하모니마트</span></h3>
-      <div class="tagrow"><span class="pill">~12 min walk</span><span class="pill">09:00–01:00</span></div>
-      <p>Sister store to the one near the flat, a couple of minutes from Hongik Univ Station — handy on the way home from the subway. Wide range of Korean food and gift snacks, tax-refund friendly; priced for the location.</p>
-      <div class="addr">7 Yanghwa-ro 18an-gil, Mapo-gu <span class="kr">서울 마포구 양화로18안길 7</span> · 02-332-1125</div>
-      <div class="martlinks">
-        <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Harmony Mart, 7 Yanghwa-ro 18an-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Harmony Mart (station)" data-sub="~12 min walk">Directions from my location</button>
-        <a class="dirmini" href="https://map.naver.com/p/search/서울 마포구 양화로18안길 7" target="_blank" rel="noopener">Naver Map</a>
-        <button class="cpy lite" data-copy="서울 마포구 양화로18안길 7">Copy Korean address</button>
-      </div>
-    </div>
+    <div class="card"><h3>Harmony Mart Hongdae <span class="kr">하모니마트 홍대점</span></h3><div class="tagrow"><span class="pill your">~3 min</span><span class="pill">09:00–01:00</span></div><p>Closest mart — snacks, ramen, basics. Priced for visitors.</p><div class="addr">15 Yanghwa-ro 16-gil <span class="kr">양화로16길 15</span></div><div class="martlinks"><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Harmony Mart Hongdae, 15 Yanghwa-ro 16-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Harmony Mart Hongdae">Directions</button><a class="dirmini" href="https://map.naver.com/p/search/하모니마트 홍대점" target="_blank">Naver Map</a></div></div>
+    <div class="card"><h3>Wellness Discount Mart</h3><div class="tagrow"><span class="pill">~8 min</span><span class="pill">08:00–23:00</span></div><p>Neighbourhood mart toward Hapjeong. Good fruit and veg at local prices.</p><div class="addr">410-19 Hapjeong-dong <span class="kr">합정동 410-19</span></div><div class="martlinks"><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Wellness Discount Mart, 410-19 Hapjeong-dong, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Wellness Discount Mart">Directions</button></div></div>
+    <div class="card"><h3>Homeplus Hapjeong <span class="kr">홈플러스 합정점</span></h3><div class="tagrow"><span class="pill">~10 min</span><span class="pill">10:00–22:00</span><span class="pill">Hypermarket</span></div><p>Full hypermarket under Mecenatpolis mall at Hapjeong Station.</p><div class="addr">45 Yanghwa-ro B2</div><div class="martlinks"><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Homeplus Hapjeong, 45 Yanghwa-ro, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Homeplus Hapjeong">Directions</button><a class="dirmini" href="https://map.naver.com/p/search/홈플러스 합정점" target="_blank">Naver Map</a></div></div>
+    <div class="card" style="border-left:5px solid var(--stamp)"><h3>Myeongseong Mart <span class="kr">대우명성마트</span></h3><div class="tagrow"><span class="pill your">Best pick</span><span class="pill">~11 min</span><span class="pill">07:30–22:30</span></div><p>Best-reviewed local supermarket: strong fresh produce, cheaper than convenience stores.</p><div class="addr">18 World Cup buk-ro 5na-gil <span class="kr">월드컵북로5나길 18</span></div><div class="martlinks"><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongseong Mart, 18 World Cup buk-ro 5na-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Myeongseong Mart">Directions</button><a class="dirmini" href="https://map.naver.com/p/search/대우명성마트" target="_blank">Naver Map</a></div></div>
+    <div class="card"><h3>Hapjeong Mart</h3><div class="tagrow"><span class="pill">~12 min</span><span class="pill">08:00–22:00</span></div><p>Local discount supermarket beyond Hapjeong Station.</p><div class="addr">375-1 Hapjeong-dong</div><div class="martlinks"><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Hapjeong Mart, 375-1 Hapjeong-dong, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Hapjeong Mart">Directions</button></div></div>
+    <div class="card"><h3>Harmony Mart (station)</h3><div class="tagrow"><span class="pill">~12 min</span><span class="pill">09:00–01:00</span></div><p>Sister store near Hongik Univ Station.</p><div class="addr">7 Yanghwa-ro 18an-gil</div><div class="martlinks"><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Harmony Mart, 7 Yanghwa-ro 18an-gil, Mapo-gu, Seoul" data-mode="walk" data-title="Flat → Harmony Mart (station)">Directions</button></div></div>
   </div>
-  <div class="note" style="margin-top:16px"><b>A longer walk (13–20 min):</b>
-    <b>Mugwasu Mart</b> <span class="kr">무과수마트</span> — ~13 min, open to about 23:30 ·
-    <b>Sikjajae-wang Wholesale Mart</b> <span class="kr">식자재왕 도매마트 마포점</span> — 76 World Cup-ro 3-gil, ~17 min, 06:00–23:00 ·
-    <b>Hongdae Mart 24</b> <span class="kr">홍대마트24</span> — 1 Sinchon-ro, ~17 min, open 24 hours ·
-    <b>Lotte Fresh &amp; Deli</b> — 13 Sinchon-ro, ~18 min, closed Sundays ·
-    <b>Homeplus Express Yeonnam</b> — 52 Yeonnam-ro, ~20 min, 10:00–24:00.
-    The CU on the walk-in and the GS25 by the door are 24-hour.</div>
-  <div class="note"><b>Before you go:</b> every Seoul directions button on this page opens <b>Naver Map</b> with a route from wherever you are standing, since Google does not give walking directions in Korea. <b>Chuseok:</b> small marts often close or cut hours on Chuseok day (<b>Fri Sep 25</b>) and big marts commonly close that day too, so do the main shop by <b>Thursday</b>. Bring a bag — carrier bags are charged.</div>
 
-  <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">Myeongdong cluster · Line 2 direct from Hongdae</span></div>
+  <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">Myeongdong</span></div>
   <div class="grid cols-2">
-    <div class="card">
-      <h3>Odarijip Ganjang Gejang <span class="kr">오다리집 간장게장</span> <span class="cn">醬蟹</span></h3>
-      <div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Soy-marinated crab</span><span class="pill price">$$</span></div>
-      <p>The Myeongdong ganjang-gejang everyone raves about — fresh raw crab in a balanced, not-too-salty marinade, plus standout marinated prawns and a big banchan spread. Inside the Savoy Hotel, opposite Olive Young.</p>
-      <div class="addr">Myeongdong, Jung-gu · open daily 9:00–23:00</div>
-      <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Odarijip Ganjang Gejang, Seoul" data-title="To Odarijip Ganjang Gejang" data-sub="From base · transit">Transit from base</button>
-    </div>
-    <div class="card">
-      <h3>Myeongdong Kyoja <span class="kr">명동교자</span> <span class="cn">明洞餃子</span></h3>
-      <div class="tagrow"><span class="pill rate">★ 4.2</span><span class="pill">Kalguksu · mandu</span><span class="pill price">$$</span><span class="pill">Michelin-listed</span></div>
-      <p>A Seoul institution: a four-item menu of hand-cut noodle soup and juicy dumplings done expertly. The line looks long but moves fast. Garlicky kimchi is the house signature.</p>
-      <div class="addr">129 Toegye-ro, Jung-gu · 10:30–21:00</div>
-      <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Kyoja, Seoul" data-title="To Myeongdong Kyoja" data-sub="From base · transit">Transit from base</button>
-    </div>
-    <div class="card">
-      <h3>Myeongdong BBQ Mongvely <span class="kr">몽블리</span> <span class="cn">明洞烤肉</span></h3>
-      <div class="tagrow"><span class="pill rate">★ 4.9</span><span class="pill">All-you-can-eat KBBQ</span></div>
-      <p>Unlimited grilled meats and sides at a strong price point, staff help with the grill, and it runs late (to ~2 AM). Touristy but reliably fun for a first-night cookout.</p>
-      <div class="addr">9 Myeongdong 8na-gil, Jung-gu · 11:30–02:00</div>
-      <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Korean BBQ Mongvely, Seoul" data-title="To Myeongdong Korean BBQ Mongvely" data-sub="From base · transit">Transit from base</button>
-    </div>
-    <div class="card">
-      <h3>Daol Charcoal Grilling <span class="kr">다올숯불구이</span> <span class="cn">炭火烤肉</span></h3>
-      <div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Real charcoal KBBQ</span></div>
-      <p>Quieter, higher-end charcoal grill a block off the main drag — staff cook brisket, galbi and pork belly tableside.</p>
-      <div class="addr">8-11 Myeongdong 8-gil, Jung-gu · 11:00–23:00</div>
-      <button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Daol Charcoal Grilling, Seoul" data-title="To Daol Charcoal Grilling" data-sub="From base · transit">Transit from base</button>
-    </div>
+    <div class="card"><h3>Odarijip Ganjang Gejang <span class="kr">오다리집 간장게장</span></h3><div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Soy-marinated crab</span></div><p>Inside the Savoy Hotel, opposite Olive Young. 9:00–23:00.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Odarijip Ganjang Gejang, Seoul" data-title="To Odarijip">Transit from base</button></div>
+    <div class="card"><h3>Myeongdong Kyoja <span class="kr">명동교자</span></h3><div class="tagrow"><span class="pill rate">★ 4.2</span><span class="pill">Kalguksu · mandu</span></div><p>129 Toegye-ro · 10:30–21:00. The line moves fast.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Kyoja, Seoul" data-title="To Myeongdong Kyoja">Transit from base</button></div>
+    <div class="card"><h3>Myeongdong BBQ Mongvely <span class="kr">몽블리</span></h3><div class="tagrow"><span class="pill rate">★ 4.9</span><span class="pill">AYCE KBBQ</span></div><p>9 Myeongdong 8na-gil · 11:30–02:00.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Korean BBQ Mongvely, Seoul" data-title="To Mongvely">Transit from base</button></div>
+    <div class="card"><h3>Daol Charcoal Grilling <span class="kr">다올숯불구이</span></h3><div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Charcoal KBBQ</span></div><p>8-11 Myeongdong 8-gil · 11:00–23:00.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Daol Charcoal Grilling, Seoul" data-title="To Daol">Transit from base</button></div>
   </div>
-  <div class="note"><b>Worth the metro ride:</b> For the best charcoal pork belly in town, Itaewon's <b>Bogwangjung</b> (★4.9) and <b>JD BBQ</b> (★4.9) are ~30 min away (Line 6 from Hapjeong).</div>
 
   <div class="secthead"><span class="num">C</span><h2>Places to go</h2></div>
   <div class="grid cols-3">
-    <div class="card"><h3>N Seoul Tower <span class="kr">N서울타워</span> <span class="cn">南山首爾塔</span></h3><div class="tagrow"><span class="pill rate">★ 4.5</span><span class="pill">Sunset</span></div><p>The classic skyline view on Namsan, a cable car ride up from near Myeongdong. Best at golden hour into night.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="N Seoul Tower, Seoul" data-title="To N Seoul Tower" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Bukchon Hanok Village <span class="kr">북촌한옥마을</span> <span class="cn">北村韓屋村</span></h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Heritage</span></div><p>Lived-in alleys of traditional hanok homes between the palaces. Go early and keep quiet — residents still live here (visiting hours 10–5).</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Bukchon Hanok Village, Seoul" data-title="To Bukchon Hanok Village" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Namsangol Hanok Village <span class="kr">남산골한옥마을</span> <span class="cn">南山谷韓屋村</span></h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Free</span></div><p>A calmer, free hanok village walkable from Myeongdong, with Namsan tower views. Closed Mondays.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Namsangol Hanok Village, Seoul" data-title="To Namsangol Hanok Village" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Myeongdong Shopping St <span class="kr">명동거리</span> <span class="cn">明洞街</span></h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">K-beauty · street food</span></div><p>K-beauty flagships and a legendary night-time street-food run, ~25 min away by Line 2 (Euljiro 1-ga). Liveliest before 11 PM.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Shopping Street, Seoul" data-title="To Myeongdong Shopping Street" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Myeongdong Cathedral <span class="kr">명동성당</span> <span class="cn">明洞聖堂</span></h3><div class="tagrow"><span class="pill rate">★ 4.7</span><span class="pill">Architecture</span></div><p>Gothic-style 1898 cathedral and a quiet break from the crowds. Closed midday 12–1.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Cathedral, Seoul" data-title="To Myeongdong Cathedral" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Day-trip ideas</h3><div class="tagrow"><span class="pill">Palaces</span><span class="pill">DMZ</span></div><p>Five nights leaves room for a DMZ tour, Dongdaemun (DDP), or a Hongdae/Seongsu evening — all easy metro hops from Hongik Univ Station.</p></div>
+    <div class="card"><h3>N Seoul Tower</h3><div class="tagrow"><span class="pill rate">★ 4.5</span></div><p>Skyline view on Namsan. Best at golden hour.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="N Seoul Tower, Seoul" data-title="To N Seoul Tower">Transit from base</button></div>
+    <div class="card"><h3>Bukchon Hanok Village</h3><div class="tagrow"><span class="pill rate">★ 4.4</span></div><p>Traditional hanok alleys. Visiting hours 10–5.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Bukchon Hanok Village, Seoul" data-title="To Bukchon">Transit from base</button></div>
+    <div class="card"><h3>Namsangol Hanok Village</h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Free</span></div><p>Calmer hanok village near Myeongdong. Closed Mondays.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Namsangol Hanok Village, Seoul" data-title="To Namsangol">Transit from base</button></div>
+    <div class="card"><h3>Myeongdong Shopping St</h3><div class="tagrow"><span class="pill rate">★ 4.4</span></div><p>K-beauty flagships and night street food.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Shopping Street, Seoul" data-title="To Myeongdong">Transit from base</button></div>
+    <div class="card"><h3>Myeongdong Cathedral</h3><div class="tagrow"><span class="pill rate">★ 4.7</span></div><p>Gothic-style 1898 cathedral.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Myeongdong Cathedral, Seoul" data-title="To Myeongdong Cathedral">Transit from base</button></div>
+    <div class="card"><h3>Gyeongbokgung</h3><div class="tagrow"><span class="pill">Palace</span></div><p>Guard-changing 11:00. Closed Tuesdays.</p><button class="dirmini" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Gyeongbokgung Palace, Seoul" data-title="To Gyeongbokgung">Transit from base</button></div>
   </div>
 
-  <div class="secthead"><span class="num">D</span><h2>Day-by-day</h2><span class="hint">Seoul · Kakao T cars + metro</span></div>
-  <div class="note"><b>Chuseok falls during your stay:</b> the public holiday runs <b>Thu Sep 24 – Sat Sep 26</b>, with Chuseok day itself on <b>Fri Sep 25</b>. Subway, buses, taxis and convenience stores run as normal and the palaces and hanok villages stay open, but many independent restaurants close — especially on Friday. <b>Phone or check Naver Map before going to Daol (Thu) and Odarijip (Fri)</b>.</div>
-  <div class="note"><b>Getting around Seoul:</b> for door-to-door comfort, call a <b>Kakao T</b> taxi (set it up before you go). Each stop below has a 🚗 <b>Kakao T</b> or 🚆 <b>train</b> label, the estimated time, and a directions button.</div>
+  <div class="secthead"><span class="num">D</span><h2>Day-by-day</h2></div>
+  <div class="note"><b>Chuseok:</b> Thu Sep 24 – Sat Sep 26 (Chuseok day Fri Sep 25). Transit runs normally; many independent restaurants close.</div>
   <div class="days">
-    <div class="day arrive">
-      <div class="daynum"><span class="d">SEP</span><span class="n">21</span><span class="dow">MON</span></div>
-      <div class="dbody">
-        <div class="dtitle">Arrive &amp; settle in Hongdae</div>
-        <p>Land ICN 16:05. Bus 6002, AREX or a taxi to Hongdae (see Airport transfers above), then up to unit 601 in the BIOS building. Keypad self check-in from 16:00. No agenda — a short stroll for an easy first dinner nearby, then an early night.</p>
-        <div class="stops">
-          <div class="stop"><span class="mode train">🚌 Bus / 🚆 AREX</span><span class="dest">ICN → Hongik Univ. Station → flat</span><span class="est">~60–70 min + 7-min walk</span><button class="go" data-from="Incheon International Airport, South Korea" data-to="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-mode="transit" data-title="ICN → Hongdae" data-sub="Airport bus 6002">Go</button></div>
-        </div>
-        <div class="dmeta"><span class="tag">Arrival</span><span class="tag eat">Casual dinner near base</span></div>
-      </div>
-    </div>
-    <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">22</span><span class="dow">TUE</span></div>
-      <div class="dbody">
-        <div class="dtitle">Cheonggyecheon stream &amp; Myeongdong</div>
-        <p>Line 2 runs direct from Hongik Univ to <b>Euljiro 1-ga</b> (~15 min). <b>Cheonggyecheon <span class="kr">청계천</span></b> is 3 minutes north of the station — a gentle streamside stroll. Then a short walk into <b>Myeongdong</b> for lunch at <b>Myeongdong Kyoja</b>. Optional <b>N Seoul Tower</b> cable car at golden hour. <i>Palaces are closed on Tuesdays, which is why this day comes first.</i></p>
-        <div class="stops">
-          <div class="stop"><span class="mode train">🚆 Subway</span><span class="dest">Hongdae → Euljiro 1-ga <span class="kr">을지로입구</span> (Line 2 direct)</span><span class="est">~25 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Euljiro 1-ga Station, Seoul" data-mode="transit" data-title="Hongdae → Euljiro 1-ga" data-sub="Line 2 · direct">Go</button></div>
-          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Station → Cheonggyecheon <span class="kr">청계천</span></span><span class="est">~3 min</span><button class="go" data-from="Euljiro 1-ga Station, Seoul" data-to="Cheonggyecheon, Seoul" data-mode="walk" data-title="Station → Cheonggyecheon" data-sub="Flat walk">Go</button></div>
-          <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Stream → Myeongdong Kyoja <span class="kr">명동교자</span></span><span class="est">~12 min</span><button class="go" data-from="Cheonggyecheon, Seoul" data-to="Myeongdong Kyoja, Seoul" data-mode="walk" data-title="Stream → Myeongdong Kyoja" data-sub="Short flat walk">Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Myeongdong → N Seoul Tower (optional)</span><span class="est">~10 min</span><button class="go" data-from="Myeongdong, Seoul" data-to="N Seoul Tower, Seoul" data-mode="drive" data-title="Myeongdong → N Seoul Tower" data-sub="Kakao T car">Go</button></div>
-          <div class="stop"><span class="mode train">🚆 Subway</span><span class="dest">Euljiro 1-ga → Hongdae (Line 2 direct)</span><span class="est">~25 min</span><button class="go" data-from="Euljiro 1-ga Station, Seoul" data-to="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-mode="transit" data-title="Myeongdong → home" data-sub="Line 2 · direct">Go</button></div>
-        </div>
-        <div class="dmeta"><span class="tag">Level stream walk</span><span class="tag eat">Myeongdong Kyoja</span></div>
-      </div>
-    </div>
-    <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">23</span><span class="dow">WED</span></div>
-      <div class="dbody">
-        <div class="dtitle">Gyeongbokgung Palace &amp; an Insadong tea house</div>
-        <p>Line 2 to Euljiro 3-ga, change to Line 3 for <b>Gyeongbokgung Palace <span class="kr">경복궁</span></b> (~35 min) — or a Kakao T straight there in ~25 min. Aim to arrive by 10:45 for the 11:00 guard-changing ceremony. Lunch nearby, then a short ride to <b>Insadong <span class="kr">인사동</span></b> for a traditional tea house (Namusae).</p>
-        <div class="stops">
-          <div class="stop"><span class="mode train">🚆 Subway</span><span class="dest">Hongdae → Gyeongbokgung <span class="kr">경복궁</span></span><span class="est">~35 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Gyeongbokgung Palace, Seoul" data-mode="transit" data-title="Hongdae → Gyeongbokgung" data-sub="Line 2 → Line 3">Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Gyeongbokgung → Insadong <span class="kr">인사동</span></span><span class="est">~8 min</span><button class="go" data-from="Gyeongbokgung Palace, Seoul" data-to="Namusae Tea House, Insadong, Seoul" data-mode="drive" data-title="Gyeongbokgung → Insadong tea" data-sub="Kakao T car">Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Insadong → Hongdae</span><span class="est">~25 min</span><button class="go" data-from="Insadong, Seoul" data-to="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-mode="drive" data-title="Insadong → home" data-sub="Kakao T car">Go</button></div>
-        </div>
-        <div class="dmeta"><span class="tag">Palace · flat</span><span class="tag eat">Insadong tea &amp; sweets</span></div>
-      </div>
-    </div>
-    <div class="day restday">
-      <div class="daynum"><span class="d">SEP</span><span class="n">24</span><span class="dow">THU</span></div>
-      <div class="dbody">
-        <div class="dtitle">Slow morning + Bukchon at your pace</div>
-        <p>Lazy start — coffee at a Yeonnam-dong café. Mid-afternoon, Kakao T (~25–30 min) to <b>Bukchon Hanok Village <span class="kr">북촌한옥마을</span></b> — see the main viewpoint and turn back. Early KBBQ dinner at <b>Daol Charcoal Grilling</b>.</p>
-        <div class="stops">
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Hongdae → Bukchon</span><span class="est">~25–30 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Bukchon Hanok Village, Seoul" data-mode="drive" data-title="Hongdae → Bukchon" data-sub="Kakao T car">Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Bukchon → Daol <span class="kr">다올숯불구이</span></span><span class="est">~12 min</span><button class="go" data-from="Bukchon Hanok Village, Seoul" data-to="Daol Charcoal Grilling, Myeongdong, Seoul" data-mode="drive" data-title="Bukchon → Daol KBBQ" data-sub="Kakao T car">Go</button></div>
-        </div>
-        <div class="dmeta"><span class="tag rest">Easy day</span><span class="tag eat">Daol charcoal KBBQ</span></div>
-      </div>
-    </div>
-    <div class="day">
-      <div class="daynum"><span class="d">SEP</span><span class="n">25</span><span class="dow">FRI</span></div>
-      <div class="dbody">
-        <div class="dtitle">Namsangol Hanok Village &amp; a special last dinner</div>
-        <p>Kakao T (~25 min) to the calm, free <b>Namsangol Hanok Village <span class="kr">남산골한옥마을</span></b>. Relaxed afternoon, then the soy-marinated crab at <b>Odarijip Ganjang Gejang</b> in Myeongdong. Line 2 direct home from Euljiro 1-ga or a Kakao T. Pack tonight — the airport bus is pre-dawn.</p>
-        <div class="stops">
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Hongdae → Namsangol</span><span class="est">~25 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Namsangol Hanok Village, Seoul" data-mode="drive" data-title="Hongdae → Namsangol" data-sub="Kakao T car">Go</button></div>
-          <div class="stop"><span class="mode kakao">🚗 Kakao T</span><span class="dest">Namsangol → Odarijip <span class="kr">오다리집 간장게장</span></span><span class="est">~8 min</span><button class="go" data-from="Namsangol Hanok Village, Seoul" data-to="Odarijip Ganjang Gejang, Seoul" data-mode="drive" data-title="Namsangol → Odarijip crab" data-sub="Kakao T car">Go</button></div>
-        </div>
-        <div class="dmeta"><span class="tag">Free · flat grounds</span><span class="tag eat">Odarijip ganjang-gejang</span></div>
-      </div>
-    </div>
-    <div class="day depart">
-      <div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">SAT</span></div>
-      <div class="dbody">
-        <div class="dtitle">Depart for Penang</div>
-        <p>Pre-dawn start — CX 413 leaves ICN at 08:00. Pre-booked taxi at ~04:30, or one of the first airport buses 6002 from Hongdae. Then CX 413 → Hong Kong → CX 621 to Penang.</p>
-        <div class="stops">
-          <div class="stop"><span class="mode train">🚕 Taxi / 🚌 6002</span><span class="dest">Flat → ICN Terminal 1</span><span class="est">leave ~04:20–04:30</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Incheon International Airport Terminal 1, South Korea" data-mode="transit" data-title="Hongdae → ICN" data-sub="Bus 6002 · ~04:45">Go</button></div>
-        </div>
-        <div class="dmeta"><span class="tag">Departure</span></div>
-      </div>
-    </div>
+    <div class="day arrive"><div class="daynum"><span class="d">SEP</span><span class="n">21</span><span class="dow">MON</span></div><div class="dbody"><div class="dtitle">Arrive &amp; settle in Hongdae</div><p>Land ICN 16:05. Bus 6002, AREX or taxi; keypad check-in from 16:00. Easy dinner nearby.</p><div class="stops"><div class="stop"><span class="mode train">Bus / AREX</span><span class="dest">ICN → Hongik Univ → flat</span><span class="est">~60–70 min</span><button class="go" data-from="Incheon International Airport, South Korea" data-to="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-mode="transit" data-title="ICN → Hongdae">Go</button></div></div><div class="dmeta"><span class="tag">Arrival</span></div></div></div>
+    <div class="day"><div class="daynum"><span class="d">SEP</span><span class="n">22</span><span class="dow">TUE</span></div><div class="dbody"><div class="dtitle">Cheonggyecheon &amp; Myeongdong</div><p>Line 2 to Euljiro 1-ga, stream stroll, lunch at Myeongdong Kyoja, optional N Seoul Tower.</p><div class="stops"><div class="stop"><span class="mode train">Subway</span><span class="dest">Hongdae → Euljiro 1-ga</span><span class="est">~25 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Euljiro 1-ga Station, Seoul" data-mode="transit" data-title="Hongdae → Euljiro 1-ga">Go</button></div></div><div class="dmeta"><span class="tag eat">Myeongdong Kyoja</span></div></div></div>
+    <div class="day"><div class="daynum"><span class="d">SEP</span><span class="n">23</span><span class="dow">WED</span></div><div class="dbody"><div class="dtitle">Gyeongbokgung &amp; Insadong tea</div><p>Arrive by 10:45 for the guard-changing; then Insadong tea house (Namusae).</p><div class="stops"><div class="stop"><span class="mode train">Subway</span><span class="dest">Hongdae → Gyeongbokgung</span><span class="est">~35 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Gyeongbokgung Palace, Seoul" data-mode="transit" data-title="Hongdae → Gyeongbokgung">Go</button></div><div class="stop"><span class="mode kakao">Kakao T</span><span class="dest">Gyeongbokgung → Insadong</span><span class="est">~8 min</span><button class="go" data-from="Gyeongbokgung Palace, Seoul" data-to="Namusae Tea House, Insadong, Seoul" data-mode="drive" data-title="→ Insadong tea">Go</button></div></div><div class="dmeta"><span class="tag eat">Insadong tea</span></div></div></div>
+    <div class="day restday"><div class="daynum"><span class="d">SEP</span><span class="n">24</span><span class="dow">THU</span></div><div class="dbody"><div class="dtitle">Slow morning + Bukchon</div><p>Yeonnam-dong coffee, afternoon Kakao T to Bukchon, early KBBQ at Daol.</p><div class="stops"><div class="stop"><span class="mode kakao">Kakao T</span><span class="dest">Hongdae → Bukchon</span><span class="est">~25–30 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Bukchon Hanok Village, Seoul" data-mode="drive" data-title="Hongdae → Bukchon">Go</button></div></div><div class="dmeta"><span class="tag rest">Easy day</span><span class="tag eat">Daol KBBQ</span></div></div></div>
+    <div class="day"><div class="daynum"><span class="d">SEP</span><span class="n">25</span><span class="dow">FRI</span></div><div class="dbody"><div class="dtitle">Namsangol &amp; a last dinner</div><p>Namsangol Hanok Village, then crab at Odarijip. Pack tonight.</p><div class="stops"><div class="stop"><span class="mode kakao">Kakao T</span><span class="dest">Hongdae → Namsangol</span><span class="est">~25 min</span><button class="go" data-from="5 Jandari-ro 6-gil, Mapo-gu, Seoul" data-to="Namsangol Hanok Village, Seoul" data-mode="drive" data-title="Hongdae → Namsangol">Go</button></div></div><div class="dmeta"><span class="tag eat">Odarijip</span></div></div></div>
+    <div class="day depart"><div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Depart for Penang</div><p>CX 413 leaves ICN 08:00. Taxi at ~04:30. ICN → HKG → CX 621 to Penang.</p><div class="dmeta"><span class="tag">Departure</span></div></div></div>
   </div>
 </section>
 
-<!-- ============ PENANG ============ -->
-<section class="panel" id="penang" role="tabpanel" aria-labelledby="tab-penang">
-  <div class="leg">
-    <span class="flightcode">CX 413</span><span class="route"><b>ICN</b><span class="arrow">→</span><b>HKG</b></span>
-    <span class="flightcode">CX 621</span><span class="route"><b>HKG</b><span class="arrow">→</span><b>PEN</b></span>
-    <span class="route">Sat Sep 26 · 08:00→10:50, 15:30→19:10</span>
-    <span class="nights">Base: <b>Bayan Lepas</b> · 14 nights</span>
-  </div>
-  <div class="note"><b>One base, near the airport:</b> The Iconic Regency is in <b>Bayan Lepas</b> in Penang's south — next to the airport and ~20–30 min by Grab from George Town's heritage core. Plan on a Grab (~RM15–25) for George Town eats and sights.</div>
-
-  <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2></div>
+<!-- PENANG -->
+<section class="panel" id="penang">
+  <div class="leg"><span class="flightcode">CX 413</span><span class="route"><b>ICN</b><span class="arrow">→</span><b>HKG</b></span><span class="flightcode">CX 621</span><span class="route"><b>HKG</b><span class="arrow">→</span><b>PEN</b></span><span class="route">Sat Sep 26 · 08:00→10:50, 15:30→19:10</span><span class="nights">Base: <b>Bayan Lepas</b></span></div>
+  <div class="note"><b>Plan change:</b> Penang was booked for 14 nights (Sep 26–Oct 10, paid in full), but the trip was re-routed to Hong Kong for the final week — see the <b>Hong Kong</b> tab and flight-change costs under <b>Expenses</b>.</div>
+  <div class="secthead"><span class="num">A</span><h2>Where you stayed</h2></div>
   <div class="grid cols-2">
-    <div class="card hotel">
-      <h3>Iconic Regency Service Residences</h3>
-      <div class="tagrow"><span class="pill your">Your booking</span><span class="pill">Bayan Lepas</span><span class="pill rate">★ 4.5</span><span class="pill">3BR · city view</span></div>
-      <p>Modern serviced apartments managed by Iconic Hotel, near the airport and USM. 3-bedroom Family Apartment — full kitchen, washer and a sky-deck pool with views of both Penang bridges.</p>
-      <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Sat Sep 26 <small>· from 15:00</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Oct 10 <small>· by 12:00</small></div></div>
-        <div class="cell"><div class="lbl">Total</div><div class="val">$1,795 <small>CAD · 14 nts</small></div></div>
-      </div>
-      <div class="addr">239 Jln Sultan Azlan Shah, George Town 11900 · conf 73489311349873 · +60 4-688 7888</div>
-      <p class="confirm" style="margin-top:8px">MYR 200 deposit + MYR 2/night city tax due at property.</p>
-    </div>
-    <div class="card">
-      <h3>Getting in from PEN · arrival Sep 26</h3>
-      <div class="tagrow"><span class="pill">Grab / taxi</span><span class="pill">~10–15 min</span></div>
-      <p>The Iconic Regency is very close to Penang International. A Grab or airport coupon taxi is only about 10–15 min.</p>
-      <button class="dirbtn" data-from="Penang International Airport, Malaysia" data-to="Iconic Regency Service Residences, Bayan Lepas, Penang" data-title="PEN → Iconic Regency" data-sub="Arrival · short hop">Transit: PEN → Iconic Regency</button>
-      <div class="depart">
-        <h3>Departure day → PEN · Sat Oct 10</h3>
-        <ol>
-          <li><b>Check out by 12:00</b> (bag hold available).</li>
-          <li><b>To the airport:</b> Grab or taxi to PEN — ~10–15 min.</li>
-          <li><b>Routing:</b> CX 622 PEN → HKG, connect to CX 502 HKG → KIX.</li>
-        </ol>
-        <button class="dirbtn" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Penang International Airport, Malaysia" data-title="Iconic Regency → PEN" data-sub="Departure day · short hop">Transit: Iconic Regency → PEN</button>
-        <div class="leaveby">Leave ≈2.5–3 hrs before CX 622 departs.</div>
-      </div>
-    </div>
+    <div class="card hotel"><h3>Iconic Regency Service Residences</h3><div class="tagrow"><span class="pill your">Booking</span><span class="pill">Bayan Lepas</span><span class="pill rate">★ 4.5</span><span class="pill">3BR</span></div><p>Serviced apartments near the airport. Full kitchen, washer, sky-deck pool. ~20–30 min by Grab to George Town.</p>
+      <div class="stay"><div class="cell"><div class="lbl">Check in</div><div class="val">Sat Sep 26 <small>· 15:00</small></div></div><div class="cell"><div class="lbl">Booked to</div><div class="val">Sat Oct 10 <small>· 14 nts</small></div></div><div class="cell"><div class="lbl">Paid</div><div class="val">$1,795.05 <small>CAD</small></div></div></div>
+      <div class="addr">239 Jln Sultan Azlan Shah, George Town 11900 · conf 73489311349873 · +60 4-688 7888</div></div>
+    <div class="card"><h3>Airport ↔ residence</h3><div class="tagrow"><span class="pill">Grab / taxi</span><span class="pill">~10–15 min</span></div><p>The residence is very close to Penang International.</p>
+      <button class="dirbtn" data-from="Penang International Airport, Malaysia" data-to="Iconic Regency Service Residences, Bayan Lepas, Penang" data-title="PEN → Iconic Regency">Transit: PEN → Iconic Regency</button></div>
   </div>
-
-  <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">George Town heritage zone</span></div>
+  <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">George Town</span></div>
   <div class="grid cols-2">
-    <div class="card"><h3>Firewood Penang</h3><div class="tagrow"><span class="pill rate">★ 4.9</span><span class="pill">Charcoal grill · wagyu</span></div><p>George Town's standout dinner: open charcoal kitchen, A5 Miyazaki &amp; Korean Hanwoo. Book ahead. Closed Mondays.</p><div class="addr">15 Jln Masjid Kapitan Keling · Tue–Sun</div><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Firewood Penang, George Town" data-title="To Firewood Penang" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Hwa Ting Restaurant</h3><div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Penang Chinese</span><span class="pill price">$$</span></div><p>Elevated local classics — duck-egg char koay teow, shrimp wontons, cendol beancurd pudding. Closed Wednesdays.</p><div class="addr">37 Lebuh Melayu · 11:00–21:00</div><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Hwa Ting Restaurant, Penang" data-title="To Hwa Ting Restaurant" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Auction Rooms George Town</h3><div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">All-day café</span><span class="pill price">$$</span></div><p>Vintage-styled all-day spot for a proper breakfast or relaxed lunch. Open 7:30 AM daily.</p><div class="addr">38a Jalan Sungai Ujong · 7:30–22:00</div><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Auction Rooms, George Town Penang" data-title="To Auction Rooms George Town" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Penang Road Famous Teochew Chendul</h3><div class="tagrow"><span class="pill rate">★ 4.1</span><span class="pill">Cendol · dessert</span><span class="pill price">$$</span></div><p>The iconic bowl of cendol to cool down mid-wander. They also do assam laksa and CKT.</p><div class="addr">435B Lebuh Pantai · 9:00–18:00</div><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Penang Road Famous Teochew Chendul, George Town" data-title="To Penang Road Famous Teochew Chendul" data-sub="From base · transit">Transit from base</button></div>
+    <div class="card"><h3>Firewood Penang</h3><div class="tagrow"><span class="pill rate">★ 4.9</span><span class="pill">Charcoal grill</span></div><p>15 Jln Masjid Kapitan Keling. Closed Mondays.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Firewood Penang, George Town" data-title="To Firewood">Transit from base</button></div>
+    <div class="card"><h3>Hwa Ting Restaurant</h3><div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Penang Chinese</span></div><p>37 Lebuh Melayu · 11:00–21:00. Closed Wednesdays.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Hwa Ting Restaurant, Penang" data-title="To Hwa Ting">Transit from base</button></div>
+    <div class="card"><h3>Auction Rooms George Town</h3><div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">All-day café</span></div><p>38a Jalan Sungai Ujong · from 7:30.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Auction Rooms, George Town Penang" data-title="To Auction Rooms">Transit from base</button></div>
+    <div class="card"><h3>Penang Road Famous Teochew Chendul</h3><div class="tagrow"><span class="pill rate">★ 4.1</span><span class="pill">Cendol</span></div><p>435B Lebuh Pantai · 9:00–18:00.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Penang Road Famous Teochew Chendul, George Town" data-title="To Teochew Chendul">Transit from base</button></div>
   </div>
-  <div class="note"><b>For the real Penang hawker run:</b> <b>Chulia Street</b> stalls (evenings from 4 PM), <b>New World Park Food City</b>, and <b>Gurney Drive</b> hawker centre.</div>
-
   <div class="secthead"><span class="num">C</span><h2>Places to go</h2></div>
   <div class="grid cols-3">
-    <div class="card"><h3>Chew Jetty &amp; Clan Jetties</h3><div class="tagrow"><span class="pill rate">★ 4.1</span><span class="pill">UNESCO</span></div><p>Stilt-house villages over the water. Best near sunset.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Chew Jetty & Clan Jetties, Penang" data-title="To Chew Jetty & Clan Jetties" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Pinang Peranakan Mansion</h3><div class="tagrow"><span class="pill rate">★ 4.5</span><span class="pill">Museum</span></div><p>Lavish Baba-Nyonya merchant house. Catch the guided tour. 9:30–5:30.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Pinang Peranakan Mansion, Penang" data-title="To Pinang Peranakan Mansion" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Leong San Tong Khoo Kongsi</h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Clan house</span></div><p>The most ornate clan temple in Penang. 9–5 daily.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Leong San Tong Khoo Kongsi, Penang" data-title="To Leong San Tong Khoo Kongsi" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>The TOP Penang</h3><div class="tagrow"><span class="pill rate">★ 4.3</span><span class="pill">Skywalk · views</span></div><p>Rainbow glass skywalk and observation deck in Komtar.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="The TOP Penang, Penang" data-title="To The TOP Penang" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>George Town street art</h3><div class="tagrow"><span class="pill">Self-guided</span><span class="pill">Free</span></div><p>Murals and wrought-iron caricatures between Armenian and Chulia Streets.</p></div>
-    <div class="card"><h3>Beach + Penang Hill / Kek Lok Si</h3><div class="tagrow"><span class="pill">Half-days</span></div><p>Mix Batu Ferringhi beach days with the funicular up Penang Hill and Kek Lok Si temple.</p></div>
+    <div class="card"><h3>Chew Jetty</h3><div class="tagrow"><span class="pill">UNESCO</span></div><p>Stilt-house village. Best at sunset.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Chew Jetty, George Town, Penang" data-title="To Chew Jetty">Transit from base</button></div>
+    <div class="card"><h3>Pinang Peranakan Mansion</h3><div class="tagrow"><span class="pill rate">★ 4.5</span></div><p>Baba-Nyonya merchant house. 9:30–5:30.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Pinang Peranakan Mansion, Penang" data-title="To Peranakan Mansion">Transit from base</button></div>
+    <div class="card"><h3>Khoo Kongsi</h3><div class="tagrow"><span class="pill rate">★ 4.4</span></div><p>Ornate clan temple. 9–5.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Leong San Tong Khoo Kongsi, Penang" data-title="To Khoo Kongsi">Transit from base</button></div>
+    <div class="card"><h3>Penang Hill</h3><div class="tagrow"><span class="pill">Funicular</span></div><p>Fast-lane ticket; cooler at the top.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Penang Hill Funicular Lower Station, Air Itam, Penang" data-title="To Penang Hill">Transit from base</button></div>
+    <div class="card"><h3>Kek Lok Si Temple</h3><div class="tagrow"><span class="pill">Lift to top</span></div><p>Lift up to the giant Guan Yin.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Kek Lok Si Temple, Air Itam, Penang" data-title="To Kek Lok Si">Transit from base</button></div>
+    <div class="card"><h3>Tropical Spice Garden · Entopia</h3><div class="tagrow"><span class="pill">Teluk Bahang</span></div><p>Shaded garden paths and butterfly farm, ~35 min by Grab.</p><button class="dirmini" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Tropical Spice Garden, Teluk Bahang, Penang" data-title="To Spice Garden">Transit from base</button></div>
   </div>
-
-  <div class="secthead"><span class="num">D</span><h2>Day-by-day</h2><span class="hint">14 nights · unhurried · Grab everywhere</span></div>
-  <div class="note"><b>The Penang philosophy:</b> one outing per active day, late mornings, Grab door-to-door. Several days are deliberately left open.</div>
+  <div class="secthead"><span class="num">D</span><h2>Day-by-day</h2><span class="hint">Grab everywhere</span></div>
   <div class="days">
-    <div class="day arrive"><div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Arrive Penang · settle in Bayan Lepas</div><p>Short Grab from the airport. Unpack, rooftop pool, easy first dinner nearby.</p><div class="dmeta"><span class="tag">Arrival</span><span class="tag rest">Pool &amp; rest</span></div></div></div>
-    <div class="day restday"><div class="daynum"><span class="d">SEP</span><span class="n">27</span><span class="dow">SUN</span></div><div class="dbody"><div class="dtitle">Settle-in day</div><p>Pool, a gentle look around, and an early George Town dinner if you're up for it — <b>Auction Rooms</b>.</p><div class="stops"><div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Auction Rooms (optional)</span><span class="est">~22 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Auction Rooms, George Town Penang" data-mode="drive" data-title="Base → Auction Rooms" data-sub="Grab car">Go</button></div></div><div class="dmeta"><span class="tag rest">Easy day</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">SEP</span><span class="n">28</span><span class="dow">MON</span></div><div class="dbody"><div class="dtitle">George Town heritage loop (the easy version)</div><p><b>Pinang Peranakan Mansion</b>, lunch at <b>Hwa Ting</b>, then <b>Khoo Kongsi</b>. Street-art murals on the way. Home by mid-afternoon.</p><div class="stops">
-      <div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Pinang Peranakan Mansion</span><span class="est">~22 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Pinang Peranakan Mansion, George Town, Penang" data-mode="drive" data-title="Base → Peranakan Mansion" data-sub="Grab car">Go</button></div>
-      <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Mansion → Hwa Ting (lunch)</span><span class="est">~6 min</span><button class="go" data-from="Pinang Peranakan Mansion, George Town, Penang" data-to="Hwa Ting Restaurant, Lebuh Melayu, George Town, Penang" data-mode="walk" data-title="Mansion → Hwa Ting" data-sub="Short flat walk">Go</button></div>
-      <div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Hwa Ting → Khoo Kongsi</span><span class="est">~5 min</span><button class="go" data-from="Hwa Ting Restaurant, George Town, Penang" data-to="Leong San Tong Khoo Kongsi, George Town, Penang" data-mode="drive" data-title="Hwa Ting → Khoo Kongsi" data-sub="Grab car">Go</button></div>
-    </div><div class="dmeta"><span class="tag">Flat museum · clan house</span><span class="tag eat">Hwa Ting</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">SEP</span><span class="n">29</span><span class="dow">TUE</span></div><div class="dbody"><div class="dtitle">Tropical Spice Garden &amp; the north coast</div><p>Shaded paths, benches, and a gentle audio-guide loop. Lunch nearby, then back for a swim.</p><div class="stops"><div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Tropical Spice Garden</span><span class="est">~35 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Tropical Spice Garden, Teluk Bahang, Penang" data-mode="drive" data-title="Base → Spice Garden" data-sub="Grab car">Go</button></div></div><div class="dmeta"><span class="tag">Shaded garden walk</span></div></div></div>
-    <div class="day restday"><div class="daynum"><span class="d">SEP</span><span class="n">30</span><span class="dow">WED</span></div><div class="dbody"><div class="dtitle">Rest &amp; pool day</div><p>Optional evening Grab to <b>Gurney Drive</b> hawker centre.</p><div class="stops"><div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Gurney Drive hawker (optional)</span><span class="est">~25 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Gurney Drive Hawker Centre, George Town, Penang" data-mode="drive" data-title="Base → Gurney hawker" data-sub="Grab car">Go</button></div></div><div class="dmeta"><span class="tag rest">Do-nothing day</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">1–2</span><span class="dow">THU–FRI</span></div><div class="dbody"><div class="dtitle">Penang Hill + a slow follow-up day</div><p>Grab to the <b>Penang Hill funicular</b> — fast-lane ticket to skip the queue. ~10°C cooler at the top. Day 2 is open for recovery.</p><div class="stops"><div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Penang Hill funicular</span><span class="est">~30 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Penang Hill Funicular Lower Station, Air Itam, Penang" data-mode="drive" data-title="Base → Penang Hill" data-sub="Grab car">Go</button></div></div><div class="dmeta"><span class="tag">Funicular · no stairs</span><span class="tag rest">Open recovery day</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">3</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Kek Lok Si Temple (use the lift)</div><p>Paid lift up to the giant Guan Yin statue — skip the steep steps. Easy lunch in Air Itam after.</p><div class="stops"><div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Kek Lok Si Temple</span><span class="est">~28 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Kek Lok Si Temple, Air Itam, Penang" data-mode="drive" data-title="Base → Kek Lok Si" data-sub="Grab car">Go</button></div></div><div class="dmeta"><span class="tag">Lift to top</span><span class="tag eat">Air Itam laksa</span></div></div></div>
-    <div class="day restday"><div class="daynum"><span class="d">OCT</span><span class="n">4–6</span><span class="dow">SUN–TUE</span></div><div class="dbody"><div class="dtitle">Slow stretch — beach, pool, your favourites</div><p>Three easy days. <b>Firewood</b> for one nice dinner (book ahead), a morning at Batu Ferringhi beach.</p><div class="stops">
-      <div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Firewood</span><span class="est">~22 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Firewood Penang, George Town" data-mode="drive" data-title="Base → Firewood" data-sub="Grab car">Go</button></div>
-      <div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Batu Ferringhi beach</span><span class="est">~40 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Batu Ferringhi Beach, Penang" data-mode="drive" data-title="Base → Batu Ferringhi" data-sub="Grab car">Go</button></div>
-    </div><div class="dmeta"><span class="tag rest">Unstructured</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">7</span><span class="dow">WED</span></div><div class="dbody"><div class="dtitle">Entopia butterfly garden</div><p>Mostly flat, air-conditioned sections. A calm half-day.</p><div class="stops"><div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Entopia</span><span class="est">~35 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Entopia by Penang Butterfly Farm, Teluk Bahang, Penang" data-mode="drive" data-title="Base → Entopia" data-sub="Grab car">Go</button></div></div><div class="dmeta"><span class="tag">Flat · shaded</span></div></div></div>
-    <div class="day restday"><div class="daynum"><span class="d">OCT</span><span class="n">8–9</span><span class="dow">THU–FRI</span></div><div class="dbody"><div class="dtitle">Wind-down &amp; pack</div><p>Last hawker meals, a final swim. <b>Chew Jetty</b> at sunset makes a gentle last evening stroll.</p><div class="stops"><div class="stop"><span class="mode grab">🚗 Grab</span><span class="dest">Iconic Regency → Chew Jetty (optional)</span><span class="est">~22 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Chew Jetty, George Town, Penang" data-mode="drive" data-title="Base → Chew Jetty" data-sub="Grab car">Go</button></div></div><div class="dmeta"><span class="tag rest">Wind-down</span></div></div></div>
-    <div class="day depart"><div class="daynum"><span class="d">OCT</span><span class="n">10</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Depart for Osaka</div><p>Easy morning, check out, short Grab to the airport. CX 622 → Hong Kong → CX 502 to Osaka.</p><div class="dmeta"><span class="tag">Departure</span></div></div></div>
+    <div class="day arrive"><div class="daynum"><span class="d">SEP</span><span class="n">26</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Arrive Penang</div><p>Short Grab from the airport. Pool, easy dinner.</p><div class="dmeta"><span class="tag">Arrival</span></div></div></div>
+    <div class="day restday"><div class="daynum"><span class="d">SEP</span><span class="n">27</span><span class="dow">SUN</span></div><div class="dbody"><div class="dtitle">Settle-in day</div><p>Pool, optional George Town dinner at Auction Rooms.</p><div class="dmeta"><span class="tag rest">Easy day</span></div></div></div>
+    <div class="day"><div class="daynum"><span class="d">SEP</span><span class="n">28</span><span class="dow">MON</span></div><div class="dbody"><div class="dtitle">George Town heritage loop</div><p>Peranakan Mansion, lunch at Hwa Ting, Khoo Kongsi, street art.</p><div class="stops"><div class="stop"><span class="mode grab">Grab</span><span class="dest">Iconic Regency → Peranakan Mansion</span><span class="est">~22 min</span><button class="go" data-from="Iconic Regency Service Residences, Bayan Lepas, Penang" data-to="Pinang Peranakan Mansion, George Town, Penang" data-mode="drive" data-title="Base → Peranakan Mansion">Go</button></div></div><div class="dmeta"><span class="tag eat">Hwa Ting</span></div></div></div>
+    <div class="day"><div class="daynum"><span class="d">SEP</span><span class="n">29</span><span class="dow">TUE</span></div><div class="dbody"><div class="dtitle">Tropical Spice Garden</div><p>Shaded paths on the Teluk Bahang coast, lunch nearby.</p><div class="dmeta"><span class="tag">Garden walk</span></div></div></div>
+    <div class="day restday"><div class="daynum"><span class="d">SEP</span><span class="n">30</span><span class="dow">WED</span></div><div class="dbody"><div class="dtitle">Rest &amp; pool day</div><p>Optional Gurney Drive hawker dinner.</p><div class="dmeta"><span class="tag rest">Do-nothing day</span></div></div></div>
+    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">1–2</span><span class="dow">THU–FRI</span></div><div class="dbody"><div class="dtitle">Penang Hill + recovery day</div><p>Funicular up, down by early afternoon. Day 2 open.</p><div class="dmeta"><span class="tag">Funicular</span><span class="tag rest">Recovery</span></div></div></div>
+    <div class="day depart"><div class="daynum"><span class="d">OCT</span><span class="n">3</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Depart for Hong Kong</div><p>Short Grab to PEN. Rebooked flight to HKG.</p><div class="dmeta"><span class="tag">Departure</span></div></div></div>
   </div>
 </section>
 
-<!-- ============ OSAKA ============ -->
-<section class="panel" id="osaka" role="tabpanel" aria-labelledby="tab-osaka">
-  <div class="leg">
-    <span class="flightcode">CX 622</span><span class="route"><b>PEN</b><span class="arrow">→</span><b>HKG</b></span>
-    <span class="flightcode">CX 502</span><span class="route"><b>HKG</b><span class="arrow">→</span><b>KIX</b></span>
-    <span class="route">Sat Oct 10 · 07:30→11:30, 16:30→<b>21:15</b></span>
-    <span class="nights">Base: <b>Daikokucho</b> · 6 nights + KIX hotel</span>
-  </div>
-
-  <div class="secthead"><span class="num">A</span><h2>Where you're staying</h2><span class="hint">airport hotel night 1, then apartment hotel</span></div>
-  <div class="note"><b>Late arrival plan:</b> CX 502 lands KIX at 21:15 on Oct 10, so you sleep at the <b>Hotel Nikko Kansai Airport</b> at the terminal that first night. Next morning, train into the city and check into the <b>Apartment Hotel 11 Namba Minami 2</b> for 6 nights.</div>
+<!-- HONG KONG -->
+<section class="panel" id="hongkong">
+  <div class="leg"><span class="flightcode">CX</span><span class="route"><b>PEN</b><span class="arrow">→</span><b>HKG</b></span><span class="route">Early Oct · rebooked</span><span class="nights">Base: <b>Sha Tin</b> · 7 nights</span></div>
+  <div class="note"><b>Added leg:</b> Osaka was dropped and the final week moved to Hong Kong — 6 nights at the Regal Riverside in Sha Tin plus 1 night at a Marriott, booked via Expedia Sep 28 ($1,979.26 CAD). Exact dates per your Expedia itinerary.</div>
+  <div class="secthead"><span class="num">A</span><h2>Where you stayed</h2></div>
   <div class="grid cols-2">
-    <div class="card hotel">
-      <h3>Hotel Nikko Kansai Airport</h3>
-      <div class="tagrow"><span class="pill your">Night 1 · hotel</span><span class="pill">At KIX terminal</span><span class="pill rate">★ 4.4</span><span class="pill">Breakfast incl.</span></div>
-      <p>Directly connected to Kansai Airport — a short covered walk from arrivals. Business Class Triple (29 m²) with breakfast. <b>Check-in desk is open until 2:00 AM.</b></p>
-      <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Sat Oct 10 <small>· 15:00–02:00</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Sun Oct 11 <small>· by 11:00</small></div></div>
-        <div class="cell"><div class="lbl">Total</div><div class="val">$304 <small>CAD · 1 nt</small></div></div>
-      </div>
-      <div class="addr">1 Senshu-kuko Kita, Tajiri · walk from KIX Terminal 1 · conf 73489307343829 · +81 72-455-1111</div>
-    </div>
-    <div class="card hotel" style="border-left-color:var(--pop)">
-      <h3>Apartment Hotel 11 Namba Minami 2</h3>
-      <div class="tagrow"><span class="pill your">Nights 2–7 · apt hotel</span><span class="pill">Daikokucho</span><span class="pill rate">★ 4.8</span><span class="pill">Self check-in</span></div>
-      <p>Spacious serviced apartment in Naniwa Ward — 2-min walk to Daikokucho Station (Midosuji line, one stop to Namba). In-room washer, kitchen, elevator. Autonomous self check-in (QR/keypad), luggage drop in the lobby.</p>
-      <div class="stay">
-        <div class="cell"><div class="lbl">Check in</div><div class="val">Sun Oct 11 <small>· from 16:00</small></div></div>
-        <div class="cell"><div class="lbl">Check out</div><div class="val">Sat Oct 17 <small>· by 10:00</small></div></div>
-        <div class="cell"><div class="lbl">Total</div><div class="val">$1,113 <small>CAD · 6 nts</small></div></div>
-      </div>
-      <div class="addr">Daikoku 1-2-22, Naniwa Ward · 2-min walk Daikokucho Stn · conf HMHMA2P44Y · +81 50-1725-7998</div>
-      <p class="confirm" style="margin-top:8px">Tip: the tiny elevator gets busy near 10am checkout — head out a little earlier on travel day.</p>
-    </div>
+    <div class="card hotel"><h3>Regal Riverside Hotel · Sha Tin <span class="cn">麗豪酒店</span></h3><div class="tagrow"><span class="pill your">Expedia</span><span class="pill">Shing Mun River</span><span class="pill">6 nights</span></div><p>Riverside hotel with shuttle to Sha Tin MTR, near New Town Plaza; East Rail into Kowloon and Central.</p>
+      <div class="stay"><div class="cell"><div class="lbl">Nights</div><div class="val">6</div></div><div class="cell"><div class="lbl">Paid</div><div class="val">$1,586.88 <small>CAD</small></div></div><div class="cell"><div class="lbl">Confirmation</div><div class="val"><small>73553934138089</small></div></div></div>
+      <div class="addr">34-36 Tai Chung Kiu Road, Sha Tin <span class="cn">沙田大涌橋路34-36號</span></div></div>
+    <div class="card hotel"><h3>Marriott · 1 night</h3><div class="tagrow"><span class="pill your">Expedia</span><span class="pill">1 night</span></div><p>Property and date per your Expedia itinerary.</p>
+      <div class="stay"><div class="cell"><div class="lbl">Nights</div><div class="val">1</div></div><div class="cell"><div class="lbl">Paid</div><div class="val">$392.38 <small>CAD</small></div></div><div class="cell"><div class="lbl">Confirmation</div><div class="val"><small>73553932147050</small></div></div></div></div>
   </div>
-
-  <div class="grid cols-2" style="margin-top:16px">
-    <div class="card">
-      <h3>Getting in from KIX</h3>
-      <div class="tagrow"><span class="pill">Night 1: walk</span><span class="pill">Day 2: Nankai train</span></div>
-      <p><b>Oct 10 (late):</b> walk from arrivals to the Hotel Nikko. <b>Oct 11 (morning):</b> Nankai train KIX → Namba, then Midosuji one stop to Daikokucho. Grab an ICOCA card.</p>
-      <button class="dirbtn" data-from="Kansai International Airport, Japan" data-to="Hotel Nikko Kansai Airport, Izumisano, Japan" data-mode="walk" data-title="KIX arrivals → Hotel Nikko" data-sub="Night 1 · short covered walk">Walk: KIX → Hotel Nikko</button>
-      <button class="dirbtn ghost" data-from="Kansai International Airport, Japan" data-to="Daikoku 1-2-22, Naniwa Ward, Osaka" data-mode="transit" data-title="KIX → apartment hotel" data-sub="Day 2 · Nankai + Midosuji">Train: KIX → apartment</button>
-      <div class="depart">
-        <h3>Departure day → KIX · Sat Oct 17</h3>
-        <ol>
-          <li><b>Check out by ~10:00</b> (self checkout).</li>
-          <li><b>To the airport:</b> Midosuji to Namba then Nankai train to KIX — about 45–50 min.</li>
-          <li><b>Flight home:</b> AC 24 KIX → YVR.</li>
-        </ol>
-        <button class="dirbtn" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Kansai International Airport, Japan" data-mode="transit" data-title="Apartment hotel → KIX" data-sub="Departure day · Nankai train">Train: apartment → KIX</button>
-        <div class="leaveby">Leave ≈3.5 hrs before departure.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="secthead"><span class="num">B</span><h2>Best places to eat</h2><span class="hint">Namba / Dotonbori</span></div>
-  <div class="grid cols-2">
-    <div class="card"><h3>Gyukatsu Motomura — Namba</h3><div class="tagrow"><span class="pill rate">★ 4.8</span><span class="pill">Beef cutlet</span><span class="pill price">$$</span></div><p>Crisp beef cutlet you finish grilling on your own hot stone. Expect a line; go just before opening.</p><div class="addr">3-3-1 Namba, Chuo-ku · 11:00–22:00</div><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Gyukatsu Motomura Namba, Osaka" data-title="To Gyukatsu Motomura — Namba" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Kyoto Wamen Yukichi Honpo</h3><div class="tagrow"><span class="pill rate">★ 5.0</span><span class="pill">Ramen + A5 wagyu</span></div><p>A tiny room near Dotonbori serving some of the best ramen in the city with torched A5 wagyu.</p><div class="addr">1-9-6 Sennichimae, Chuo-ku · 12:00–23:00</div><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Kyoto Wamen Yukichi Honpo, Osaka" data-title="To Kyoto Wamen Yukichi Honpo" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Tsukishima Monja Kuuya</h3><div class="tagrow"><span class="pill rate">★ 4.9</span><span class="pill">Okonomiyaki · monja</span></div><p>Cook-at-table okonomiyaki and monjayaki with staff who help you make it.</p><div class="addr">2-8-17 Sennichimae, Chuo-ku · 11:00–23:00</div><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Tsukishima Monja Kuuya, Osaka" data-title="To Tsukishima Monja Kuuya" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Onigiri Gorichan</h3><div class="tagrow"><span class="pill rate">★ 5.0</span><span class="pill">Onigiri</span><span class="pill price">$</span></div><p>Hand-formed rice balls. It's <i>inside</i> the Nankai Namba ticket gates; ask staff for a pass.</p><div class="addr">Nankai Namba Stn 3F · 10:00–21:30</div><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Onigiri Gorichan, Osaka" data-title="To Onigiri Gorichan" data-sub="From base · transit">Transit from base</button></div>
-  </div>
-  <div class="note"><b>Halal options:</b> <b>Gyumon</b> (★4.9) and <b>King Wagyu Ramen</b> (★4.9) are both on Dotonbori with prayer facilities.</div>
-
-  <div class="secthead"><span class="num">C</span><h2>Places to go</h2></div>
+  <div class="secthead"><span class="num">B</span><h2>Around Sha Tin</h2></div>
   <div class="grid cols-3">
-    <div class="card"><h3>Dotonbori</h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Neon · canal</span></div><p>The neon heart of Osaka and the Glico sign. Best after dark.</p><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Dotonbori, Osaka" data-title="To Dotonbori" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Osaka Castle &amp; Park</h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">History</span></div><p>Iconic keep set in a huge moated park. Book tickets online. 9–6.</p><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Osaka Castle & Park, Osaka" data-title="To Osaka Castle & Park" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Umeda Sky Building</h3><div class="tagrow"><span class="pill rate">★ 4.4</span><span class="pill">Sunset deck</span></div><p>Floating Garden Observatory with a 360° open-air deck.</p><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Umeda Sky Building, Osaka" data-title="To Umeda Sky Building" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Tsutenkaku &amp; Shinsekai</h3><div class="tagrow"><span class="pill rate">★ 4.1</span><span class="pill">Retro · kushikatsu</span></div><p>Old-school Osaka tower ringed by neon kushikatsu joints.</p><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Tsutenkaku & Shinsekai, Osaka" data-title="To Tsutenkaku & Shinsekai" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Tempozan Ferris Wheel</h3><div class="tagrow"><span class="pill rate">★ 4.5</span><span class="pill">Bay views</span></div><p>Big wheel over Osaka Bay, next to the aquarium.</p><button class="dirmini" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Tempozan Ferris Wheel, Osaka" data-title="To Tempozan Ferris Wheel" data-sub="From base · transit">Transit from base</button></div>
-    <div class="card"><h3>Day trips: Kyoto / Nara</h3><div class="tagrow"><span class="pill">~30–45 min</span></div><p>Kyoto's temples or Nara's deer park — short train hops from Namba.</p></div>
+    <div class="card"><h3>New Town Plaza <span class="cn">新城市廣場</span></h3><p>Mall on top of Sha Tin MTR — food court, Wellcome supermarket.</p></div>
+    <div class="card"><h3>Ten Thousand Buddhas Monastery <span class="cn">萬佛寺</span></h3><p>Hillside monastery, 10 min from Sha Tin MTR (steep steps).</p></div>
+    <div class="card"><h3>Shing Mun River promenade</h3><p>Riverside path outside the hotel — easy stroll.</p></div>
+    <div class="card"><h3>Tsim Sha Tsui &amp; Victoria Harbour</h3><p>East Rail ~25 min; Star Ferry across the harbour.</p></div>
+    <div class="card"><h3>Victoria Peak <span class="cn">太平山</span></h3><p>Book the Peak Tram online; best at dusk.</p></div>
+    <div class="card"><h3>Mong Kok markets</h3><p>Ladies' Market, Temple Street; East Rail → Mong Kok East.</p></div>
   </div>
-
-  <div class="secthead"><span class="num">D</span><h2>Day-by-day</h2><span class="hint">Osaka · transit trains</span></div>
-  <div class="note"><b>Getting around Osaka:</b> trains are the easy way — frequent, punctual, elevators at major stations. Grab an <b>ICOCA</b> card.</div>
-  <div class="days">
-    <div class="day arrive"><div class="daynum"><span class="d">OCT</span><span class="n">10</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Late arrival · sleep at the airport hotel</div><p>Land KIX 21:15. Walk from arrivals to the <b>Hotel Nikko</b>. Konbini dinner, rest.</p><div class="stops"><div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">KIX arrivals → Hotel Nikko Kansai Airport</span><span class="est">~5 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Hotel Nikko Kansai Airport, Izumisano, Japan" data-mode="walk" data-title="KIX → Hotel Nikko" data-sub="Covered walk">Go</button></div></div><div class="dmeta"><span class="tag">Arrival · night 1</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">11</span><span class="dow">SUN</span></div><div class="dbody"><div class="dtitle">Into the city · check in &amp; Dotonbori</div><p>Nankai train to Namba, Midosuji one stop to <b>Daikokucho</b>, check in. Then <b>Dotonbori</b> with ramen at <b>Yukichi</b>.</p><div class="stops">
-      <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">KIX → Daikokucho (apartment hotel)</span><span class="est">~50 min</span><button class="go" data-from="Kansai International Airport, Japan" data-to="Daikoku 1-2-22, Naniwa Ward, Osaka" data-mode="transit" data-title="KIX → apartment hotel" data-sub="Nankai + Midosuji">Go</button></div>
-      <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Daikokucho → Dotonbori (Namba)</span><span class="est">~10 min</span><button class="go" data-from="Daikoku 1-2-22, Naniwa Ward, Osaka" data-to="Dotonbori, Osaka" data-mode="transit" data-title="Apartment → Dotonbori" data-sub="Midosuji line, 1 stop">Go</button></div>
-    </div><div class="dmeta"><span class="tag">Check-in · flat</span><span class="tag eat">Dotonbori + Yukichi</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">12</span><span class="dow">MON</span></div><div class="dbody"><div class="dtitle">Osaka Castle &amp; park</div><p>Broad flat park; take the lift inside the keep. Easy lunch, then rest.</p><div class="stops"><div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Namba → Osaka Castle</span><span class="est">~20 min</span><button class="go" data-from="Namba Station, Osaka" data-to="Osaka Castle, Osaka" data-mode="transit" data-title="Namba → Osaka Castle" data-sub="Metro / loop line">Go</button></div></div><div class="dmeta"><span class="tag">Flat park · lift inside</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">13</span><span class="dow">TUE</span></div><div class="dbody"><div class="dtitle">Day trip: Nara</div><p>Easy train to Nara. Deer park, <b>Todai-ji</b>'s great hall. Return mid-afternoon.</p><div class="stops">
-      <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Namba → Nara (Kintetsu)</span><span class="est">~45 min</span><button class="go" data-from="Osaka Namba Station, Osaka" data-to="Kintetsu Nara Station, Nara, Japan" data-mode="transit" data-title="Namba → Nara" data-sub="Kintetsu line">Go</button></div>
-      <div class="stop"><span class="mode walk">🚶 Walk</span><span class="dest">Nara Station → Nara Park &amp; Todai-ji</span><span class="est">~10 min</span><button class="go" data-from="Kintetsu Nara Station, Nara, Japan" data-to="Todai-ji, Nara, Japan" data-mode="walk" data-title="Station → Todai-ji" data-sub="Flat walk through the park">Go</button></div>
-    </div><div class="dmeta"><span class="tag">Flat · near station</span></div></div></div>
-    <div class="day restday"><div class="daynum"><span class="d">OCT</span><span class="n">14</span><span class="dow">WED</span></div><div class="dbody"><div class="dtitle">Slow day in Namba</div><p>Laundry, okonomiyaki lunch at <b>Kuuya</b>, optional sunset at <b>Umeda Sky</b>.</p><div class="stops"><div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Namba → Umeda Sky Building (optional)</span><span class="est">~15 min</span><button class="go" data-from="Namba Station, Osaka" data-to="Umeda Sky Building, Osaka" data-mode="transit" data-title="Namba → Umeda Sky" data-sub="Midosuji line + walk">Go</button></div></div><div class="dmeta"><span class="tag rest">Easy day</span><span class="tag eat">Okonomiyaki Kuuya</span></div></div></div>
-    <div class="day"><div class="daynum"><span class="d">OCT</span><span class="n">15</span><span class="dow">THU</span></div><div class="dbody"><div class="dtitle">Day trip: Kyoto</div><p>Pick one or two: <b>Gion</b> streets or <b>Fushimi Inari</b>'s torii gates near the entrance. Long lunch, unhurried return.</p><div class="stops">
-      <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Namba → Kyoto</span><span class="est">~45 min</span><button class="go" data-from="Osaka Namba Station, Osaka" data-to="Kyoto Station, Kyoto, Japan" data-mode="transit" data-title="Namba → Kyoto" data-sub="Train to Kyoto">Go</button></div>
-      <div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Kyoto Station → Fushimi Inari / Gion</span><span class="est">~10 min</span><button class="go" data-from="Kyoto Station, Kyoto, Japan" data-to="Fushimi Inari Taisha, Kyoto, Japan" data-mode="transit" data-title="Kyoto Stn → Fushimi Inari" data-sub="Nara line, 2 stops">Go</button></div>
-    </div><div class="dmeta"><span class="tag">Pick 1–2 sights</span></div></div></div>
-    <div class="day restday"><div class="daynum"><span class="d">OCT</span><span class="n">16</span><span class="dow">FRI</span></div><div class="dbody"><div class="dtitle">Wind-down &amp; favourites</div><p>Last shopping in the arcades, pack. Farewell dinner at <b>Shinsekai</b> or Dotonbori.</p><div class="stops"><div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Namba → Tsutenkaku / Shinsekai (optional)</span><span class="est">~10 min</span><button class="go" data-from="Namba Station, Osaka" data-to="Tsutenkaku, Shinsekai, Osaka" data-mode="transit" data-title="Namba → Shinsekai" data-sub="Midosuji line">Go</button></div></div><div class="dmeta"><span class="tag rest">Wind-down</span><span class="tag eat">Farewell dinner</span></div></div></div>
-    <div class="day depart"><div class="daynum"><span class="d">OCT</span><span class="n">17</span><span class="dow">SAT</span></div><div class="dbody"><div class="dtitle">Fly home to Vancouver</div><p>Nankai train from Namba to KIX. AC 24 KIX → YVR.</p><div class="stops"><div class="stop"><span class="mode train">🚆 Train</span><span class="dest">Namba Station → KIX (Nankai)</span><span class="est">~45 min</span><button class="go" data-from="Namba Station, Osaka" data-to="Kansai International Airport, Japan" data-mode="transit" data-title="Namba → KIX" data-sub="Nankai train">Go</button></div></div><div class="dmeta"><span class="tag">Departure</span></div></div></div>
-  </div>
+  <div class="note"><b>Getting around:</b> an <b>Octopus card</b> covers MTR, buses, ferries and shops. Sha Tin is on the East Rail line — ~25 min to Kowloon.</div>
 </section>
 
-<!-- ============ ITINERARY · typical day ============ -->
-<section class="panel" id="itinerary" role="tabpanel" aria-labelledby="tab-itinerary">
-  <div class="secthead"><span class="num">◷</span><h2>A typical day</h2><span class="hint">the daily rhythm · one outing, one rest</span></div>
-  <div class="note"><b>How every day is shaped:</b> late start, <b>one</b> main outing in the morning, a sit-down lunch, a real rest back at base mid-afternoon, then a short local wander and dinner close to home.</div>
-  <div class="typ-switch" role="group" aria-label="City">
-    <button data-typ="seoul" aria-pressed="true">Seoul <small>Sep 21–26</small></button>
-    <button data-typ="penang" aria-pressed="false">Penang <small>Sep 26–Oct 10</small></button>
-    <button data-typ="osaka" aria-pressed="false">Osaka <small>Oct 10–17</small></button>
-  </div>
-  <div class="typ on" id="typ-seoul">
-    <div class="typ-head"><span class="pill your">Base: Hongdae · 5 Jandari-ro 6-gil #601</span><span class="pill">Line 2 + Kakao T</span></div>
-    <div class="tl">
-      <div class="tl-row rest"><div class="tl-time">08:30</div><div class="tl-card"><b class="t">Slow start at the flat</b><p>Capsule coffee and a simple breakfast, or a bakery run on the Hongdae street. Nobody leaves before 9:30.</p></div></div>
-      <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-card"><b class="t">Head out — one main sight</b><p>Walk ~7 min to Hongik Univ Station for Line 2, or call a Kakao T.</p></div></div>
-      <div class="tl-row"><div class="tl-time">10:45</div><div class="tl-card"><b class="t">Morning sightseeing</b><p>About two hours on foot, with benches and a tea-house stop built in.</p></div></div>
-      <div class="tl-row eat"><div class="tl-time">12:45</div><div class="tl-card"><b class="t">Lunch near the sight</b><p>Sit-down Korean lunch — kalguksu, ssambap, bibimbap.</p></div></div>
-      <div class="tl-row rest"><div class="tl-time">14:30</div><div class="tl-card"><b class="t">Back to Hongdae, feet up</b><p>A proper 60–90 minute rest at the flat.</p></div></div>
-      <div class="tl-row"><div class="tl-time">16:30</div><div class="tl-card"><b class="t">Easy local wander</b><p>Hongdae shopping street, Yeonnam-dong cafés or the Gyeongui Line Forest Park.</p></div></div>
-      <div class="tl-row eat"><div class="tl-time">18:30</div><div class="tl-card"><b class="t">Dinner</b><p>Korean BBQ or a neighbourhood spot near the flat.</p></div></div>
-      <div class="tl-row rest"><div class="tl-time">20:30</div><div class="tl-card"><b class="t">Home by half eight</b><p>GS25 for tomorrow's water and snacks, early night.</p></div></div>
-    </div>
-  </div>
-  <div class="typ" id="typ-penang">
-    <div class="typ-head"><span class="pill your">Base: Iconic Regency · Bayan Lepas</span><span class="pill">Grab everywhere</span></div>
-    <div class="tl">
-      <div class="tl-row eat"><div class="tl-time">08:30</div><div class="tl-card"><b class="t">Breakfast, Penang-style</b><p>Kopitiam breakfast by Grab — kaya toast, half-boiled eggs, kopi.</p></div></div>
-      <div class="tl-row"><div class="tl-time">09:30</div><div class="tl-card"><b class="t">The day's one outing</b><p>Grab door-to-door while it is still cool. Finished walking by noon.</p></div></div>
-      <div class="tl-row eat"><div class="tl-time">12:00</div><div class="tl-card"><b class="t">Hawker lunch</b><p>Char koay teow, assam laksa, nasi kandar.</p></div></div>
-      <div class="tl-row rest"><div class="tl-time">13:30</div><div class="tl-card"><b class="t">Retreat from the heat</b><p>Pool, nap, reading. Non-negotiable.</p></div></div>
-      <div class="tl-row"><div class="tl-time">17:00</div><div class="tl-card"><b class="t">Golden-hour option</b><p>The esplanade, a beach, a mall stroll.</p></div></div>
-      <div class="tl-row eat"><div class="tl-time">18:30</div><div class="tl-card"><b class="t">Dinner</b><p>Hawker centre or sit-down restaurant by Grab.</p></div></div>
-      <div class="tl-row rest"><div class="tl-time">20:30</div><div class="tl-card"><b class="t">Home</b><p>Back by 20:30–21:00.</p></div></div>
-    </div>
-  </div>
-  <div class="typ" id="typ-osaka">
-    <div class="typ-head"><span class="pill your">Base: Apartment Hotel 11 · Daikokucho</span><span class="pill">Midosuji line + ICOCA</span></div>
-    <div class="tl">
-      <div class="tl-row rest"><div class="tl-time">08:30</div><div class="tl-card"><b class="t">Breakfast at the apartment</b><p>Konbini breakfast or a kissaten morning set. Leave after 9:30.</p></div></div>
-      <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-card"><b class="t">Train to the day's sight</b><p>Daikokucho Station is 2 minutes from the door; Namba is one stop.</p></div></div>
-      <div class="tl-row"><div class="tl-time">10:45</div><div class="tl-card"><b class="t">Morning sightseeing</b><p>Two hours with sitting breaks. Follow the elevator signs.</p></div></div>
-      <div class="tl-row eat"><div class="tl-time">12:45</div><div class="tl-card"><b class="t">Lunch</b><p>Udon, okonomiyaki or a department-store restaurant floor.</p></div></div>
-      <div class="tl-row rest"><div class="tl-time">14:30</div><div class="tl-card"><b class="t">Rest at the apartment</b><p>An hour or more with feet up.</p></div></div>
-      <div class="tl-row"><div class="tl-time">17:00</div><div class="tl-card"><b class="t">Dotonbori as the lights come on</b><p>~15-minute flat walk or one subway stop.</p></div></div>
-      <div class="tl-row eat"><div class="tl-time">18:30</div><div class="tl-card"><b class="t">Dinner</b><p>Side streets off Dotonbori rather than the canal front.</p></div></div>
-      <div class="tl-row rest"><div class="tl-time">20:30</div><div class="tl-card"><b class="t">Home</b><p>One stop back to Daikokucho.</p></div></div>
-    </div>
-  </div>
+<!-- ITINERARY -->
+<section class="panel" id="itinerary">
+  <div class="secthead"><span class="num">◷</span><h2>A typical day</h2><span class="hint">one outing, one rest</span></div>
+  <div class="typ-switch"><button data-typ="seoul" aria-pressed="true">Seoul</button><button data-typ="penang" aria-pressed="false">Penang</button><button data-typ="hongkong" aria-pressed="false">Hong Kong</button></div>
+  <div class="typ on" id="typ-seoul"><div class="typ-head"><span class="pill your">Base: Hongdae</span></div><div class="tl">
+    <div class="tl-row rest"><div class="tl-time">08:30</div><div class="tl-card"><b class="t">Slow start</b><p>Coffee or a bakery run; leave after 9:30.</p></div></div>
+    <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-card"><b class="t">One main sight</b><p>Line 2 or Kakao T.</p></div></div>
+    <div class="tl-row eat"><div class="tl-time">12:45</div><div class="tl-card"><b class="t">Lunch</b><p>Kalguksu, ssambap, bibimbap.</p></div></div>
+    <div class="tl-row rest"><div class="tl-time">14:30</div><div class="tl-card"><b class="t">Rest at the flat</b><p>60–90 minutes.</p></div></div>
+    <div class="tl-row eat"><div class="tl-time">18:30</div><div class="tl-card"><b class="t">Dinner</b><p>KBBQ or a neighbourhood spot.</p></div></div></div></div>
+  <div class="typ" id="typ-penang"><div class="typ-head"><span class="pill your">Base: Iconic Regency</span></div><div class="tl">
+    <div class="tl-row eat"><div class="tl-time">08:30</div><div class="tl-card"><b class="t">Kopitiam breakfast</b><p>Kaya toast, kopi.</p></div></div>
+    <div class="tl-row"><div class="tl-time">09:30</div><div class="tl-card"><b class="t">The day's one outing</b><p>Grab while it is cool.</p></div></div>
+    <div class="tl-row eat"><div class="tl-time">12:00</div><div class="tl-card"><b class="t">Hawker lunch</b><p>CKT, assam laksa.</p></div></div>
+    <div class="tl-row rest"><div class="tl-time">13:30</div><div class="tl-card"><b class="t">Retreat from the heat</b><p>Pool, nap.</p></div></div>
+    <div class="tl-row eat"><div class="tl-time">18:30</div><div class="tl-card"><b class="t">Dinner</b><p>Hawker centre by Grab.</p></div></div></div></div>
+  <div class="typ" id="typ-hongkong"><div class="typ-head"><span class="pill your">Base: Regal Riverside · Sha Tin</span></div><div class="tl">
+    <div class="tl-row eat"><div class="tl-time">08:30</div><div class="tl-card"><b class="t">Dim sum or cha chaan teng</b><p>Milk tea, pineapple bun.</p></div></div>
+    <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-card"><b class="t">East Rail into town</b><p>~25 min to Kowloon.</p></div></div>
+    <div class="tl-row eat"><div class="tl-time">12:45</div><div class="tl-card"><b class="t">Lunch</b><p>Wonton noodles, roast goose.</p></div></div>
+    <div class="tl-row rest"><div class="tl-time">15:00</div><div class="tl-card"><b class="t">Back to Sha Tin</b><p>Rest, riverside walk.</p></div></div>
+    <div class="tl-row eat"><div class="tl-time">18:30</div><div class="tl-card"><b class="t">Dinner</b><p>Or stay in town for the harbour lights at 20:00.</p></div></div></div></div>
 </section>
 
-<!-- ============ PLANNER ============ -->
-<section class="panel" id="planner" role="tabpanel" aria-labelledby="tab-planner">
-  <div class="secthead"><span class="num">✦</span><h2>Trip Planner</h2><span class="hint">drag · drop · optimize</span></div>
-  <p class="planner-intro">Browse every venue by city and category, then drag the ones you want into a day's time slots — or tap <b>+</b> on mobile. Hit <b>Optimize day</b> to auto-arrange a day's picks. Your plan saves automatically on this device.</p>
-
-  <div class="secthead"><span class="num">$</span><h2>Cost breakdown</h2><span class="hint">booked · CAD · 3 travellers</span></div>
-  <div class="grandcost">
-    <div><div class="gl">Total booked so far</div><div class="gsub">Flights + all accommodation · 3 travellers</div></div>
-    <div style="text-align:right"><div class="gv">$7,449<span style="font-size:14px">+</span></div><div class="gper">CAD · Seoul stay price TBC</div></div>
-  </div>
-  <div class="costwrap">
-    <div class="costcard">
-      <h3><span class="ic">✈</span>Flights — $4,237.11</h3>
-      <div class="costrow"><span class="cname">AC 63 · YVR → ICN</span><span class="csub">Sep 20</span></div>
-      <div class="costrow"><span class="cname">CX 413 / 621 · ICN → HKG → PEN</span><span class="csub">Sep 26</span></div>
-      <div class="costrow"><span class="cname">CX 622 / 502 · PEN → HKG → KIX</span><span class="csub">Oct 10</span></div>
-      <div class="costrow"><span class="cname">AC 24 · KIX → YVR</span><span class="csub">Oct 17</span></div>
-      <div class="costrow"><span class="cname">Per traveller</span><span class="camt">$1,412.37</span></div>
-      <div class="costtot"><span class="l">3 travellers</span><span class="v">$4,237.11</span></div>
-      <div class="costnote">Booking ADVZX4 · economy, 1 free bag each</div>
-    </div>
-    <div class="costcard">
-      <h3><span class="ic">🛏</span>Accommodation — $3,211.60 + Seoul</h3>
-      <div class="costrow"><span class="cname">Hongdae flat (BIOS #601) · Seoul</span><span class="csub">5 nts</span><span class="camt">TBC</span></div>
-      <div class="costrow"><span class="cname">Iconic Regency, Penang</span><span class="csub">14 nts</span><span class="camt">$1,795.05</span></div>
-      <div class="costrow"><span class="cname">Hotel Nikko KIX</span><span class="csub">1 nt</span><span class="camt">$303.95</span></div>
-      <div class="costrow"><span class="cname">Apartment Hotel 11, Osaka</span><span class="csub">6 nts</span><span class="camt">$1,112.60</span></div>
-      <div class="costtot"><span class="l">26 nights total</span><span class="v">$3,211.60+</span></div>
-      <div class="costnote">Penang MYR 200 deposit + MYR 2/nt tax; Japan city tax may apply</div>
-    </div>
-  </div>
-  <div class="note"><b>Not yet included:</b> daily food, local transport, attraction tickets, insurance, shopping — see the <b>Expenses</b> tab for actuals.</div>
-
-  <div class="planner-controls">
-    <div class="seg" id="pl-city" role="group" aria-label="Filter by city">
-      <button data-city="all" aria-pressed="true">All cities</button>
-      <button data-city="seoul" aria-pressed="false">Seoul</button>
-      <button data-city="penang" aria-pressed="false">Penang</button>
-      <button data-city="osaka" aria-pressed="false">Osaka</button>
-    </div>
-    <div class="seg" id="pl-cat" role="group" aria-label="Filter by category">
-      <button data-cat="all" aria-pressed="true">All</button>
-      <button data-cat="sight" aria-pressed="false">Sights</button>
-      <button data-cat="food" aria-pressed="false">Food</button>
-      <button data-cat="nature" aria-pressed="false">Nature</button>
-      <button data-cat="culture" aria-pressed="false">Culture</button>
-      <button data-cat="relax" aria-pressed="false">Relax</button>
-    </div>
-    <div class="pl-actions">
-      <button class="pl-btn ghost" id="pl-print">🖨 Print / PDF</button>
-      <button class="pl-btn ghost" id="pl-export">⤓ Export</button>
-      <button class="pl-btn warn" id="pl-reset">Reset plan</button>
-    </div>
-  </div>
-  <div class="planner-layout">
-    <aside class="palette"><h3>Things to do</h3><div class="sub" id="pl-count">—</div><div id="pl-palette"></div></aside>
-    <div class="board" id="pl-board"></div>
-  </div>
-</section>
-
-<!-- ============ SUMMARY ============ -->
-<section class="panel" id="summary" role="tabpanel" aria-labelledby="tab-summary">
-  <div class="sum-head">
-    <h2>Trip Summary — Asia 2026</h2>
-    <span class="who">Matthew Ho Yin Tong · Desiree Bun Wai Ng · Ka-Kei Tong · 3 travellers</span>
-  </div>
-  <p class="planner-intro">Everything on one page for printing or saving as PDF.</p>
+<!-- SUMMARY -->
+<section class="panel" id="summary">
+  <div class="sum-head"><h2>Trip Summary — Asia 2026</h2><span class="who">Matthew Ho Yin Tong · Desiree Bun Wai Ng · Ka-Kei Tong</span></div>
   <div class="sum-actions"><button class="pl-btn" id="sum-print">🖨 Print / Save as PDF</button></div>
-  <div class="grandcost">
-    <div><div class="gl">Total booked · flights + accommodation</div><div class="gsub">Confirmations below</div></div>
-    <div style="text-align:right"><div class="gv">$7,448.71<span style="font-size:15px">+</span></div><div class="gper">CAD · excl. Seoul stay (price TBC)</div></div>
-  </div>
-  <div class="sumtable-wrap">
-    <table class="sum">
-      <caption>✈ Flights — Booking ADVZX4 · $4,237.11 CAD (3 travellers)</caption>
-      <thead><tr><th>Date</th><th>Flight</th><th>Route</th><th>Depart</th><th>Arrive</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td><span class="b">Sun Sep 20</span></td><td><span class="m">AC 63</span></td><td>Vancouver (YVR) → Seoul (ICN)</td><td><span class="m">12:20</span><span class="s">Term M</span></td><td><span class="m">16:05 +1</span><span class="s">Sep 21 · Term 1</span></td><td>11h45 · Economy (K)<span class="s">Seats 24H/J/K</span></td></tr>
-        <tr><td><span class="b">Sat Sep 26</span></td><td><span class="m">CX 413</span></td><td>Seoul (ICN) → Hong Kong (HKG)</td><td><span class="m">08:00</span></td><td><span class="m">10:50</span></td><td>3h50 · Economy (Q)</td></tr>
-        <tr><td><span class="s">↳ same day</span></td><td><span class="m">CX 621</span></td><td>Hong Kong (HKG) → Penang (PEN)</td><td><span class="m">15:30</span><span class="s">4h40 layover</span></td><td><span class="m">19:10</span></td><td>3h40 · Economy (Q)</td></tr>
-        <tr><td><span class="b">Sat Oct 10</span></td><td><span class="m">CX 622</span></td><td>Penang (PEN) → Hong Kong (HKG)</td><td><span class="m">07:30</span></td><td><span class="m">11:30</span></td><td>4h00 · Economy (S)</td></tr>
-        <tr><td><span class="s">↳ same day</span></td><td><span class="m">CX 502</span></td><td>Hong Kong (HKG) → Osaka (KIX)</td><td><span class="m">16:30</span><span class="s">5h layover</span></td><td><span class="m">21:15</span></td><td>3h45 · Economy (S)</td></tr>
-        <tr><td><span class="b">Sat Oct 17</span></td><td><span class="m">AC 24</span></td><td>Osaka (KIX) → Vancouver (YVR)</td><td><span class="m">18:00</span></td><td><span class="m">11:15</span><span class="s">same day</span></td><td>9h15 · Economy (L)<span class="s">Seats 19H/J/K</span></td></tr>
-        <tr class="total"><td colspan="5">Flights total · 3 travellers ($1,412.37 each)</td><td class="amt">$4,237.11</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="sum-foot">Tickets: 0149551184072 (Matthew) · 0149551184074 (Desiree) · 0149551184070 (Ka-Kei) · Itinerary #73479417699671</p>
-  <div class="sumtable-wrap">
-    <table class="sum">
-      <caption>🛏 Accommodation — $3,211.60 CAD + Seoul (TBC) · 26 nights</caption>
-      <thead><tr><th>Stay</th><th>Location</th><th>Check-in</th><th>Check-out</th><th>Confirmation</th><th>Cost</th></tr></thead>
-      <tbody>
-        <tr><td><span class="b">BIOS bldg #601 · Hongdae</span><span class="s">Seoul · Airbnb · keypad</span></td><td>5 Jandari-ro 6-gil #601, Seoul 04038<span class="s">서울 마포구 서교동 372-9, 601호 · Hongik Univ Exit 9 (7 min)</span></td><td><span class="m">Mon Sep 21</span><span class="s">16:00</span></td><td><span class="m">Sat Sep 26</span><span class="s">12:00</span></td><td><span class="conf">—</span></td><td class="amt">TBC</td></tr>
-        <tr><td><span class="b">Iconic Regency</span><span class="s">Penang · 3BR apt</span></td><td>239 Jln Sultan Azlan Shah, George Town 11900<span class="s">Bayan Lepas · +60 4-688 7888</span></td><td><span class="m">Sat Sep 26</span><span class="s">15:00</span></td><td><span class="m">Sat Oct 10</span><span class="s">12:00</span></td><td><span class="conf">73489311349873</span></td><td class="amt">$1,795.05</td></tr>
-        <tr><td><span class="b">Hotel Nikko Kansai Airport</span><span class="s">Osaka · night 1</span></td><td>1 Senshu-kuko Kita, Tajiri<span class="s">At KIX Terminal 1 · +81 72-455-1111</span></td><td><span class="m">Sat Oct 10</span><span class="s">15:00–02:00</span></td><td><span class="m">Sun Oct 11</span><span class="s">11:00</span></td><td><span class="conf">73489307343829</span></td><td class="amt">$303.95</td></tr>
-        <tr><td><span class="b">Apartment Hotel 11 Namba Minami 2</span><span class="s">Osaka · nights 2–7</span></td><td>Daikoku 1-2-22, Naniwa Ward 556-0014<span class="s">Daikokucho Stn · +81 50-1725-7998</span></td><td><span class="m">Sun Oct 11</span><span class="s">16:00</span></td><td><span class="m">Sat Oct 17</span><span class="s">10:00</span></td><td><span class="conf">HMHMA2P44Y</span></td><td class="amt">$1,112.60</td></tr>
-        <tr class="total"><td colspan="5">Accommodation total · 26 nights (excl. Seoul)</td><td class="amt">$3,211.60+</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="sumtable-wrap">
-    <table class="sum">
-      <caption>$ Grand total</caption>
-      <thead><tr><th>Category</th><th>Detail</th><th>Amount (CAD)</th></tr></thead>
-      <tbody>
-        <tr><td><span class="b">Flights</span></td><td>6 segments · 3 travellers · Booking ADVZX4</td><td class="amt">$4,237.11</td></tr>
-        <tr><td><span class="b">Accommodation</span></td><td>4 properties · 26 nights · Seoul price TBC</td><td class="amt">$3,211.60+</td></tr>
-        <tr class="total"><td>Total booked</td><td>excl. Seoul stay · ≈ $2,482.90 pp so far</td><td class="amt">$7,448.71+</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="grandcost"><div><div class="gl">Total · flights + accommodation</div><div class="gsub">As flown: Seoul · Penang · Hong Kong</div></div><div style="text-align:right"><div class="gv">$12,892.45</div><div class="gper">CAD</div></div></div>
+  <div class="sumtable-wrap"><table class="sum"><caption>✈ Flights</caption><thead><tr><th>Date</th><th>Flight</th><th>Route</th><th>Notes</th><th>Cost</th></tr></thead><tbody>
+    <tr><td><span class="b">Sun Sep 20</span></td><td><span class="m">AC 63</span></td><td>Vancouver → Seoul</td><td>12:20 → 16:05 +1</td><td class="amt" rowspan="2">$4,237.11<span class="s">original booking ADVZX4</span></td></tr>
+    <tr><td><span class="b">Sat Sep 26</span></td><td><span class="m">CX 413 / 621</span></td><td>ICN → HKG → Penang</td><td>08:00 → 19:10</td></tr>
+    <tr><td><span class="b">Sep 26 (charged)</span></td><td><span class="m">Air Canada ×3</span></td><td>Re-route: Penang → Hong Kong → Vancouver</td><td>Osaka dropped · 3 × $1,283.20 − $303.95 refund</td><td class="amt">$3,545.65</td></tr>
+    <tr class="total"><td colspan="4">Flights total</td><td class="amt">$7,782.76</td></tr></tbody></table></div>
+  <p class="sum-foot">Tickets: 0149551184072 · 0149551184074 · 0149551184070</p>
+  <div class="sumtable-wrap"><table class="sum"><caption>🛏 Accommodation — 27 nights</caption><thead><tr><th>Stay</th><th>Location</th><th>Dates</th><th>Confirmation</th><th>Cost</th></tr></thead><tbody>
+    <tr><td><span class="b">BIOS #601 · Hongdae</span><span class="s">Seoul · Airbnb</span></td><td>5 Jandari-ro 6-gil, Seoul</td><td><span class="m">Sep 21 → 26</span><span class="s">5 nts</span></td><td><span class="conf">Airbnb</span></td><td class="amt">$1,335.38</td></tr>
+    <tr><td><span class="b">Iconic Regency</span><span class="s">Penang</span></td><td>239 Jln Sultan Azlan Shah, Bayan Lepas</td><td><span class="m">Sep 26 → Oct 10</span><span class="s">14 nts booked</span></td><td><span class="conf">73489311349873</span></td><td class="amt">$1,795.05</td></tr>
+    <tr><td><span class="b">Regal Riverside Hotel</span><span class="s">Hong Kong · Sha Tin</span></td><td>34-36 Tai Chung Kiu Road</td><td><span class="m">Early Oct</span><span class="s">6 nts</span></td><td><span class="conf">73553934138089</span></td><td class="amt">$1,586.88</td></tr>
+    <tr><td><span class="b">Marriott</span><span class="s">Hong Kong</span></td><td>per Expedia</td><td><span class="m">Early Oct</span><span class="s">1 nt</span></td><td><span class="conf">73553932147050</span></td><td class="amt">$392.38</td></tr>
+    <tr class="total"><td colspan="4">Accommodation total</td><td class="amt">$5,109.69</td></tr></tbody></table></div>
 </section>
 
-<!-- ============ EXPENSES ============ -->
-<section class="panel" id="expenses" role="tabpanel" aria-labelledby="tab-expenses">
-  <div class="sum-head">
-    <h2>Expense Dashboard — actuals</h2>
-    <span class="who">TD + credit card · Sep 18 → Oct 10, 2026 · CAD</span>
-  </div>
-  <p class="planner-intro">Every card charge from Sep 18 onward, categorised. Ignored by request: Chatr, Apple subscriptions, Sushi Mura (10/03), McDonald's (10/10), Chevron. Original flights ($4,237.11) were booked before the cutoff and are added back as a separate line.</p>
-
+<!-- EXPENSES -->
+<section class="panel" id="expenses">
+  <div class="sum-head"><h2>Expense Dashboard — actuals</h2><span class="who">TD + credit card · CAD</span></div>
+  <p class="planner-intro">All charges from Sep 18 onward, plus pre-trip bookings (original flights $4,237.11, Seoul Airbnb $1,335.38, Penang hotel $1,795.05). Ignored: Chatr, Apple, Sushi Mura (10/03), McDonald's (10/10), Chevron.</p>
   <div class="kpis">
-    <div class="kpi"><div class="kl">Total spend</div><div class="kv">$11,849</div><div class="ks">incl. original flights</div></div>
+    <div class="kpi"><div class="kl">Total spend</div><div class="kv">$14,980</div><div class="ks">incl. all flights &amp; hotels</div></div>
     <div class="kpi"><div class="kl">Flights (all)</div><div class="kv">$7,783</div><div class="ks">$4,237 original + $3,546 changes</div></div>
-    <div class="kpi"><div class="kl">Hotels</div><div class="kv">$1,979</div><div class="ks">Regal Riverside 6 nts + Marriott 1 nt</div></div>
+    <div class="kpi"><div class="kl">Hotels</div><div class="kv">$5,110</div><div class="ks">Seoul $1,335 · Penang $1,795 · HK $1,979</div></div>
     <div class="kpi"><div class="kl">Everything else</div><div class="kv">$2,087</div><div class="ks">Grab/Uber is $994 of this</div></div>
   </div>
-
   <div class="chartbox"><h3>Spend by category</h3><div style="position:relative;height:360px"><canvas id="exCat"></canvas></div></div>
-
   <div class="chartbox"><h3>Spend by country (excluding flights)</h3>
-    <div class="legend">
-      <span><i style="background:#6250d6"></i>Hotels</span><span><i style="background:#2a78d6"></i>Grab/Uber</span>
-      <span><i style="background:#eb6834"></i>Food</span><span><i style="background:#1baf7a"></i>Shopping</span>
-      <span><i style="background:#eda100"></i>eSIM</span><span><i style="background:#e87ba4"></i>Spa</span>
-      <span><i style="background:#898781"></i>Other (visa, licence, souvenir)</span>
-    </div>
-    <div style="position:relative;height:240px"><canvas id="exCountry"></canvas></div>
-  </div>
-
-  <div class="secthead"><span class="num">🚗</span><h2>Grab / Uber rides (taxi)</h2><span class="hint">Uber Eats excluded from ride stats</span></div>
+    <div class="legend"><span><i style="background:#6250d6"></i>Hotels</span><span><i style="background:#2a78d6"></i>Grab/Uber</span><span><i style="background:#eb6834"></i>Food</span><span><i style="background:#1baf7a"></i>Shopping</span><span><i style="background:#eda100"></i>eSIM</span><span><i style="background:#e87ba4"></i>Spa</span><span><i style="background:#898781"></i>Other</span></div>
+    <div style="position:relative;height:240px"><canvas id="exCountry"></canvas></div></div>
+  <div class="secthead"><span class="num">🚗</span><h2>Grab / Uber rides (taxi)</h2><span class="hint">Uber Eats excluded</span></div>
   <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
     <div class="kpi"><div class="kl">All rides (37)</div><div class="kv">$14.60 <small>avg</small></div><div class="ks">median $8.82 · total $540.20</div></div>
     <div class="kpi"><div class="kl">Korea · Uber (15)</div><div class="kv">$23.57 <small>avg</small></div><div class="ks">median $18.85 · total $353.49</div></div>
     <div class="kpi"><div class="kl">Malaysia · Grab (21)</div><div class="kv">$7.46 <small>avg</small></div><div class="ks">median $5.85 · total $156.71</div></div>
   </div>
-
   <div class="secthead"><span class="num">🍜</span><h2>Grab food · Malaysia</h2></div>
   <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
     <div class="kpi"><div class="kl">Orders</div><div class="kv">16</div><div class="ks">total $315.40</div></div>
     <div class="kpi"><div class="kl">Average order</div><div class="kv">$19.71</div></div>
     <div class="kpi"><div class="kl">Median order</div><div class="kv">$16.40</div><div class="ks">range $8.84 – $42.46</div></div>
   </div>
-
-  <div class="sumtable-wrap">
-    <table class="sum">
-      <caption>$ Category × country</caption>
-      <thead><tr><th>Category</th><th>Canada</th><th>Korea</th><th>Malaysia</th><th>Hong Kong</th><th>Total</th></tr></thead>
-      <tbody>
-        <tr><td>Original flights</td><td class="amt">4,237.11</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">4,237.11</td></tr>
-        <tr><td>Flight changes (Air Canada ×3 − $303.95 refund)</td><td class="amt">3,545.65</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">3,545.65</td></tr>
-        <tr><td>Hotels (Expedia)</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">1,979.26</td><td class="amt">1,979.26</td></tr>
-        <tr><td>Grab/Uber (incl. taxi)</td><td class="amt">30.00</td><td class="amt">430.71</td><td class="amt">533.67</td><td class="amt">—</td><td class="amt">994.38</td></tr>
-        <tr><td>Food</td><td class="amt">128.82</td><td class="amt">278.17</td><td class="amt">161.88</td><td class="amt">66.19</td><td class="amt">635.06</td></tr>
-        <tr><td>Spa (Iconic Marjorie)</td><td class="amt">—</td><td class="amt">—</td><td class="amt">187.40</td><td class="amt">—</td><td class="amt">187.40</td></tr>
-        <tr><td>Shopping</td><td class="amt">4.49</td><td class="amt">81.16</td><td class="amt">1.25</td><td class="amt">2.73</td><td class="amt">89.63</td></tr>
-        <tr><td>eSIM</td><td class="amt">—</td><td class="amt">37.27</td><td class="amt">42.47</td><td class="amt">—</td><td class="amt">79.74</td></tr>
-        <tr><td>International driver's licence</td><td class="amt">57.76</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">57.76</td></tr>
-        <tr><td>Visa (K-ETA)</td><td class="amt">31.53</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">31.53</td></tr>
-        <tr><td>Souvenir</td><td class="amt">—</td><td class="amt">11.78</td><td class="amt">—</td><td class="amt">—</td><td class="amt">11.78</td></tr>
-        <tr class="total"><td>Total</td><td class="amt">8,035.36</td><td class="amt">839.09</td><td class="amt">926.67</td><td class="amt">2,048.18</td><td class="amt">11,849.30</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="sumtable-wrap"><table class="sum"><caption>$ Category × country</caption><thead><tr><th>Category</th><th>Canada</th><th>Korea</th><th>Malaysia</th><th>Hong Kong</th><th>Total</th></tr></thead><tbody>
+    <tr><td>Original flights</td><td class="amt">4,237.11</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">4,237.11</td></tr>
+    <tr><td>Flight changes (Air Canada ×3 − $303.95 refund)</td><td class="amt">3,545.65</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">3,545.65</td></tr>
+    <tr><td>Hotels</td><td class="amt">—</td><td class="amt">1,335.38</td><td class="amt">1,795.05</td><td class="amt">1,979.26</td><td class="amt">5,109.69</td></tr>
+    <tr><td>Grab/Uber (incl. taxi)</td><td class="amt">30.00</td><td class="amt">430.71</td><td class="amt">533.67</td><td class="amt">—</td><td class="amt">994.38</td></tr>
+    <tr><td>Food</td><td class="amt">128.82</td><td class="amt">278.17</td><td class="amt">161.88</td><td class="amt">66.19</td><td class="amt">635.06</td></tr>
+    <tr><td>Spa (Iconic Marjorie)</td><td class="amt">—</td><td class="amt">—</td><td class="amt">187.40</td><td class="amt">—</td><td class="amt">187.40</td></tr>
+    <tr><td>Shopping</td><td class="amt">4.49</td><td class="amt">81.16</td><td class="amt">1.25</td><td class="amt">2.73</td><td class="amt">89.63</td></tr>
+    <tr><td>eSIM</td><td class="amt">—</td><td class="amt">37.27</td><td class="amt">42.47</td><td class="amt">—</td><td class="amt">79.74</td></tr>
+    <tr><td>International driver's licence</td><td class="amt">57.76</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">57.76</td></tr>
+    <tr><td>Visa (K-ETA)</td><td class="amt">31.53</td><td class="amt">—</td><td class="amt">—</td><td class="amt">—</td><td class="amt">31.53</td></tr>
+    <tr><td>Souvenir</td><td class="amt">—</td><td class="amt">11.78</td><td class="amt">—</td><td class="amt">—</td><td class="amt">11.78</td></tr>
+    <tr class="total"><td>Total</td><td class="amt">8,035.36</td><td class="amt">2,174.47</td><td class="amt">2,721.72</td><td class="amt">2,048.18</td><td class="amt">14,979.73</td></tr>
+  </tbody></table></div>
 </section>
-
 </main>
 
-<footer>
-  Drafted from current ratings &amp; venue data · verify hotel check-in/out dates &amp; restaurant hours before you go · Air Canada + Cathay Pacific routing confirmed
-</footer>
+<footer>Seoul · Penang · Hong Kong · Sep 20 – Oct 10, 2026</footer>
 
-<div class="modal-overlay" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapTitle">
-  <div class="modal">
-    <div class="modal-head">
-      <div style="flex:1"><h3 id="mapTitle">Directions</h3><span class="route-sub" id="mapSub"></span></div>
-      <div class="modeswitch" role="group" aria-label="Travel mode">
-        <button id="modeTransit" aria-pressed="true"><span class="lbl">Transit</span></button>
-        <button id="modeWalk" aria-pressed="false"><span class="lbl">Walk</span></button>
-      </div>
-      <button class="modal-close" id="mapClose" aria-label="Close directions">×</button>
-    </div>
-    <div class="modal-body"><iframe id="mapFrame" title="Transit directions" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <div id="naverPane" class="naver-pane" hidden>
-        <div class="np-lbl">Naver Map · from your current location</div>
-        <div class="np-dest" id="npDest"></div>
-        <div class="np-kr" id="npKr"></div>
-        <a class="np-btn" id="npApp" href="#">Open in Naver Map app</a>
-        <a class="np-btn ghost" id="npWeb" href="#" target="_blank" rel="noopener">Open on map.naver.com instead</a>
-        <button class="np-btn ghost" id="npCopy" type="button">Copy Korean name</button>
-        <p class="np-note" id="npNote">The Naver Map app should have opened with the route from where you are standing. If nothing happened, tap the first button; if the app is not installed, use the website button.</p>
-      </div></div>
-    <div class="modal-foot">
-      <span id="mapFootLbl">🚆 Transit route · live times in the app</span>
-      <a id="mapOpen" href="#" target="_blank" rel="noopener">Open in Google Maps ↗</a>
-    </div>
-  </div>
-</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-  /* ---------- tabs ---------- */
-  const tabs = Array.from(document.querySelectorAll('.tab'));
-  const panels = Array.from(document.querySelectorAll('.panel'));
-  const cityIds = ['seoul','penang','osaka','itinerary','planner','summary','expenses'];
-  const cityMeta = {
-    seoul:  {motif:'한국 · KOREA', big:'한국 KOREA', sml:'SEP 21–26'},
-    penang: {motif:'PULAU PINANG · MALAYSIA', big:'PENANG · MY', sml:'SEP 26–OCT 10'},
-    osaka:  {motif:'大阪 · JAPAN', big:'日本 JAPAN', sml:'OCT 10–17'},
-  };
-  const kMotif = document.getElementById('kicker-motif');
-  const sBig = document.getElementById('stamp-big');
-  const sSml = document.getElementById('stamp-sml');
+  const tabs=Array.from(document.querySelectorAll('.tab')), panels=Array.from(document.querySelectorAll('.panel'));
+  const cityIds=['seoul','penang','hongkong','itinerary','summary','expenses'];
+  const cityMeta={seoul:{motif:'한국 · KOREA',big:'한국 KOREA',sml:'SEP 21–26'},penang:{motif:'PULAU PINANG · MALAYSIA',big:'PENANG · MY',sml:'SEP 26–OCT 3'},hongkong:{motif:'香港 · HONG KONG',big:'香港 HONG KONG',sml:'OCT 3–10'}};
   function select(i){
-    tabs.forEach((t,j)=>{ const on = j===i; t.setAttribute('aria-selected', on); panels[j].classList.toggle('active', on); });
-    const city = cityIds[i] || 'seoul';
-    document.body.setAttribute('data-city', city);
-    const m = cityMeta[city];
-    if(m){ kMotif.textContent = m.motif; sBig.textContent = m.big; sSml.textContent = m.sml; }
-    if(city==='expenses') setTimeout(buildExpenseCharts,50);
-    window.scrollTo({top:0,behavior:'smooth'});
+    tabs.forEach((t,j)=>{t.setAttribute('aria-selected',j===i);panels[j].classList.toggle('active',j===i);});
+    const city=cityIds[i]; document.body.setAttribute('data-city',city);
+    const m=cityMeta[city]; if(m){document.getElementById('kicker-motif').textContent=m.motif;document.getElementById('stamp-big').textContent=m.big;document.getElementById('stamp-sml').textContent=m.sml;}
+    if(city==='expenses') setTimeout(buildCharts,50); window.scrollTo({top:0,behavior:'smooth'});
   }
-  (function(){ const m=cityMeta.seoul; kMotif.textContent=m.motif; })();
-  tabs.forEach((t,i)=>{
-    t.addEventListener('click',()=>select(i));
-    t.addEventListener('keydown',e=>{
-      if(e.key==='ArrowRight'){e.preventDefault();const n=(i+1)%tabs.length;tabs[n].focus();select(n);}
-      if(e.key==='ArrowLeft'){e.preventDefault();const n=(i-1+tabs.length)%tabs.length;tabs[n].focus();select(n);}
-    });
-  });
-
-  /* ---------- copy ---------- */
-  document.querySelectorAll('button.cpy').forEach(b=>b.addEventListener('click',()=>{
-    const t=b.dataset.copy, done=()=>{const o=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=o,1400);};
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,()=>prompt('Copy:',t));} else prompt('Copy:',t);
-  }));
-
-  /* ---------- typical-day switch ---------- */
+  document.getElementById('kicker-motif').textContent=cityMeta.seoul.motif;
+  tabs.forEach((t,i)=>t.addEventListener('click',()=>select(i)));
   document.querySelectorAll('.typ-switch button').forEach(b=>b.addEventListener('click',()=>{
-    document.querySelectorAll('.typ-switch button').forEach(x=>x.setAttribute('aria-pressed', x===b));
-    document.querySelectorAll('.typ').forEach(p=>p.classList.toggle('on', p.id==='typ-'+b.dataset.typ));
+    document.querySelectorAll('.typ-switch button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    document.querySelectorAll('.typ').forEach(p=>p.classList.toggle('on',p.id==='typ-'+b.dataset.typ));}));
+  document.getElementById('sum-print').addEventListener('click',()=>window.print());
+
+  // Directions: Seoul destinations open Naver Map, everything else opens Google Maps (from current location)
+  const NAVER={'Incheon International Airport Terminal 1, South Korea':[37.4492,126.4512,'인천국제공항 제1여객터미널'],'5 Jandari-ro 6-gil, Mapo-gu, Seoul':[37.5521401,126.9194351,'잔다리로6길 5'],'City Hall Station, Seoul':[37.5657037,126.9768616,'시청역'],'Gyeongbokgung Palace, Seoul':[37.579617,126.977041,'경복궁'],'Yeonnam-dong, Seoul':[37.5583,126.9252,'연남동'],'Harmony Mart Hongdae, 15 Yanghwa-ro 16-gil, Mapo-gu, Seoul':[37.5534451,126.9205246,'하모니마트 홍대점'],'Wellness Discount Mart, 410-19 Hapjeong-dong, Mapo-gu, Seoul':[37.548036,126.9199202,'합정동 410-19'],'Homeplus Hapjeong, 45 Yanghwa-ro, Mapo-gu, Seoul':[37.5508451,126.9136823,'홈플러스 합정점'],'Myeongseong Mart, 18 World Cup buk-ro 5na-gil, Mapo-gu, Seoul':[37.5573699,126.9167893,'대우명성마트'],'Hapjeong Mart, 375-1 Hapjeong-dong, Mapo-gu, Seoul':[37.5481868,126.9131907,'합정마트'],'Harmony Mart, 7 Yanghwa-ro 18an-gil, Mapo-gu, Seoul':[37.5567709,126.9249599,'하모니마트'],'Odarijip Ganjang Gejang, Seoul':[37.5613796,126.9834141,'오다리집 간장게장'],'Myeongdong Kyoja, Seoul':[37.5610151,126.9860829,'명동교자 본점'],'Myeongdong Korean BBQ Mongvely, Seoul':[37.561357,126.9844162,'몽블리 명동'],'Daol Charcoal Grilling, Seoul':[37.5631782,126.9839641,'다올숯불구이 명동'],'N Seoul Tower, Seoul':[37.5511694,126.9882266,'N서울타워'],'Bukchon Hanok Village, Seoul':[37.5814696,126.9849519,'북촌한옥마을'],'Namsangol Hanok Village, Seoul':[37.559315,126.994477,'남산골한옥마을'],'Myeongdong Shopping Street, Seoul':[37.5641885,126.986118,'명동거리'],'Myeongdong Cathedral, Seoul':[37.5633851,126.987436,'명동성당'],'Euljiro 1-ga Station, Seoul':[37.566065,126.982679,'을지로입구역'],'Namusae Tea House, Insadong, Seoul':[37.5741763,126.9840262,'나무새 인사동']};
+  function merc(lat,lng){return (lng*20037508.34/180).toFixed(2)+','+(Math.log(Math.tan((90+lat)*Math.PI/360))/(Math.PI/180)*20037508.34/180).toFixed(2);}
+  document.querySelectorAll('button.dirbtn, button.dirmini, button.go').forEach(b=>b.addEventListener('click',()=>{
+    const to=b.dataset.to, mode=b.dataset.mode||'transit', p=NAVER[to];
+    if(p){ const m=mode==='walk'?'walk':mode==='drive'?'car':'transit';
+      window.open('https://map.naver.com/p/directions/-/'+merc(p[0],p[1])+','+encodeURIComponent(p[2])+',,/-/'+m,'_blank'); }
+    else { const tm=mode==='walk'?'walking':mode==='drive'?'driving':'transit';
+      window.open('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(to)+'&travelmode='+tm,'_blank'); }
   }));
 
-  /* ---------- maps directions modal ---------- */
-  const overlay = document.getElementById('mapModal');
-  const frame   = document.getElementById('mapFrame');
-  const openLnk = document.getElementById('mapOpen');
-  const titleEl = document.getElementById('mapTitle');
-  const subEl   = document.getElementById('mapSub');
-  const footLbl = document.getElementById('mapFootLbl');
-  const btnTransit = document.getElementById('modeTransit');
-  const btnWalk = document.getElementById('modeWalk');
-  let lastFocus = null;
-  let curFrom = '', curTo = '', curMode = 'transit';
-
-  const NAVER_PLACES = {
-    'Incheon International Airport Terminal 1, South Korea': {lat:37.4492,    lng:126.4512,    kr:'인천국제공항 제1여객터미널'},
-    '5 Jandari-ro 6-gil, Mapo-gu, Seoul':                    {lat:37.5521401, lng:126.9194351, kr:'잔다리로6길 5 (BIOS)'},
-    'City Hall Station, Seoul':                              {lat:37.5657037, lng:126.9768616, kr:'시청역'},
-    'Gyeongbokgung Palace, Seoul':                           {lat:37.579617,  lng:126.977041,  kr:'경복궁'},
-    'Yeonnam-dong, Seoul':                                   {lat:37.5583,    lng:126.9252,    kr:'경의선숲길 연남동'},
-    'Harmony Mart Hongdae, 15 Yanghwa-ro 16-gil, Mapo-gu, Seoul':     {lat:37.5534451, lng:126.9205246, kr:'하모니마트 홍대점'},
-    'Wellness Discount Mart, 410-19 Hapjeong-dong, Mapo-gu, Seoul':   {lat:37.548036,  lng:126.9199202, kr:'합정동 410-19 (Wellness Mart)
+  let built=false;
+  function buildCharts(){
+    if(built||!window.Chart) return; built=true;
+    const fmt=v=>'$'+Math.round(v).toLocaleString();
+    new Chart(document.getElementById('exCat'),{type:'bar',data:{labels:['Hotels','Original flights','Flight changes','Grab/Uber','Food','Spa','Shopping','eSIM',"Driver's licence",'Visa','Souvenir'],
+      datasets:[{data:[5109.69,4237.11,3545.65,994.38,635.06,187.40,89.63,79.74,57.76,31.53,11.78],backgroundColor:'#3b5168',borderRadius:4,barThickness:20}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.raw)}}},scales:{x:{ticks:{callback:fmt}},y:{grid:{display:false}}}}});
+    new Chart(document.getElementById('exCountry'),{type:'bar',data:{labels:['Malaysia','Korea','Hong Kong','Canada'],datasets:[
+      {label:'Hotels',data:[1795.05,1335.38,1979.26,0],backgroundColor:'#6250d6'},{label:'Grab/Uber',data:[533.67,430.71,0,30],backgroundColor:'#2a78d6'},
+      {label:'Food',data:[161.88,278.17,66.19,128.82],backgroundColor:'#eb6834'},{label:'Shopping',data:[1.25,81.16,2.73,4.49],backgroundColor:'#1baf7a'},
+      {label:'eSIM',data:[42.47,37.27,0,0],backgroundColor:'#eda100'},{label:'Spa',data:[187.40,0,0,0],backgroundColor:'#e87ba4'},{label:'Other',data:[0,11.78,0,89.29],backgroundColor:'#898781'}
+    ].map(d=>Object.assign(d,{barThickness:22}))},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.raw)}}},scales:{x:{stacked:true,ticks:{callback:fmt}},y:{stacked:true,grid:{display:false}}}}});
+  }
+</script>
+</body>
+</html>
