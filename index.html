@@ -55,6 +55,7 @@
   .pill{font-family:var(--mono);font-size:10.5px;background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:2px 9px;color:var(--muted)}
   .pill.rate{color:#fff;border-color:var(--green);background:var(--green)}
   .pill.your{color:#fff;border-color:var(--pop);background:var(--pop);font-weight:700}
+  .pill.under{color:#fff;border-color:#1f6f5c;background:#1f6f5c}.pill.over{color:#fff;border-color:#c0392b;background:#c0392b}
   .card p{margin:0;font-size:14px;color:#3a352c}
   .card .addr{margin-top:9px;font-size:12px;color:var(--muted);font-family:var(--mono);line-height:1.4}
   .card .link{margin-top:9px;display:inline-block;font-family:var(--mono);font-size:12px;color:var(--accent)}
@@ -121,8 +122,10 @@
   table.sum td .b{font-weight:700;color:var(--accent-2)}table.sum td .m{font-family:var(--mono);font-size:11.5px}
   table.sum td .s{font-size:11px;color:var(--muted);display:block;margin-top:2px}
   table.sum td.amt{font-family:var(--mono);font-weight:700;color:var(--accent-2);white-space:nowrap;text-align:right}
+  table.sum td.amt.pos{color:#1f6f5c}table.sum td.amt.neg{color:#c0392b}
   table.sum tr.total td{background:var(--paper-2);font-weight:700;border-top:2px solid var(--accent)}
   table.sum tr.total td.amt{color:var(--pop);font-size:15px}
+  table.sum tr.total td.amt.pos{color:#1f6f5c}
   .conf{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:5px;padding:1px 6px;white-space:nowrap}
   .sum-foot{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:26px}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
@@ -179,7 +182,7 @@ function go(to, mode){
   <button class="tab" aria-selected="false" onclick="showTab('hongkong',this)"><span class="city">Hong Kong</span><span class="meta">Oct 3–10 · 7 nts</span></button>
   <button class="tab" aria-selected="false" onclick="showTab('itinerary',this)"><span class="city">Itinerary</span><span class="meta">A typical day</span></button>
   <button class="tab" aria-selected="false" onclick="showTab('summary',this)"><span class="city">Summary ⎙</span><span class="meta">Print / PDF</span></button>
-  <button class="tab" aria-selected="false" onclick="showTab('expenses',this)"><span class="city">Expenses $</span><span class="meta">Actuals</span></button>
+  <button class="tab" aria-selected="false" onclick="showTab('expenses',this)"><span class="city">Expenses $</span><span class="meta">Actuals · budget</span></button>
 </div></nav>
 
 <main>
@@ -368,8 +371,18 @@ function go(to, mode){
     <div class="kpi"><div class="kl">Total spend</div><div class="kv">$14,980</div><div class="ks">incl. all flights &amp; hotels</div></div>
     <div class="kpi"><div class="kl">Flights (all)</div><div class="kv">$7,783</div><div class="ks">$4,237 original + $3,546 changes</div></div>
     <div class="kpi"><div class="kl">Hotels</div><div class="kv">$5,110</div><div class="ks">Seoul $1,335 · Penang $1,795 · HK $1,979</div></div>
-    <div class="kpi"><div class="kl">Everything else</div><div class="kv">$2,087</div><div class="ks">Grab/Uber is $994 of this</div></div>
+    <div class="kpi"><div class="kl">Location budget balance</div><div class="kv" style="color:#1f6f5c">+$556</div><div class="ks">$7,500 budget − $6,944 spent</div></div>
   </div>
+
+  <div class="sumtable-wrap"><table class="sum"><caption>💰 Budget vs actual — $2,500 per location</caption>
+    <thead><tr><th>Location</th><th>Budget</th><th>Spent</th><th>Balance</th><th>Status</th></tr></thead><tbody>
+    <tr><td><span class="b">Korea</span><span class="s">Seoul · 5 nts</span></td><td class="amt">2,500.00</td><td class="amt">2,174.47</td><td class="amt pos">+325.53</td><td><span class="pill under">Under</span></td></tr>
+    <tr><td><span class="b">Malaysia</span><span class="s">Penang · 7 nts used (14 paid)</span></td><td class="amt">2,500.00</td><td class="amt">2,721.72</td><td class="amt neg">−221.72</td><td><span class="pill over">Over</span></td></tr>
+    <tr><td><span class="b">Hong Kong</span><span class="s">Sha Tin · 7 nts</span></td><td class="amt">2,500.00</td><td class="amt">2,048.18</td><td class="amt pos">+451.82</td><td><span class="pill under">Under</span></td></tr>
+    <tr class="total"><td>All three locations</td><td class="amt">7,500.00</td><td class="amt">6,944.37</td><td class="amt pos">+555.63</td><td>Under budget</td></tr>
+    <tr><td><span class="b">Outside the per-location budget</span><span class="s">Canada column: original flights $4,237.11 · flight changes $3,545.65 · visa, licence, eSIM, food, cab $252.60</span></td><td class="amt">—</td><td class="amt">8,035.36</td><td class="amt">—</td><td>Flights &amp; pre-trip</td></tr>
+    </tbody></table></div>
+
   <div class="chartbox"><h3>Spend by category</h3><div style="position:relative;height:360px"><canvas id="exCat"></canvas></div></div>
   <div class="chartbox"><h3>Spend by country (excluding flights)</h3>
     <div class="legend"><span><i style="background:#6250d6"></i>Hotels</span><span><i style="background:#2a78d6"></i>Grab/Uber</span><span><i style="background:#eb6834"></i>Food</span><span><i style="background:#1baf7a"></i>Shopping</span><span><i style="background:#eda100"></i>eSIM</span><span><i style="background:#e87ba4"></i>Spa</span><span><i style="background:#898781"></i>Other</span></div>
